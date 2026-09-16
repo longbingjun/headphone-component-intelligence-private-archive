@@ -37,12 +37,20 @@ jobs:
         env:
           PUBLIC_BASE_PATH: /headphone-component-intelligence/
           PUBLIC_SITE_URL: https://longbingjun.github.io
+      - name: Upload build for private review
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-site
+          path: site
       - uses: actions/configure-pages@v5
+        if: github.event.repository.visibility == 'public'
       - uses: actions/upload-pages-artifact@v3
+        if: github.event.repository.visibility == 'public'
         with:
           path: site
 
   deploy:
+    if: github.event.repository.visibility == 'public'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
