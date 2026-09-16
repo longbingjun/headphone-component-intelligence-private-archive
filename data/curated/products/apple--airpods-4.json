@@ -1,0 +1,184 @@
+{
+  "canonical_id": "apple--airpods-4",
+  "brand": "Apple苹果",
+  "model": "AirPods 4",
+  "category": "半入耳式耳机",
+  "category_raw": "真无线耳机TWS",
+  "category_status": "portfolio_reviewed",
+  "category_basis": "authorized_demo_subset",
+  "category_confidence": "high",
+  "category_evidence_quote": "",
+  "category_source_report_id": "214334",
+  "category_classifier_version": "portfolio-demo-v1",
+  "category_facets": [
+    "半入耳式耳机"
+  ],
+  "category_details": [],
+  "usage_tags": [],
+  "report_ids": [
+    "214334"
+  ],
+  "video_ids": [],
+  "related_report_ids": [
+    "214334"
+  ],
+  "related_video_ids": [],
+  "first_seen": "2024-10-01",
+  "latest_published": "2024-10-24",
+  "internal_match_suggestions": [],
+  "cost_snapshot": {
+    "main_chip": "",
+    "pmic_case": "",
+    "battery_ear": "电池",
+    "battery_case": "1 mAh",
+    "speaker": "喇叭单元",
+    "materials": "",
+    "weight_g": "40.6g",
+    "weight_case_g": "",
+    "weight_earbud_g": "4.4g",
+    "ip_rating": "",
+    "bluetooth": "5.3",
+    "bom_row_count": 6,
+    "price_cny": 999,
+    "price_currency": "CNY",
+    "price_kind": "official",
+    "price_layer": "official",
+    "price_source_label": "官方价",
+    "price_source_url": "https://www.apple.com.cn/newsroom/2024/09/apple-introduces-all-new-airpods-4-with-industry-defining-audio-and-design/",
+    "price_evidence": "Apple 中国大陆新闻稿列明 AirPods 4 售价为 RMB 999。",
+    "price_disclaimer": "",
+    "channel_url": "https://detail.zol.com.cn/microphone/index2105466.shtml",
+    "sales_hint": null,
+    "data_completeness": 0.67,
+    "best_report_id": "214716",
+    "best_video_id": null
+  },
+  "bom_table": [
+    {
+      "component": "充电仓",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "充电盒",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "充电仓",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "电池",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "电池",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "主板/PCBA",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "主板/PCBA",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "麦克风",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "麦克风",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "喇叭单元",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "喇叭单元",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "触控/按键",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "触控/按键",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    }
+  ],
+  "market": {
+    "brand": "Apple苹果",
+    "model": "AirPods 4",
+    "category": "半入耳式耳机",
+    "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+    "consumer_claims": [],
+    "selling_points": [],
+    "scenarios": [],
+    "best_report_id": "214334",
+    "best_video_id": null
+  },
+  "launch": {
+    "date": "",
+    "display": "2024及以前产品，暂未找到相应信息",
+    "scope": "",
+    "status": "legacy_unresolved",
+    "source_url": "",
+    "evidence": "",
+    "source_type": ""
+  },
+  "teardown_inventory": [],
+  "technical_facts": [],
+  "data_quality_review_queue": [],
+  "unboxing": {
+    "packaging": [],
+    "charging_case": [],
+    "earbuds": []
+  },
+  "summary_image_urls": [],
+  "report_image_urls": []
+}

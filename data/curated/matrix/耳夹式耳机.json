@@ -1,0 +1,488 @@
+{
+  "category": "耳夹式耳机",
+  "generated_at": "2026-09-16T14:42:31+08:00",
+  "columns": [
+    "brand",
+    "model",
+    "launch_date",
+    "price_cny",
+    "main_chip",
+    "pmic",
+    "battery_ear",
+    "battery_case",
+    "speaker",
+    "materials",
+    "weight_g",
+    "weight_case_g",
+    "weight_earbud_g",
+    "ip_rating",
+    "bluetooth",
+    "bom_rows",
+    "layer_badges",
+    "data_completeness"
+  ],
+  "rows": [
+    {
+      "canonical_id": "baseus--bowie-mc2",
+      "brand": "Baseus倍思",
+      "model": "Bowie MC2",
+      "price_cny": 429,
+      "launch_date": "上市时间待核验",
+      "launch_source_url": "",
+      "launch_evidence": "已核对来源原文，待补充公开发布时间来源。",
+      "launch_source_layer": "technical",
+      "price_currency": "CNY",
+      "price_layer": "official",
+      "price_source_label": "官方价",
+      "price_source_url": "https://www.baseus.com/products/bowie-mc2-open-ear-true-wireless-earbuds",
+      "price_evidence": "",
+      "main_chip": "INJOINIC英集芯IP5528",
+      "pmic": "INJOINIC英集芯 INJOINIC英集芯IP5528",
+      "battery_ear": "HJ弘捷新能源 3.85V/55mAh软包扣式",
+      "battery_case": "WEL旭航诚 3.7V/600mAh锂电池",
+      "speaker": "黄金微晶振膜",
+      "materials": "硅胶",
+      "weight_g": "52.7g",
+      "weight_case_g": "",
+      "weight_earbud_g": "5.1g",
+      "ip_rating": "",
+      "bluetooth": "",
+      "bom_rows": 21,
+      "layer_badges": "",
+      "data_completeness": 1.0,
+      "best_report_id": "281175",
+      "has_report": true,
+      "has_video": false,
+      "cost_fields": {
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_ear": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_case": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "speaker": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "case_charging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bom_rows": {
+          "value": "0",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "packaging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "materials": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "form_factor": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "earbud_type": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth_version": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "codecs": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_mah": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "charge_interface": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        }
+      },
+      "selling_point_tags": "",
+      "scenarios": "",
+      "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。"
+    },
+    {
+      "canonical_id": "baseus--mc1",
+      "brand": "Baseus倍思",
+      "model": "MC1",
+      "price_cny": 399,
+      "launch_date": "2024及以前产品，暂未找到相应信息",
+      "launch_source_url": "",
+      "launch_evidence": "",
+      "launch_source_layer": "technical",
+      "price_currency": "CNY",
+      "price_layer": "official",
+      "price_source_label": "官方价",
+      "price_source_url": "https://finance.sina.com.cn/tech/roll/2024-12-02/doc-incxzras8892309.shtml",
+      "price_evidence": "新品发布报道载明官方发售价 399 元、首发到手价 269 元；此处记录官方发售价。",
+      "main_chip": "Injoinic英集芯IP5528",
+      "pmic": "INJOINIC英集芯 Injoinic英集芯IP5528",
+      "battery_ear": "3.85V/48mAh软包扣式",
+      "battery_case": "WEL旭航诚 600mAh锂电池",
+      "speaker": "11mm 动圈单元",
+      "materials": "硅胶、钛合金、PC",
+      "weight_g": "54.8g",
+      "weight_case_g": "",
+      "weight_earbud_g": "5.5g",
+      "ip_rating": "IPX7",
+      "bluetooth": "6.0",
+      "bom_rows": 25,
+      "layer_badges": "",
+      "data_completeness": 1.0,
+      "best_report_id": "222800",
+      "has_report": true,
+      "has_video": false,
+      "cost_fields": {
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_ear": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_case": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "speaker": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "case_charging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bom_rows": {
+          "value": "0",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "packaging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "materials": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "form_factor": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "earbud_type": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth_version": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "codecs": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_mah": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "charge_interface": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        }
+      },
+      "selling_point_tags": "",
+      "scenarios": "",
+      "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。"
+    },
+    {
+      "canonical_id": "sony--linkbuds-clip",
+      "brand": "SONY索尼",
+      "model": "LinkBuds Clip",
+      "price_cny": 1299,
+      "launch_date": "上市时间待核验",
+      "launch_source_url": "",
+      "launch_evidence": "已核对来源原文，待补充公开发布时间来源。",
+      "launch_source_layer": "technical",
+      "price_currency": "CNY",
+      "price_layer": "official",
+      "price_source_label": "官方价",
+      "price_source_url": "https://www.sony.com.cn/content/sonyportal/zh-cn/cms/newscenter/product/2026/20260121.html",
+      "price_evidence": "索尼中国新品新闻稿：建议零售价为1,299元。",
+      "main_chip": "AB1585",
+      "pmic": "",
+      "battery_ear": "3.85V/54mAh钢壳扣式",
+      "battery_case": "3.85V/500mAh锂电池",
+      "speaker": "",
+      "materials": "硅胶",
+      "weight_g": "53.9g",
+      "weight_case_g": "41.6g",
+      "weight_earbud_g": "6.1g",
+      "ip_rating": "",
+      "bluetooth": "5.3",
+      "bom_rows": 29,
+      "layer_badges": "",
+      "data_completeness": 0.67,
+      "best_report_id": "280462",
+      "has_report": true,
+      "has_video": false,
+      "cost_fields": {
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_ear": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_case": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "speaker": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "case_charging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bom_rows": {
+          "value": "0",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "packaging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "materials": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "form_factor": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "earbud_type": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth_version": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "codecs": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_mah": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "charge_interface": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        }
+      },
+      "selling_point_tags": "",
+      "scenarios": "",
+      "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。"
+    },
+    {
+      "canonical_id": "soundcore--c40i",
+      "brand": "Soundcore声阔",
+      "model": "C40i",
+      "price_cny": null,
+      "launch_date": "上市时间待核验",
+      "launch_source_url": "",
+      "launch_evidence": "",
+      "launch_source_layer": "technical",
+      "price_currency": "CNY",
+      "price_layer": null,
+      "price_source_label": "",
+      "price_source_url": "",
+      "price_evidence": "",
+      "main_chip": null,
+      "pmic": null,
+      "battery_ear": null,
+      "battery_case": null,
+      "speaker": null,
+      "materials": null,
+      "weight_g": null,
+      "weight_case_g": null,
+      "weight_earbud_g": null,
+      "ip_rating": null,
+      "bluetooth": null,
+      "bom_rows": 0,
+      "layer_badges": "",
+      "data_completeness": 0.0,
+      "best_report_id": null,
+      "has_report": false,
+      "has_video": false,
+      "cost_fields": {},
+      "selling_point_tags": "",
+      "scenarios": "",
+      "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。"
+    }
+  ]
+}

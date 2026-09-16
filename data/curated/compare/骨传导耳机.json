@@ -1,0 +1,324 @@
+{
+  "category": "骨传导耳机",
+  "generated_at": "2026-09-16T14:42:31+08:00",
+  "param_rows": [
+    "launch_date",
+    "price_cny",
+    "main_chip",
+    "pmic",
+    "battery_ear",
+    "battery_case",
+    "speaker",
+    "materials",
+    "weight_g",
+    "weight_case_g",
+    "weight_earbud_g",
+    "ip_rating",
+    "bluetooth",
+    "bom_rows",
+    "selling_point_tags",
+    "scenarios",
+    "positioning_summary"
+  ],
+  "products": [
+    {
+      "canonical_id": "shokz--as600",
+      "brand": "SHOKZ韶音",
+      "model": "AS600骨传导运动",
+      "best_report_id": "177859",
+      "cells": {
+        "launch_date": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "price_cny": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "main_chip": {
+          "value": "高通CSR8640",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_ear": {
+          "value": "200mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_case": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "speaker": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "materials": {
+          "value": "硅胶、PC",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_g": {
+          "value": "36.9g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bluetooth": {
+          "value": "4.0",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bom_rows": {
+          "value": "13",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "selling_point_tags": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "scenarios": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "positioning_summary": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "param": "launch_date",
+      "cells": {
+        "shokz--as600": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "price_cny",
+      "cells": {
+        "shokz--as600": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "main_chip",
+      "cells": {
+        "shokz--as600": {
+          "value": "高通CSR8640",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "pmic",
+      "cells": {
+        "shokz--as600": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "battery_ear",
+      "cells": {
+        "shokz--as600": {
+          "value": "200mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "battery_case",
+      "cells": {
+        "shokz--as600": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "speaker",
+      "cells": {
+        "shokz--as600": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "materials",
+      "cells": {
+        "shokz--as600": {
+          "value": "硅胶、PC",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_g",
+      "cells": {
+        "shokz--as600": {
+          "value": "36.9g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_case_g",
+      "cells": {
+        "shokz--as600": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_earbud_g",
+      "cells": {
+        "shokz--as600": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "ip_rating",
+      "cells": {
+        "shokz--as600": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "bluetooth",
+      "cells": {
+        "shokz--as600": {
+          "value": "4.0",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "bom_rows",
+      "cells": {
+        "shokz--as600": {
+          "value": "13",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "selling_point_tags",
+      "cells": {
+        "shokz--as600": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "scenarios",
+      "cells": {
+        "shokz--as600": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "positioning_summary",
+      "cells": {
+        "shokz--as600": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    }
+  ]
+}

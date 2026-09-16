@@ -1,0 +1,452 @@
+{
+  "category": "全入耳式耳机",
+  "generated_at": "2026-09-16T14:42:31+08:00",
+  "columns": [
+    "brand",
+    "model",
+    "launch_date",
+    "price_cny",
+    "main_chip",
+    "pmic",
+    "battery_ear",
+    "battery_case",
+    "speaker",
+    "materials",
+    "weight_g",
+    "weight_case_g",
+    "weight_earbud_g",
+    "ip_rating",
+    "bluetooth",
+    "bom_rows",
+    "layer_badges",
+    "data_completeness"
+  ],
+  "rows": [
+    {
+      "canonical_id": "apple--airpods-pro-2-usb-c",
+      "brand": "Apple苹果",
+      "model": "AirPods Pro 2 (USB-C)",
+      "price_cny": 1899,
+      "launch_date": "2024及以前产品，暂未找到相应信息",
+      "launch_source_url": "",
+      "launch_evidence": "",
+      "launch_source_layer": "technical",
+      "price_currency": "CNY",
+      "price_layer": "official",
+      "price_source_label": "官方价",
+      "price_source_url": "https://www.apple.com.cn/newsroom/2023/09/apple-upgrades-airpods-pro-2nd-generation-with-usb-c-charging/",
+      "price_evidence": "Apple 中国大陆新闻稿载明配 MagSafe 充电盒（USB-C 端口）的 AirPods Pro（第二代）售价 RMB 1899。",
+      "main_chip": "",
+      "pmic": "",
+      "battery_ear": "523 mAh",
+      "battery_case": "电池",
+      "speaker": "喇叭单元",
+      "materials": "硅胶、塑料、PC",
+      "weight_g": "62.0g",
+      "weight_case_g": "51.2g",
+      "weight_earbud_g": "",
+      "ip_rating": "",
+      "bluetooth": "5.0",
+      "bom_rows": 21,
+      "layer_badges": "",
+      "data_completeness": 0.67,
+      "best_report_id": "176691",
+      "has_report": true,
+      "has_video": false,
+      "cost_fields": {
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_ear": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_case": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "speaker": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "case_charging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bom_rows": {
+          "value": "0",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "packaging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "materials": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "form_factor": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "earbud_type": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth_version": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "codecs": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_mah": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "charge_interface": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        }
+      },
+      "selling_point_tags": "",
+      "scenarios": "",
+      "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。"
+    },
+    {
+      "canonical_id": "bose--quietcomfort-earbuds",
+      "brand": "BOSE",
+      "model": "QuietComfort Earbuds",
+      "price_cny": null,
+      "launch_date": "2024及以前产品，暂未找到相应信息",
+      "launch_source_url": "",
+      "launch_evidence": "",
+      "launch_source_layer": "technical",
+      "price_currency": "CNY",
+      "price_layer": null,
+      "price_source_label": "",
+      "price_source_url": "",
+      "price_evidence": "",
+      "main_chip": "高通QCC5127",
+      "pmic": "",
+      "battery_ear": "电池",
+      "battery_case": "850 mAh",
+      "speaker": "喇叭单元",
+      "materials": "硅胶、PC、ABS",
+      "weight_g": "95.3克",
+      "weight_case_g": "",
+      "weight_earbud_g": "",
+      "ip_rating": "IPX4",
+      "bluetooth": "5.1",
+      "bom_rows": 26,
+      "layer_badges": "",
+      "data_completeness": 0.83,
+      "best_report_id": "61213",
+      "has_report": true,
+      "has_video": false,
+      "cost_fields": {
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_ear": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_case": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "speaker": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "case_charging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bom_rows": {
+          "value": "0",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "packaging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "materials": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "form_factor": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "earbud_type": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth_version": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "codecs": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_mah": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "charge_interface": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        }
+      },
+      "selling_point_tags": "",
+      "scenarios": "",
+      "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。"
+    },
+    {
+      "canonical_id": "baseus--bowie-e2",
+      "brand": "Baseus倍思",
+      "model": "Bowie E2",
+      "price_cny": null,
+      "launch_date": "2024及以前产品，暂未找到相应信息",
+      "launch_source_url": "",
+      "launch_evidence": "",
+      "launch_source_layer": "technical",
+      "price_currency": "CNY",
+      "price_layer": null,
+      "price_source_label": "",
+      "price_source_url": "",
+      "price_evidence": "",
+      "main_chip": "BT8922D",
+      "pmic": "",
+      "battery_ear": "电池",
+      "battery_case": "40 mAh",
+      "speaker": "喇叭单元",
+      "materials": "PC、ABS",
+      "weight_g": "4.4g",
+      "weight_case_g": "",
+      "weight_earbud_g": "4.4g",
+      "ip_rating": "",
+      "bluetooth": "5.2",
+      "bom_rows": 21,
+      "layer_badges": "",
+      "data_completeness": 0.83,
+      "best_report_id": "112068",
+      "has_report": true,
+      "has_video": false,
+      "cost_fields": {
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_ear": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_case": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "speaker": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "case_charging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bom_rows": {
+          "value": "0",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "packaging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "materials": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "form_factor": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "earbud_type": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth_version": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "codecs": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_mah": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "charge_interface": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        }
+      },
+      "selling_point_tags": "",
+      "scenarios": "",
+      "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。"
+    }
+  ]
+}

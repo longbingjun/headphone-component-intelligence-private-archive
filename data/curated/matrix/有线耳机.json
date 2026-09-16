@@ -1,0 +1,168 @@
+{
+  "category": "有线耳机",
+  "generated_at": "2026-09-16T14:42:31+08:00",
+  "columns": [
+    "brand",
+    "model",
+    "launch_date",
+    "price_cny",
+    "main_chip",
+    "pmic",
+    "battery_ear",
+    "battery_case",
+    "speaker",
+    "materials",
+    "weight_g",
+    "weight_case_g",
+    "weight_earbud_g",
+    "ip_rating",
+    "bluetooth",
+    "bom_rows",
+    "layer_badges",
+    "data_completeness"
+  ],
+  "rows": [
+    {
+      "canonical_id": "apple--earpods-usb-c",
+      "brand": "Apple苹果",
+      "model": "EarPods (USB-C)",
+      "price_cny": 149,
+      "launch_date": "2024及以前产品，暂未找到相应信息",
+      "launch_source_url": "",
+      "launch_evidence": "",
+      "launch_source_layer": "technical",
+      "price_currency": "CNY",
+      "price_layer": "official",
+      "price_source_label": "官方价",
+      "price_source_url": "https://www.apple.com.cn/shop/product/myqy3fe/a?fnode=65f2a901c30f6d029583d40fee3f37a35b27db3b8a9bc0eafa4c6e2ab10f1e2992579e19551d9eb4b2e2f91fe169c0ee2ff0c57c45d15ccbdcae157fa442ad17c7cf18b86b416d70ebf1f93a553bb075e686a55b9c11e1327f2649b37b5a6c11",
+      "price_evidence": "Apple 中国大陆官方商店商品页标价 RMB 149。",
+      "main_chip": "",
+      "pmic": "",
+      "battery_ear": "",
+      "battery_case": "",
+      "speaker": "振膜动圈",
+      "materials": "塑料、PC",
+      "weight_g": "",
+      "weight_case_g": "",
+      "weight_earbud_g": "",
+      "ip_rating": "",
+      "bluetooth": "",
+      "bom_rows": 3,
+      "layer_badges": "",
+      "data_completeness": 0.33,
+      "best_report_id": "199035",
+      "has_report": true,
+      "has_video": false,
+      "cost_fields": {
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_ear": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_case": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "speaker": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "case_charging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bom_rows": {
+          "value": "0",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "packaging": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "materials": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "form_factor": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "earbud_type": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "bluetooth_version": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "codecs": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "battery_mah": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        },
+        "charge_interface": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical"
+        }
+      },
+      "selling_point_tags": "",
+      "scenarios": "",
+      "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。"
+    }
+  ]
+}

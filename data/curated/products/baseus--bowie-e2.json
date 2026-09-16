@@ -1,0 +1,360 @@
+{
+  "canonical_id": "baseus--bowie-e2",
+  "brand": "Baseus倍思",
+  "model": "Bowie E2",
+  "category": "全入耳式耳机",
+  "category_raw": "全入耳式耳机",
+  "category_status": "portfolio_reviewed",
+  "category_basis": "authorized_demo_subset",
+  "category_confidence": "high",
+  "category_evidence_quote": "",
+  "category_source_report_id": "112068",
+  "category_classifier_version": "portfolio-demo-v1",
+  "category_facets": [
+    "全入耳式耳机"
+  ],
+  "category_details": [],
+  "usage_tags": [],
+  "report_ids": [
+    "112068"
+  ],
+  "video_ids": [],
+  "related_report_ids": [
+    "112068"
+  ],
+  "related_video_ids": [],
+  "first_seen": "2022-03-23",
+  "latest_published": "2022-03-23",
+  "internal_match_suggestions": [],
+  "cost_snapshot": {
+    "main_chip": "BT8922D",
+    "pmic_case": "",
+    "battery_ear": "电池",
+    "battery_case": "40 mAh",
+    "speaker": "喇叭单元",
+    "materials": "PC、ABS",
+    "weight_g": "4.4g",
+    "weight_case_g": "",
+    "weight_earbud_g": "4.4g",
+    "ip_rating": "",
+    "bluetooth": "5.2",
+    "bom_row_count": 21,
+    "price_cny": null,
+    "price_currency": "CNY",
+    "price_kind": "",
+    "price_layer": null,
+    "price_source_label": "",
+    "price_source_url": "",
+    "price_evidence": "",
+    "price_disclaimer": "",
+    "channel_url": null,
+    "sales_hint": null,
+    "data_completeness": 0.83,
+    "best_report_id": "112068",
+    "best_video_id": null
+  },
+  "bom_table": [
+    {
+      "component": "充电仓",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "充电仓",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "主板/PCBA",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "主板/PCBA",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "电池",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "电池",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "麦克风",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "麦克风",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "喇叭单元",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "喇叭单元",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "天线",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "天线",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "触控/按键",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "触控/按键",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "指示灯",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "指示灯",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "外壳结构",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "外壳结构",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "耳挂/挂钩",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "耳挂/挂钩",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "思远半导体 SY8801",
+      "qty_hint": "1",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "思远半导体 SY8801",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "SY8801",
+      "qty_hint": "1",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "SY8801",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "CSU32P20",
+      "qty_hint": "1",
+      "side": "充电盒",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "CSU32P20",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "CSU32P20",
+      "qty_hint": "1",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "CSU32P20",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "BT8922D",
+      "qty_hint": "1",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "BT8922D",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "BT8922D",
+      "qty_hint": "1",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "BT8922D",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "思远半导体 SY8801",
+      "qty_hint": "1",
+      "side": "充电盒",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "思远半导体 SY8801",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    }
+  ],
+  "market": {
+    "brand": "Baseus倍思",
+    "model": "Bowie E2",
+    "category": "全入耳式耳机",
+    "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+    "consumer_claims": [],
+    "selling_points": [],
+    "scenarios": [],
+    "best_report_id": "112068",
+    "best_video_id": null
+  },
+  "launch": {
+    "date": "",
+    "display": "2024及以前产品，暂未找到相应信息",
+    "scope": "",
+    "status": "legacy_unresolved",
+    "source_url": "",
+    "evidence": "",
+    "source_type": ""
+  },
+  "teardown_inventory": [],
+  "technical_facts": [],
+  "data_quality_review_queue": [],
+  "unboxing": {
+    "packaging": [],
+    "charging_case": [],
+    "earbuds": []
+  },
+  "summary_image_urls": [],
+  "report_image_urls": []
+}

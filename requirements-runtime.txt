@@ -1,0 +1,16 @@
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+jieba>=0.42
+snownlp>=0.12
+Pillow>=10.0
+opencv-python-headless>=4.9
+numpy>=1.26
+pytesseract>=0.3.10
+fastapi>=0.116
+uvicorn[standard]>=0.35
+SQLAlchemy>=2.0
+psycopg[binary]>=3.2
+alembic>=1.16
+APScheduler>=3.11,<4
+minio>=7.2

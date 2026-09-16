@@ -1,0 +1,184 @@
+{
+  "canonical_id": "apple--earpods-usb-c",
+  "brand": "Apple苹果",
+  "model": "EarPods (USB-C)",
+  "category": "有线耳机",
+  "category_raw": "有线耳机",
+  "category_status": "portfolio_reviewed",
+  "category_basis": "authorized_demo_subset",
+  "category_confidence": "high",
+  "category_evidence_quote": "",
+  "category_source_report_id": "199035",
+  "category_classifier_version": "portfolio-demo-v1",
+  "category_facets": [
+    "有线耳机"
+  ],
+  "category_details": [],
+  "usage_tags": [],
+  "report_ids": [
+    "199035"
+  ],
+  "video_ids": [],
+  "related_report_ids": [
+    "199035"
+  ],
+  "related_video_ids": [],
+  "first_seen": "2024-05-11",
+  "latest_published": "2024-05-11",
+  "internal_match_suggestions": [],
+  "cost_snapshot": {
+    "main_chip": "",
+    "pmic_case": "",
+    "battery_ear": "",
+    "battery_case": "",
+    "speaker": "振膜动圈",
+    "materials": "塑料、PC",
+    "weight_g": "",
+    "weight_case_g": "",
+    "weight_earbud_g": "",
+    "ip_rating": "",
+    "bluetooth": "",
+    "bom_row_count": 3,
+    "price_cny": 149,
+    "price_currency": "CNY",
+    "price_kind": "official",
+    "price_layer": "official",
+    "price_source_label": "官方价",
+    "price_source_url": "https://www.apple.com.cn/shop/product/myqy3fe/a?fnode=65f2a901c30f6d029583d40fee3f37a35b27db3b8a9bc0eafa4c6e2ab10f1e2992579e19551d9eb4b2e2f91fe169c0ee2ff0c57c45d15ccbdcae157fa442ad17c7cf18b86b416d70ebf1f93a553bb075e686a55b9c11e1327f2649b37b5a6c11",
+    "price_evidence": "Apple 中国大陆官方商店商品页标价 RMB 149。",
+    "price_disclaimer": "",
+    "channel_url": null,
+    "sales_hint": null,
+    "data_completeness": 0.33,
+    "best_report_id": "199035",
+    "best_video_id": null
+  },
+  "bom_table": [
+    {
+      "component": "喇叭单元",
+      "brand": "",
+      "model": "振膜动圈",
+      "qty_hint": "1",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "振膜动圈",
+        "confidence": 0.8,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "麦克风",
+      "brand": "",
+      "model": "MEMS麦克风",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "MEMS麦克风",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "麦克风",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "麦克风",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "喇叭单元",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "喇叭单元",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "外壳结构",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "外壳结构",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "触控/按键",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "触控/按键",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    }
+  ],
+  "market": {
+    "brand": "Apple苹果",
+    "model": "EarPods (USB-C)",
+    "category": "有线耳机",
+    "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+    "consumer_claims": [],
+    "selling_points": [],
+    "scenarios": [],
+    "best_report_id": "199035",
+    "best_video_id": null
+  },
+  "launch": {
+    "date": "",
+    "display": "2024及以前产品，暂未找到相应信息",
+    "scope": "",
+    "status": "legacy_unresolved",
+    "source_url": "",
+    "evidence": "",
+    "source_type": ""
+  },
+  "teardown_inventory": [],
+  "technical_facts": [],
+  "data_quality_review_queue": [],
+  "unboxing": {
+    "packaging": [],
+    "charging_case": [],
+    "earbuds": []
+  },
+  "summary_image_urls": [],
+  "report_image_urls": []
+}

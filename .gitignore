@@ -1,0 +1,71 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.astro/
+node_modules/
+.pnpm-store/
+.coverage
+*.db
+*.egg-info/
+.DS_Store
+Thumbs.db
+
+# Astro build output — regenerated fresh every CI run and uploaded directly
+# to Pages via actions/upload-pages-artifact before any git commit happens.
+# Committing it has zero functional purpose for deployment and only bloats
+# the repo (see .github/workflows/update-and-deploy.yml).
+site/
+runtime/
+
+# Generated web payload. Recreated by scripts/prepare_web_data.py in CI.
+web/public/data/
+
+# Optimized images are runtime objects: local files stay available for local
+# testing, while production reads/writes the existing MinIO bucket. The current
+# production bucket was verified to contain every release-priority image.
+web/public/images/
+
+# Legacy derived-data mirrors. Canonical data now lives in data/staging and
+# data/curated; these folders remain locally readable only during migration.
+data/products/
+data/enrich/
+data/compare/
+data/matrix/
+
+# Local research scratch space is never a deployable artifact.
+scratch_price_research/
+
+# Local editable human-review worksheets and generated review previews.
+# Accepted outcomes are normalized into data/config, not committed as notes.
+reports/human-review/
+reports/data-quality/
+pilot-results/
+
+# Raw article downloads are rebuild inputs, not production seed data.
+data/cache/content_html/
+
+# Superseded full-corpus summaries are retained only in old Git history. The
+# active extraction layers are the source-grounded BOM/claim/unboxing caches.
+data/staging/llm_summaries/
+
+# Browser cookies exported for yt-dlp (contains login session, never commit)
+data/cookies.txt
+cookies.txt
+data/cookies_jd.txt
+secrets/
+*.cookies.txt
+*.cookie
+
+# Chrome browser profile for JD scraping (never commit)
+data/jd_browser_profile/
+
+# Chrome browser profile for JD scraping (never commit)
+data/jd_browser_profile/
+
+# API secrets
+.env
+.env.production
+.env.local
+.env.*.local

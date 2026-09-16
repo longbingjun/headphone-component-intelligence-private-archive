@@ -1,0 +1,34 @@
+# 核心爬虫/解析依赖
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+
+# 中文分词 / 情感分析（卖点抽取）
+jieba>=0.42
+snownlp>=0.12
+
+# 图片处理管线（文本密集型/图像密集型判断）
+Pillow>=10.0
+opencv-python-headless>=4.9
+numpy>=1.26
+
+# OCR（可选，框架已预留；本机若未安装 tesseract 可执行文件，
+# 相关代码会自动降级为 "pending" 状态，不影响其余功能）
+pytesseract>=0.3.10
+
+# 拆解视频：作者字幕轨 / 硬字幕 OCR
+yt-dlp>=2024.1
+rapidocr-onnxruntime>=1.4
+onnxruntime>=1.18
+ImageHash>=4.3
+psutil>=5.9
+openai>=1.40
+
+# 内网运行层：只读 API、PostgreSQL、定时任务与 MinIO
+fastapi>=0.116
+uvicorn[standard]>=0.35
+SQLAlchemy>=2.0
+psycopg[binary]>=3.2
+alembic>=1.16
+APScheduler>=3.11,<4
+minio>=7.2

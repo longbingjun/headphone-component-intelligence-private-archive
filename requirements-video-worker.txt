@@ -1,0 +1,14 @@
+# Video Worker: temporary video decoding, subtitle OCR, text-only LLM and storage.
+# Video text comes from creator subtitle tracks or frame OCR.
+yt-dlp>=2024.1
+opencv-python-headless>=4.9
+numpy>=1.26
+Pillow>=10.0
+rapidocr-onnxruntime>=1.4
+onnxruntime>=1.18
+ImageHash>=4.3
+psutil>=5.9
+openai>=1.40
+SQLAlchemy>=2.0
+psycopg[binary]>=3.2
+minio>=7.2

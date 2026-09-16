@@ -1,0 +1,324 @@
+{
+  "category": "半入耳式耳机",
+  "generated_at": "2026-09-16T14:42:31+08:00",
+  "param_rows": [
+    "launch_date",
+    "price_cny",
+    "main_chip",
+    "pmic",
+    "battery_ear",
+    "battery_case",
+    "speaker",
+    "materials",
+    "weight_g",
+    "weight_case_g",
+    "weight_earbud_g",
+    "ip_rating",
+    "bluetooth",
+    "bom_rows",
+    "selling_point_tags",
+    "scenarios",
+    "positioning_summary"
+  ],
+  "products": [
+    {
+      "canonical_id": "apple--airpods-4",
+      "brand": "Apple苹果",
+      "model": "AirPods 4",
+      "best_report_id": "214716",
+      "cells": {
+        "launch_date": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "price_cny": {
+          "value": "¥999（官方价）",
+          "evidence": "Apple 中国大陆新闻稿列明 AirPods 4 售价为 RMB 999。",
+          "source_layer": "official",
+          "source_url": "https://www.apple.com.cn/newsroom/2024/09/apple-introduces-all-new-airpods-4-with-industry-defining-audio-and-design/"
+        },
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_ear": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_case": {
+          "value": "1 mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "speaker": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "materials": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_g": {
+          "value": "40.6g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_earbud_g": {
+          "value": "4.4g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bluetooth": {
+          "value": "5.3",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bom_rows": {
+          "value": "6",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "selling_point_tags": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "scenarios": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "positioning_summary": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "param": "launch_date",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "price_cny",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "¥999（官方价）",
+          "evidence": "Apple 中国大陆新闻稿列明 AirPods 4 售价为 RMB 999。",
+          "source_layer": "official",
+          "source_url": "https://www.apple.com.cn/newsroom/2024/09/apple-introduces-all-new-airpods-4-with-industry-defining-audio-and-design/"
+        }
+      }
+    },
+    {
+      "param": "main_chip",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "pmic",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "battery_ear",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "battery_case",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "1 mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "speaker",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "materials",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_g",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "40.6g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_case_g",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_earbud_g",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "4.4g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "ip_rating",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "bluetooth",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "5.3",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "bom_rows",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "6",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "selling_point_tags",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "scenarios",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "positioning_summary",
+      "cells": {
+        "apple--airpods-4": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "canonical_id": "huawei--freearc",
+  "brand": "HUAWEI华为",
+  "model": "FreeArc开放式耳挂",
+  "category": "耳挂式耳机",
+  "category_raw": "开放式耳机",
+  "category_status": "portfolio_reviewed",
+  "category_basis": "authorized_demo_subset",
+  "category_confidence": "high",
+  "category_evidence_quote": "",
+  "category_source_report_id": "247965",
+  "category_classifier_version": "portfolio-demo-v1",
+  "category_facets": [
+    "耳挂式耳机"
+  ],
+  "category_details": [],
+  "usage_tags": [],
+  "report_ids": [
+    "247965"
+  ],
+  "video_ids": [],
+  "related_report_ids": [
+    "247965"
+  ],
+  "related_video_ids": [],
+  "first_seen": "2025-07-29",
+  "latest_published": "2025-08-21",
+  "internal_match_suggestions": [],
+  "cost_snapshot": {
+    "main_chip": "恒玄BES2500ZP",
+    "pmic_case": "",
+    "battery_ear": "55mAh钢壳扣式",
+    "battery_case": "510mAh锂电池",
+    "speaker": "动圈单元",
+    "materials": "硅胶、钛合金、液态硅胶",
+    "weight_g": "86.6g",
+    "weight_case_g": "",
+    "weight_earbud_g": "9.2g",
+    "ip_rating": "",
+    "bluetooth": "",
+    "bom_row_count": 17,
+    "price_cny": 799,
+    "price_currency": "CNY",
+    "price_kind": "official",
+    "price_layer": "official",
+    "price_source_label": "官方价",
+    "price_source_url": "https://consumer.huawei.com/cn/headphones/freearc/",
+    "price_evidence": "华为中国官网产品页标示“¥799 起”。",
+    "price_disclaimer": "",
+    "channel_url": null,
+    "sales_hint": null,
+    "data_completeness": 0.83,
+    "best_report_id": "247965",
+    "best_video_id": null
+  },
+  "bom_table": [
+    {
+      "component": "芯片/模组",
+      "brand": "BES恒玄科技",
+      "model": "恒玄BES2500ZP",
+      "qty_hint": "1",
+      "side": "充电盒",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "恒玄BES2500ZP",
+        "confidence": 0.85,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "电池",
+      "brand": "",
+      "model": "510mAh锂电池",
+      "qty_hint": "1",
+      "side": "充电盒",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "510mAh锂电池",
+        "confidence": 0.85,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "电池",
+      "brand": "",
+      "model": "55mAh钢壳扣式",
+      "qty_hint": "1",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "55mAh钢壳扣式",
+        "confidence": 0.85,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "喇叭单元",
+      "brand": "",
+      "model": "动圈单元",
+      "qty_hint": "1",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "动圈单元",
+        "confidence": 0.8,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "麦克风",
+      "brand": "",
+      "model": "MEMS麦克风",
+      "qty_hint": "2",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "MEMS麦克风",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "电池",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "电池",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "充电仓",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "充电仓",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "主板/PCBA",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "主板/PCBA",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "麦克风",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "麦克风",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "天线",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "天线",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "喇叭单元",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "喇叭单元",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "耳挂/挂钩",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "耳挂/挂钩",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "触控/按键",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "触控/按键",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "指示灯",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "充电盒",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "指示灯",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "充电触点",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "充电触点",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "外壳结构",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "充电盒",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "外壳结构",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "恒玄BES2500ZP",
+      "qty_hint": "1",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "恒玄BES2500ZP",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "芯片/模组",
+      "brand": "",
+      "model": "恒玄BES2500ZP",
+      "qty_hint": "1",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "恒玄BES2500ZP",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    }
+  ],
+  "market": {
+    "brand": "HUAWEI华为",
+    "model": "FreeArc开放式耳挂",
+    "category": "耳挂式耳机",
+    "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+    "consumer_claims": [],
+    "selling_points": [],
+    "scenarios": [],
+    "best_report_id": "247965",
+    "best_video_id": null
+  },
+  "launch": {
+    "date": "",
+    "display": "上市时间待核验",
+    "scope": "",
+    "status": "pending",
+    "source_url": "",
+    "evidence": "已核对来源原文，待补充公开发布时间来源。",
+    "source_type": ""
+  },
+  "teardown_inventory": [],
+  "technical_facts": [],
+  "data_quality_review_queue": [],
+  "unboxing": {
+    "packaging": [],
+    "charging_case": [],
+    "earbuds": []
+  },
+  "summary_image_urls": [],
+  "report_image_urls": []
+}

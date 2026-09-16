@@ -1,0 +1,748 @@
+{
+  "category": "全入耳式耳机",
+  "generated_at": "2026-09-16T14:42:31+08:00",
+  "param_rows": [
+    "launch_date",
+    "price_cny",
+    "main_chip",
+    "pmic",
+    "battery_ear",
+    "battery_case",
+    "speaker",
+    "materials",
+    "weight_g",
+    "weight_case_g",
+    "weight_earbud_g",
+    "ip_rating",
+    "bluetooth",
+    "bom_rows",
+    "selling_point_tags",
+    "scenarios",
+    "positioning_summary"
+  ],
+  "products": [
+    {
+      "canonical_id": "apple--airpods-pro-2-usb-c",
+      "brand": "Apple苹果",
+      "model": "AirPods Pro 2 (USB-C)",
+      "best_report_id": "176691",
+      "cells": {
+        "launch_date": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "price_cny": {
+          "value": "¥1899（官方价）",
+          "evidence": "Apple 中国大陆新闻稿载明配 MagSafe 充电盒（USB-C 端口）的 AirPods Pro（第二代）售价 RMB 1899。",
+          "source_layer": "official",
+          "source_url": "https://www.apple.com.cn/newsroom/2023/09/apple-upgrades-airpods-pro-2nd-generation-with-usb-c-charging/"
+        },
+        "main_chip": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_ear": {
+          "value": "523 mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_case": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "speaker": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "materials": {
+          "value": "硅胶、塑料、PC",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_g": {
+          "value": "62.0g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_case_g": {
+          "value": "51.2g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bluetooth": {
+          "value": "5.0",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bom_rows": {
+          "value": "21",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "selling_point_tags": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "scenarios": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "positioning_summary": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "canonical_id": "bose--quietcomfort-earbuds",
+      "brand": "BOSE",
+      "model": "QuietComfort Earbuds",
+      "best_report_id": "61213",
+      "cells": {
+        "launch_date": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "price_cny": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "main_chip": {
+          "value": "高通QCC5127",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_ear": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_case": {
+          "value": "850 mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "speaker": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "materials": {
+          "value": "硅胶、PC、ABS",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_g": {
+          "value": "95.3克",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_earbud_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "ip_rating": {
+          "value": "IPX4",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bluetooth": {
+          "value": "5.1",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bom_rows": {
+          "value": "26",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "selling_point_tags": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "scenarios": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "positioning_summary": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "canonical_id": "baseus--bowie-e2",
+      "brand": "Baseus倍思",
+      "model": "Bowie E2",
+      "best_report_id": "112068",
+      "cells": {
+        "launch_date": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "price_cny": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "main_chip": {
+          "value": "BT8922D",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_ear": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_case": {
+          "value": "40 mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "speaker": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "materials": {
+          "value": "PC、ABS",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_g": {
+          "value": "4.4g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_earbud_g": {
+          "value": "4.4g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bluetooth": {
+          "value": "5.2",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bom_rows": {
+          "value": "21",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "selling_point_tags": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "scenarios": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "positioning_summary": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "param": "launch_date",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "price_cny",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "¥1899（官方价）",
+          "evidence": "Apple 中国大陆新闻稿载明配 MagSafe 充电盒（USB-C 端口）的 AirPods Pro（第二代）售价 RMB 1899。",
+          "source_layer": "official",
+          "source_url": "https://www.apple.com.cn/newsroom/2023/09/apple-upgrades-airpods-pro-2nd-generation-with-usb-c-charging/"
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "main_chip",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "高通QCC5127",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "BT8922D",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "pmic",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "battery_ear",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "523 mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "battery_case",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "850 mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "40 mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "speaker",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "materials",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "硅胶、塑料、PC",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "硅胶、PC、ABS",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "PC、ABS",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_g",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "62.0g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "95.3克",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "4.4g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_case_g",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "51.2g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_earbud_g",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "4.4g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "ip_rating",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "IPX4",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "bluetooth",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "5.0",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "5.1",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "5.2",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "bom_rows",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "21",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "26",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "21",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "selling_point_tags",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "scenarios",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "positioning_summary",
+      "cells": {
+        "apple--airpods-pro-2-usb-c": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bose--quietcomfort-earbuds": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "baseus--bowie-e2": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    }
+  ]
+}

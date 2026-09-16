@@ -1,0 +1,322 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductBrowser from "../components/ProductBrowser";
+import RoundupInsights from "../components/RoundupInsights";
+import { withBase } from "../lib/paths";
+import type { IndexProduct } from "../lib/types";
+import fs from "node:fs";
+import path from "node:path";
+
+const dataDir = path.join(process.cwd(), "public", "data");
+const manifest = JSON.parse(
+  fs.readFileSync(path.join(dataDir, "categories.json"), "utf-8")
+);
+const productIndex = JSON.parse(
+  fs.readFileSync(path.join(dataDir, "products", "index.json"), "utf-8")
+);
+const roundupPath = path.join(dataDir, "roundup_insights.json");
+const roundupManifest = fs.existsSync(roundupPath)
+  ? JSON.parse(fs.readFileSync(roundupPath, "utf-8"))
+  : { reports: [], years: [] };
+
+const categories = manifest.categories as {
+  name: string;
+  slug: string;
+  file: string;
+  product_count: number;
+}[];
+
+const allProducts = productIndex.products as IndexProduct[];
+
+// “最新产品”：以 first_seen（首次入库年份）筛出当年新品，用于首页顶部突出展示，
+// 方便用户在决定要对比谁之前先看到今年新出的型号。
+const currentYear = String(new Date().getFullYear());
+const thisYearProducts = allProducts
+  .filter((p) => (p.first_seen || "").startsWith(currentYear))
+  .sort((a, b) => (b.latest_published || "").localeCompare(a.latest_published || ""));
+const newestProducts = thisYearProducts.slice(0, 4);
+
+// 品牌聚合（构建期算好，发现层侧边栏直接用，不用等客户端拉完整索引再算一遍）：
+// 只统计有非空 brand 的产品，未知品牌单独计数、作为透明可点的筛选项展示。
+const brandCounts = new Map<string, number>();
+let unknownBrandCount = 0;
+for (const p of allProducts) {
+  const b = (p.brand || "").trim();
+  if (!b) {
+    unknownBrandCount += 1;
+    continue;
+  }
+  brandCounts.set(b, (brandCounts.get(b) || 0) + 1);
+}
+const brands = Array.from(brandCounts.entries())
+  .map(([name, count]) => ({ name, count }))
+  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "zh-CN"));
+
+// 默认（未筛选）状态下每个品类展示一小段代表性切片（按成本数据完整度/报告数排序取
+// 前几名），6 个品类合计约 50~60 款——远小于全量 1027 款，避免把完整索引内嵌进
+// 首页 HTML。完整索引由 ProductBrowser 挂载后通过 fetch 拉取，用于搜索/筛选。
+const CATEGORY_SLICE_SIZE = 9;
+const initialSlices = categories.map((c) => {
+  const products = allProducts
+    .filter((p) => p.category === c.name)
+    .sort(
+      (a, b) =>
+        (b.cost_completeness ?? 0) - (a.cost_completeness ?? 0) ||
+        (b.report_count ?? 0) - (a.report_count ?? 0)
+    )
+    .slice(0, CATEGORY_SLICE_SIZE);
+  return { category: c.name, products };
+});
+
+// 数据覆盖度：报告/视频总量、已知售价产品数——均来自实际磁盘数据，非估算值。
+const teardownPath = path.join(dataDir, "teardown_details.json");
+const teardown = fs.existsSync(teardownPath)
+  ? JSON.parse(fs.readFileSync(teardownPath, "utf-8"))
+  : { report_count: 0, video_count: 0 };
+
+const productsDataDir = path.join(dataDir, "products");
+let productTotal = 0;
+let productPriced = 0;
+const yearPriceCounts = new Map<string, { total: number; priced: number }>();
+const indexById = new Map(allProducts.map((product) => [product.canonical_id, product]));
+if (fs.existsSync(productsDataDir)) {
+  for (const file of fs.readdirSync(productsDataDir)) {
+    if (file === "index.json" || !file.endsWith(".json")) continue;
+    productTotal += 1;
+    try {
+      const p = JSON.parse(fs.readFileSync(path.join(productsDataDir, file), "utf-8"));
+      const hasPrice = p?.cost_snapshot?.price_cny != null;
+      if (hasPrice) productPriced += 1;
+      // 按 first_seen 年份分组
+      const year = (indexById.get(p.canonical_id)?.first_seen || p.first_seen || "").slice(0, 4);
+      if (year && /^\d{4}$/.test(year)) {
+        let entry = yearPriceCounts.get(year);
+        if (!entry) { entry = { total: 0, priced: 0 }; yearPriceCounts.set(year, entry); }
+        entry.total += 1;
+        if (hasPrice) entry.priced += 1;
+      } else {
+        // 无年份的归入 "未知"
+        let entry = yearPriceCounts.get("未知");
+        if (!entry) { entry = { total: 0, priced: 0 }; yearPriceCounts.set("未知", entry); }
+        entry.total += 1;
+        if (hasPrice) entry.priced += 1;
+      }
+    } catch {
+      // 忽略损坏的单个产品文件
+    }
+  }
+}
+// 按年份降序排列
+const yearCoverage = Array.from(yearPriceCounts.entries())
+  .sort((a, b) => {
+    if (a[0] === "未知") return 1;
+    if (b[0] === "未知") return -1;
+    return Number(b[0]) - Number(a[0]);
+  })
+  .map(([year, stats]) => ({
+    year,
+    total: stats.total,
+    priced: stats.priced,
+    pct: stats.total > 0 ? Math.round((stats.priced / stats.total) * 100) : 0,
+  }));
+---
+
+<BaseLayout title="竞品物料分析工作台" activeNav="home">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero__copy">
+      <p class="home-eyebrow">Market signals · 耳机竞品情报</p>
+      <h1 id="home-title">拆一款，<br /><span>读懂一类</span></h1>
+      <p>把拆解报告变成可追溯、可比较的 BOM 情报。</p>
+      <div class="home-hero__actions">
+        <a href="#guide" class="home-primary-action">开始探索 <span aria-hidden="true">↘</span></a>
+        <a href="#latest-products" class="home-secondary-action">查看最新信号</a>
+      </div>
+    </div>
+    <aside class="home-signal-radar" aria-label="当前情报覆盖概览">
+      <span class="home-signal-radar__ring" aria-hidden="true"></span>
+      <span class="home-signal-radar__center" aria-hidden="true">⌖</span>
+      <span class="home-signal-chip home-signal-chip--products">产品档案<strong>{allProducts.length}</strong></span>
+      <span class="home-signal-chip home-signal-chip--categories">耳机品类<strong>{categories.length}</strong></span>
+      <span class="home-signal-chip home-signal-chip--latest">本年首次收录<strong>{thisYearProducts.length}</strong></span>
+    </aside>
+  </section>
+
+  <section id="guide" class="home-guide" aria-labelledby="home-guide-title">
+    <div class="home-guide__heading">
+      <div>
+        <p class="home-eyebrow">Quick start</p>
+        <h2 id="home-guide-title">今天想完成什么任务？</h2>
+      </div>
+      <div class="home-guide__heading-actions">
+        <p>不用先理解网站结构，按照研究目标进入最短路径。</p>
+        <button id="home-guide-toggle" type="button" aria-expanded="true" aria-controls="home-guide-body">收起指引</button>
+      </div>
+    </div>
+    <div id="home-guide-body">
+    <aside class="home-guide__daily-note" aria-label="情报更新说明">
+      <span aria-hidden="true">↻</span>
+      <p><strong>情报每日持续追踪</strong>系统会每日定时采集我爱音频网的新拆解信息；“最新 Web 维护时间”只表示页面功能更新时间，不代表数据停止更新。</p>
+    </aside>
+
+    <section class="home-guide-group home-guide-group--product" aria-labelledby="home-guide-product-title">
+      <header><span aria-hidden="true">⌕</span><h3 id="home-guide-product-title">产品研究</h3><small>查档案、做横向比较</small></header>
+      <nav class="home-guide__tasks home-guide__tasks--two" aria-label="产品研究任务">
+        <a href="#product-browser" class="home-guide-task">
+          <span class="home-guide-task__icon" aria-hidden="true">⌕</span>
+          <span><strong>查一款产品用了什么</strong><small>搜索品牌或型号，进入完整产品档案</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a href={withBase("/compare")} class="home-guide-task">
+          <span class="home-guide-task__icon" aria-hidden="true">⇄</span>
+          <span><strong>比较几款产品</strong><small>选择同类型对比或跨品类对比</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+      </nav>
+    </section>
+
+    <section class="home-guide-group home-guide-group--sourcing" aria-labelledby="home-guide-sourcing-title">
+      <header><span aria-hidden="true">⌘</span><h3 id="home-guide-sourcing-title">采购与供应链研究</h3><small>三条路径按任务直达</small></header>
+      <nav class="home-guide__tasks" aria-label="采购与供应链研究任务">
+        <a href={withBase("/bom-analysis?mode=component")} class="home-guide-task">
+          <span class="home-guide-task__icon" aria-hidden="true">◫</span>
+          <span><strong>按器件找供应商</strong><small>从器件类型查看厂商、型号和应用产品</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a href={withBase("/bom-analysis?mode=supplier")} class="home-guide-task">
+          <span class="home-guide-task__icon" aria-hidden="true">⌂</span>
+          <span><strong>按供应商看能力</strong><small>查看供应商涉及的器件、品牌与产品</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a href={withBase("/brand-supply-chain")} class="home-guide-task">
+          <span class="home-guide-task__icon" aria-hidden="true">◎</span>
+          <span><strong>从品牌看供应链</strong><small>观察品牌全部器件及历史供应链变化</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+      </nav>
+    </section>
+
+    <section class="home-guide-group home-guide-group--evidence" aria-labelledby="home-guide-evidence-title">
+      <header><span aria-hidden="true">▤</span><h3 id="home-guide-evidence-title">情报与证据</h3><small>原文追溯与行业观察</small></header>
+      <nav class="home-guide__tasks" aria-label="情报与证据任务">
+        <a href={withBase("/teardown-details")} class="home-guide-task">
+          <span class="home-guide-task__icon" aria-hidden="true">▤</span>
+          <span><strong>查看报告和视频情报</strong><small>检索拆解来源并回到原始网页或视频</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a href="#latest-products" class="home-guide-task">
+          <span class="home-guide-task__icon" aria-hidden="true">↘</span>
+          <span><strong>查看最新拆解产品</strong><small>从近期新入库产品开始浏览</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a href="#roundup-insights-title" class="home-guide-task">
+          <span class="home-guide-task__icon" aria-hidden="true">↗</span>
+          <span><strong>查看年度洞察</strong><small>按年度和品类阅读行业汇总报告</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+      </nav>
+    </section>
+    <div class="home-guide__foot">
+      <span>✓ 所有结论均可回溯原始拆解报告</span>
+      <span>选任务　→　缩小范围　→　核对证据</span>
+    </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var root = document.getElementById("guide");
+      var button = document.getElementById("home-guide-toggle");
+      if (!root || !button) return;
+      var key = "52audio-home-guide-seen-v1";
+      var collapsed = false;
+      try {
+        collapsed = localStorage.getItem(key) === "1" && location.hash !== "#guide";
+        localStorage.setItem(key, "1");
+      } catch (_) {}
+      function render() {
+        root.classList.toggle("is-collapsed", collapsed);
+        button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        button.textContent = collapsed ? "展开使用指引" : "收起指引";
+      }
+      button.addEventListener("click", function () { collapsed = !collapsed; render(); });
+      window.addEventListener("hashchange", function () {
+        if (location.hash === "#guide") { collapsed = false; render(); }
+      });
+      render();
+    })();
+  </script>
+
+  <section id="product-browser" class="home-section home-section--browser" aria-labelledby="product-browser-title">
+    <div class="home-section-heading">
+      <div>
+        <p class="home-eyebrow">Start here</p>
+        <h2 id="product-browser-title">选产品，开始对比</h2>
+        <p>搜索品牌/型号，或按类型、品牌筛选；勾选产品后即可跨类型比较。</p>
+      </div>
+    </div>
+    <ProductBrowser
+      client:load
+      categories={categories.map((c) => ({ name: c.name, slug: c.slug, product_count: c.product_count }))}
+      totalCount={manifest.product_count}
+      brands={brands}
+      unknownBrandCount={unknownBrandCount}
+      initialSlices={initialSlices}
+      fullIndexUrl={withBase("/data/products/index.json")}
+    />
+  </section>
+
+  {
+    newestProducts.length > 0 && (
+      <section id="latest-products" class="home-section" aria-labelledby="latest-products-title">
+        <div class="home-section-heading home-section-heading--row">
+          <div>
+            <p class="home-eyebrow home-eyebrow--warm">Latest teardowns</p>
+            <h2 id="latest-products-title">{currentYear} 最新拆解产品</h2>
+            <p>按最新拆解时间排序，优先展示近期新入库产品。</p>
+          </div>
+          <a href="#product-browser">查看全部产品 →</a>
+        </div>
+        <div class="home-latest-grid">
+          {newestProducts.map((p) => (
+            <a href={withBase(`/product/${p.canonical_id}`)} class="home-latest-card">
+              <div class="home-latest-card__visual">
+                {p.card_image_path ? (
+                  <img src={withBase(p.card_image_path)} alt={`${p.brand} ${p.model}`} loading="lazy" />
+                ) : (
+                  <span>{(p.brand || p.model || "P").slice(0, 1)}</span>
+                )}
+              </div>
+              <div class="home-latest-card__body">
+                <div><span>{p.category}</span><time>{p.first_seen}</time></div>
+                <h3>{p.brand} {p.model}</h3>
+                <p>{p.report_count || 0} 篇拆解报告</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <RoundupInsights
+    client:load
+    reports={roundupManifest.reports || []}
+    years={roundupManifest.years || []}
+  />
+
+  <section class="home-data-coverage" aria-labelledby="coverage-title">
+    <div>
+      <p class="home-eyebrow">Data coverage</p>
+      <h2 id="coverage-title">数据覆盖度</h2>
+      <p>
+        拆解报告来源 {teardown.report_count} 篇 · 拆解视频来源 {teardown.video_count} 条 ·
+        已知售价 {productPriced}/{productTotal}
+      </p>
+    </div>
+    <div class="home-data-coverage__years">
+      {yearCoverage.map((entry) => (
+        <span>{entry.year}年：{entry.priced}/{entry.total} 已定价（{entry.pct}%）</span>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

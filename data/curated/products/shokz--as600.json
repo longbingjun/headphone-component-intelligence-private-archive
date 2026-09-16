@@ -1,0 +1,264 @@
+{
+  "canonical_id": "shokz--as600",
+  "brand": "SHOKZ韶音",
+  "model": "AS600骨传导运动",
+  "category": "骨传导耳机",
+  "category_raw": "骨传导耳机",
+  "category_status": "portfolio_reviewed",
+  "category_basis": "authorized_demo_subset",
+  "category_confidence": "high",
+  "category_evidence_quote": "",
+  "category_source_report_id": "177859",
+  "category_classifier_version": "portfolio-demo-v1",
+  "category_facets": [
+    "骨传导耳机"
+  ],
+  "category_details": [],
+  "usage_tags": [],
+  "report_ids": [
+    "177859"
+  ],
+  "video_ids": [],
+  "related_report_ids": [
+    "177859"
+  ],
+  "related_video_ids": [],
+  "first_seen": "2023-10-13",
+  "latest_published": "2023-10-13",
+  "internal_match_suggestions": [],
+  "cost_snapshot": {
+    "main_chip": "高通CSR8640",
+    "pmic_case": "",
+    "battery_ear": "200mAh",
+    "battery_case": "电池",
+    "speaker": "喇叭单元",
+    "materials": "硅胶、PC",
+    "weight_g": "36.9g",
+    "weight_case_g": "",
+    "weight_earbud_g": "",
+    "ip_rating": "",
+    "bluetooth": "4.0",
+    "bom_row_count": 13,
+    "price_cny": null,
+    "price_currency": "CNY",
+    "price_kind": "",
+    "price_layer": null,
+    "price_source_label": "",
+    "price_source_url": "",
+    "price_evidence": "",
+    "price_disclaimer": "",
+    "channel_url": null,
+    "sales_hint": null,
+    "data_completeness": 0.83,
+    "best_report_id": "177859",
+    "best_video_id": null
+  },
+  "bom_table": [
+    {
+      "component": "芯片/模组",
+      "brand": "Qualcomm高通",
+      "model": "高通CSR8640",
+      "qty_hint": "1",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "高通CSR8640",
+        "confidence": 0.85,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "电池",
+      "brand": "",
+      "model": "200mAh",
+      "qty_hint": "1",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "200mAh",
+        "confidence": 0.85,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "麦克风",
+      "brand": "",
+      "model": "麦克风",
+      "qty_hint": "",
+      "side": "耳机",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "麦克风",
+        "confidence": 0.78,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "主板/PCBA",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "主板/PCBA",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "电池",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "电池",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "骨传导振子",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "骨传导振子",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "麦克风",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "麦克风",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "喇叭单元",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "喇叭单元",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "天线",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "core",
+      "parameters": [],
+      "evidence": {
+        "value": "天线",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "触控/按键",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "触控/按键",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    },
+    {
+      "component": "指示灯",
+      "brand": "",
+      "model": "",
+      "qty_hint": "",
+      "side": "",
+      "role": "auxiliary",
+      "parameters": [],
+      "evidence": {
+        "value": "指示灯",
+        "confidence": 0.72,
+        "source_type": "summary_prose",
+        "source_text": "结构化演示记录；原始信息请通过来源链接核对。",
+        "text": "结构化演示记录；原始信息请通过来源链接核对。"
+      }
+    }
+  ],
+  "market": {
+    "brand": "SHOKZ韶音",
+    "model": "AS600骨传导运动",
+    "category": "骨传导耳机",
+    "positioning_summary": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+    "consumer_claims": [],
+    "selling_points": [],
+    "scenarios": [],
+    "best_report_id": "177859",
+    "best_video_id": null
+  },
+  "launch": {
+    "date": "",
+    "display": "2024及以前产品，暂未找到相应信息",
+    "scope": "",
+    "status": "legacy_unresolved",
+    "source_url": "",
+    "evidence": "",
+    "source_type": ""
+  },
+  "teardown_inventory": [],
+  "technical_facts": [],
+  "data_quality_review_queue": [],
+  "unboxing": {
+    "packaging": [],
+    "charging_case": [],
+    "earbuds": []
+  },
+  "summary_image_urls": [],
+  "report_image_urls": []
+}

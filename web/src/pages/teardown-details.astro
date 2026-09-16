@@ -1,0 +1,436 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+type TeardownItem = {
+  id: string;
+  title: string;
+  publisher: string;
+  published_at: string;
+  url: string;
+  category: string;
+  brand?: string;
+};
+
+const PAGE_SIZE = 15;
+
+const dataPath = path.join(process.cwd(), "public", "data", "teardown_details.json");
+const payload = fs.existsSync(dataPath)
+  ? JSON.parse(fs.readFileSync(dataPath, "utf-8"))
+  : { reports: [], videos: [], report_count: 0, video_count: 0 };
+
+const reports = (payload.reports || []) as TeardownItem[];
+const videos = (payload.videos || []) as TeardownItem[];
+
+function pageSlice<T>(items: T[], page: number): T[] {
+  const start = (page - 1) * PAGE_SIZE;
+  return items.slice(start, start + PAGE_SIZE);
+}
+
+function pageHref(reportPage: number, videoPage: number): string {
+  const params = new URLSearchParams();
+  if (reportPage > 1) params.set("reportPage", String(reportPage));
+  if (videoPage > 1) params.set("videoPage", String(videoPage));
+  const qs = params.toString();
+  return qs ? `?${qs}` : "";
+}
+
+// Static build defaults to page 1; client script applies URL query params after load.
+const reportPage = 1;
+const videoPage = 1;
+const reportTotalPages = Math.max(1, Math.ceil(reports.length / PAGE_SIZE));
+const videoTotalPages = Math.max(1, Math.ceil(videos.length / PAGE_SIZE));
+const pagedReports = pageSlice(reports, reportPage);
+const pagedVideos = pageSlice(videos, videoPage);
+
+const categories = Array.from(
+  new Set([...reports, ...videos].map((i) => (i.category || "").trim()).filter(Boolean))
+).sort((a, b) => a.localeCompare(b, "zh-CN"));
+const brands = Array.from(
+  new Set([...reports, ...videos].map((i) => (i.brand || "").trim()).filter(Boolean))
+).sort((a, b) => a.localeCompare(b, "zh-CN"));
+const serializedTeardownData = JSON.stringify({ reports, videos, pageSize: PAGE_SIZE }).replace(
+  /</g,
+  "\\u003c",
+);
+---
+
+<BaseLayout title="拆解视频、报告明细" activeNav="teardown">
+  <section class="hero-panel rounded-3xl p-8 text-white">
+    <p class="m-0 text-sm uppercase tracking-wider opacity-80">Teardown Catalog</p>
+    <h1 class="mt-2 mb-2 text-3xl font-bold">拆解视频、报告明细</h1>
+    <p class="m-0 max-w-2xl text-base opacity-90">
+      耳机品类拆解报告与拆解视频一览。共 {reports.length} 篇报告、{videos.length} 条视频。
+    </p>
+    <div class="mt-6 grid max-w-xl grid-cols-2 gap-3">
+      <div class="rounded-2xl bg-white/10 p-3"><strong class="block text-2xl">{videos.length}</strong><span class="text-xs opacity-80">导入视频</span></div>
+      <div class="rounded-2xl bg-white/10 p-3"><strong class="block text-2xl">{reports.length}</strong><span class="text-xs opacity-80">拆解报告</span></div>
+    </div>
+  </section>
+
+  <div class="mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-glass)]">
+    <span class="text-sm font-medium text-[var(--muted)]">筛选</span>
+    <select id="category-filter" class="rounded-xl border border-[var(--line)] px-3 py-2 text-sm">
+      <option value="">全部品类</option>
+      {categories.map((c) => (
+        <option value={c}>{c}</option>
+      ))}
+    </select>
+    <select id="brand-filter" class="rounded-xl border border-[var(--line)] px-3 py-2 text-sm">
+      <option value="">全部品牌</option>
+      {brands.map((b) => (
+        <option value={b}>{b}</option>
+      ))}
+    </select>
+    <button
+      id="filter-reset"
+      type="button"
+      class="rounded-full border border-[var(--line)] px-3 py-1.5 text-sm text-[var(--muted)] hover:bg-[var(--surface-2)]"
+    >
+      重置筛选
+    </button>
+  </div>
+
+  <div class="mt-8 grid gap-8 lg:grid-cols-2">
+    <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-glass)]">
+      <h2 class="mt-0 mb-4 text-xl font-bold">拆解报告</h2>
+      {
+        reports.length === 0 ? (
+          <p class="text-sm text-[var(--muted)]">暂无耳机拆解报告。</p>
+        ) : (
+          <>
+            <p id="report-page-info" class="mb-4 text-sm text-[var(--muted)]">
+              第 {reportPage}/{reportTotalPages} 页，共 {reports.length} 条
+            </p>
+            <ul id="report-list" class="m-0 list-none space-y-4 p-0">
+              {
+                pagedReports.map((item) => (
+                  <li class="border-b border-[var(--line)] pb-4 last:border-b-0 last:pb-0">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="font-semibold text-[var(--primary)] no-underline hover:underline"
+                    >
+                      {item.title}
+                    </a>
+                    <div class="mt-1 text-sm text-[var(--muted)]">
+                      <span>发布者：{item.publisher || "未知"}</span>
+                      <span class="mx-2">·</span>
+                      <span>发布日期：{item.published_at || "未知"}</span>
+                    </div>
+                    <div class="mt-1 truncate text-xs text-[var(--muted)]">
+                      <a href={item.url} target="_blank" rel="noopener" class="text-[var(--muted)]">
+                        {item.url}
+                      </a>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+            <nav
+              id="report-pagination"
+              class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--line)] pt-4"
+              aria-label="拆解报告分页"
+            >
+              {
+                reportPage > 1 ? (
+                  <a
+                    href={pageHref(reportPage - 1, videoPage)}
+                    class="rounded-full border border-[var(--line)] px-3 py-1.5 text-sm text-[var(--primary)] no-underline hover:bg-[var(--primary-soft)] hover:no-underline"
+                  >
+                    上一页
+                  </a>
+                ) : (
+                  <span class="rounded-full px-3 py-1.5 text-sm text-[var(--muted)] opacity-50">上一页</span>
+                )
+              }
+              <span class="text-sm text-[var(--muted)]">{reportPage} / {reportTotalPages}</span>
+              {
+                reportPage < reportTotalPages ? (
+                  <a
+                    href={pageHref(reportPage + 1, videoPage)}
+                    class="rounded-full border border-[var(--line)] px-3 py-1.5 text-sm text-[var(--primary)] no-underline hover:bg-[var(--primary-soft)] hover:no-underline"
+                  >
+                    下一页
+                  </a>
+                ) : (
+                  <span class="rounded-full px-3 py-1.5 text-sm text-[var(--muted)] opacity-50">下一页</span>
+                )
+              }
+            </nav>
+          </>
+        )
+      }
+    </section>
+
+    <section class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[var(--shadow-glass)]">
+      <h2 class="mt-0 mb-4 text-xl font-bold">拆解视频</h2>
+      {
+        videos.length === 0 ? (
+          <p class="text-sm text-[var(--muted)]">暂无耳机拆解视频。</p>
+        ) : (
+          <>
+            <p id="video-page-info" class="mb-4 text-sm text-[var(--muted)]">
+              第 {videoPage}/{videoTotalPages} 页，共 {videos.length} 条
+            </p>
+            <ul id="video-list" class="m-0 list-none space-y-4 p-0">
+              {
+                pagedVideos.map((item) => (
+                  <li class="border-b border-[var(--line)] pb-4 last:border-b-0 last:pb-0">
+                    <div class="flex items-start justify-between gap-3">
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener"
+                        class="font-semibold text-[var(--primary)] no-underline hover:underline"
+                      >
+                        {item.title}
+                      </a>
+                    </div>
+                    <div class="mt-1 text-sm text-[var(--muted)]">
+                      <span>发布者：{item.publisher || "未知"}</span>
+                      <span class="mx-2">·</span>
+                      <span>发布日期：{item.published_at || "未知"}</span>
+                    </div>
+                    <div class="mt-1 truncate text-xs text-[var(--muted)]">
+                      <a href={item.url} target="_blank" rel="noopener" class="text-[var(--muted)]">
+                        {item.url}
+                      </a>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+            <nav
+              id="video-pagination"
+              class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--line)] pt-4"
+              aria-label="拆解视频分页"
+            >
+              {
+                videoPage > 1 ? (
+                  <a
+                    href={pageHref(reportPage, videoPage - 1)}
+                    class="rounded-full border border-[var(--line)] px-3 py-1.5 text-sm text-[var(--primary)] no-underline hover:bg-[var(--primary-soft)] hover:no-underline"
+                  >
+                    上一页
+                  </a>
+                ) : (
+                  <span class="rounded-full px-3 py-1.5 text-sm text-[var(--muted)] opacity-50">上一页</span>
+                )
+              }
+              <span class="text-sm text-[var(--muted)]">{videoPage} / {videoTotalPages}</span>
+              {
+                videoPage < videoTotalPages ? (
+                  <a
+                    href={pageHref(reportPage, videoPage + 1)}
+                    class="rounded-full border border-[var(--line)] px-3 py-1.5 text-sm text-[var(--primary)] no-underline hover:bg-[var(--primary-soft)] hover:no-underline"
+                  >
+                    下一页
+                  </a>
+                ) : (
+                  <span class="rounded-full px-3 py-1.5 text-sm text-[var(--muted)] opacity-50">下一页</span>
+                )
+              }
+            </nav>
+          </>
+        )
+      }
+    </section>
+  </div>
+
+  <script id="teardown-data" type="application/json" set:html={serializedTeardownData} />
+
+  <script>
+    type TeardownItem = {
+      id: string;
+      title: string;
+      publisher: string;
+      published_at: string;
+      url: string;
+      category: string;
+      brand?: string;
+    };
+
+    const dataEl = document.getElementById("teardown-data");
+    if (!dataEl?.textContent) throw new Error("teardown data missing");
+
+    const { reports: allReports, videos: allVideos, pageSize } = JSON.parse(dataEl.textContent) as {
+      reports: TeardownItem[];
+      videos: TeardownItem[];
+      pageSize: number;
+    };
+
+    const categoryFilterEl = document.getElementById("category-filter") as HTMLSelectElement | null;
+    const brandFilterEl = document.getElementById("brand-filter") as HTMLSelectElement | null;
+    const resetFilterEl = document.getElementById("filter-reset");
+
+    function parsePage(value: string | null, total: number): number {
+      const n = Number.parseInt(value || "1", 10);
+      const maxPage = Math.max(1, Math.ceil(total / pageSize));
+      if (!Number.isFinite(n) || n < 1) return 1;
+      return Math.min(n, maxPage);
+    }
+
+    function currentFilters(): { category: string; brand: string } {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        category: params.get("category") || "",
+        brand: params.get("brand") || "",
+      };
+    }
+
+    function pageHref(reportPage: number, videoPage: number): string {
+      const { category, brand } = currentFilters();
+      const params = new URLSearchParams();
+      if (category) params.set("category", category);
+      if (brand) params.set("brand", brand);
+      if (reportPage > 1) params.set("reportPage", String(reportPage));
+      if (videoPage > 1) params.set("videoPage", String(videoPage));
+      const qs = params.toString();
+      return qs ? `?${qs}` : window.location.pathname;
+    }
+
+    function filterItems(items: TeardownItem[], category: string, brand: string): TeardownItem[] {
+      return items.filter((item) => {
+        if (category && item.category !== category) return false;
+        if (brand && (item.brand || "") !== brand) return false;
+        return true;
+      });
+    }
+
+    function escapeHtml(value: unknown): string {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;",
+      })[char] || char);
+    }
+
+    function renderItem(item: TeardownItem, section: "report" | "video"): string {
+      const publisher = escapeHtml(item.publisher || "未知");
+      const publishedAt = escapeHtml(item.published_at || "未知");
+      const title = escapeHtml(item.title);
+      const url = escapeHtml(item.url);
+      return `
+        <li class="border-b border-[var(--line)] pb-4 last:border-b-0 last:pb-0">
+          <div class="flex items-start justify-between gap-3"><a href="${url}" target="_blank" rel="noopener" class="font-semibold text-[var(--primary)] no-underline hover:underline">${title}</a></div>
+          <div class="mt-1 text-sm text-[var(--muted)]">
+            <span>发布者：${publisher}</span>
+            <span class="mx-2">·</span>
+            <span>发布日期：${publishedAt}</span>
+          </div>
+          <div class="mt-1 truncate text-xs text-[var(--muted)]">
+            <a href="${url}" target="_blank" rel="noopener" class="text-[var(--muted)]">${url}</a>
+          </div>
+        </li>
+      `;
+    }
+
+    function renderPagination(
+      containerId: string,
+      currentPage: number,
+      totalPages: number,
+      reportPage: number,
+      videoPage: number,
+      section: "report" | "video",
+    ): void {
+      const nav = document.getElementById(containerId);
+      if (!nav) return;
+
+      const prevPage = section === "report" ? currentPage - 1 : videoPage - 1;
+      const nextPage = section === "report" ? currentPage + 1 : videoPage + 1;
+      const prevHref =
+        section === "report"
+          ? pageHref(prevPage, videoPage)
+          : pageHref(reportPage, prevPage);
+      const nextHref =
+        section === "report"
+          ? pageHref(nextPage, videoPage)
+          : pageHref(reportPage, nextPage);
+
+      const prev =
+        currentPage > 1
+          ? `<a href="${prevHref}" class="rounded-full border border-[var(--line)] px-3 py-1.5 text-sm text-[var(--primary)] no-underline hover:bg-[var(--primary-soft)] hover:no-underline">上一页</a>`
+          : `<span class="rounded-full px-3 py-1.5 text-sm text-[var(--muted)] opacity-50">上一页</span>`;
+
+      const next =
+        currentPage < totalPages
+          ? `<a href="${nextHref}" class="rounded-full border border-[var(--line)] px-3 py-1.5 text-sm text-[var(--primary)] no-underline hover:bg-[var(--primary-soft)] hover:no-underline">下一页</a>`
+          : `<span class="rounded-full px-3 py-1.5 text-sm text-[var(--muted)] opacity-50">下一页</span>`;
+
+      nav.innerHTML = `${prev}<span class="text-sm text-[var(--muted)]">${currentPage} / ${totalPages}</span>${next}`;
+    }
+
+    function render(): void {
+      const params = new URLSearchParams(window.location.search);
+      const { category, brand } = currentFilters();
+      const reports = filterItems(allReports, category, brand);
+      const videos = filterItems(allVideos, category, brand);
+
+      const reportPage = parsePage(params.get("reportPage"), reports.length);
+      const videoPage = parsePage(params.get("videoPage"), videos.length);
+      const reportTotalPages = Math.max(1, Math.ceil(reports.length / pageSize));
+      const videoTotalPages = Math.max(1, Math.ceil(videos.length / pageSize));
+
+      const reportStart = (reportPage - 1) * pageSize;
+      const videoStart = (videoPage - 1) * pageSize;
+      const pagedReports = reports.slice(reportStart, reportStart + pageSize);
+      const pagedVideos = videos.slice(videoStart, videoStart + pageSize);
+
+      const reportList = document.getElementById("report-list");
+      const videoList = document.getElementById("video-list");
+      const reportInfo = document.getElementById("report-page-info");
+      const videoInfo = document.getElementById("video-page-info");
+      const reportEmpty = `<p class="text-sm text-[var(--muted)]">当前筛选条件下暂无拆解报告。</p>`;
+      const videoEmpty = `<p class="text-sm text-[var(--muted)]">当前筛选条件下暂无拆解视频。</p>`;
+
+      if (reportList) {
+        reportList.innerHTML = reports.length > 0 ? pagedReports.map((item) => renderItem(item, "report")).join("") : reportEmpty;
+        if (reportInfo) {
+          reportInfo.textContent =
+            reports.length > 0 ? `第 ${reportPage}/${reportTotalPages} 页，共 ${reports.length} 条` : "共 0 条";
+        }
+        renderPagination("report-pagination", reportPage, reportTotalPages, reportPage, videoPage, "report");
+      }
+
+      if (videoList) {
+        videoList.innerHTML = videos.length > 0 ? pagedVideos.map((item) => renderItem(item, "video")).join("") : videoEmpty;
+        if (videoInfo) {
+          videoInfo.textContent =
+            videos.length > 0 ? `第 ${videoPage}/${videoTotalPages} 页，共 ${videos.length} 条` : "共 0 条";
+        }
+        renderPagination("video-pagination", videoPage, videoTotalPages, reportPage, videoPage, "video");
+      }
+    }
+
+    function updateFilters(next: { category?: string; brand?: string }): void {
+      const url = new URL(window.location.href);
+      const { category, brand } = currentFilters();
+      const nextCategory = next.category ?? category;
+      const nextBrand = next.brand ?? brand;
+      if (nextCategory) url.searchParams.set("category", nextCategory);
+      else url.searchParams.delete("category");
+      if (nextBrand) url.searchParams.set("brand", nextBrand);
+      else url.searchParams.delete("brand");
+      // 筛选条件变化时回到第一页，避免停留在超出范围的页码
+      url.searchParams.delete("reportPage");
+      url.searchParams.delete("videoPage");
+      window.history.replaceState({}, "", url.toString());
+      render();
+    }
+
+    const { category: initCategory, brand: initBrand } = currentFilters();
+    if (categoryFilterEl) categoryFilterEl.value = initCategory;
+    if (brandFilterEl) brandFilterEl.value = initBrand;
+
+    categoryFilterEl?.addEventListener("change", () => updateFilters({ category: categoryFilterEl.value }));
+    brandFilterEl?.addEventListener("change", () => updateFilters({ brand: brandFilterEl.value }));
+    resetFilterEl?.addEventListener("click", () => {
+      if (categoryFilterEl) categoryFilterEl.value = "";
+      if (brandFilterEl) brandFilterEl.value = "";
+      updateFilters({ category: "", brand: "" });
+    });
+
+    render();
+  </script>
+</BaseLayout>

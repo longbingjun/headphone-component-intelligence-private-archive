@@ -1,0 +1,290 @@
+{
+  "_meta": {
+    "version": "V3-Phase1",
+    "source": "docs/ARCHITECTURE_V3.md §1.2 网站卖点提取框架 / §2.3 角色透镜列定义 / §4 BOM 行 schema",
+    "purpose": "构建矩阵/对比页时作为列头 title 与详情页 tooltip 来源；field_path 相对 views.*",
+    "generated_at": "2026-07-06"
+  },
+
+  "market.brand": {
+    "label": "品牌",
+    "why_care": "竞品身份锚点，矩阵首列",
+    "role": "pm"
+  },
+  "market.model": {
+    "label": "型号",
+    "why_care": "与品牌组合唯一识别一款产品",
+    "role": "pm"
+  },
+  "market.category": {
+    "label": "品类",
+    "why_care": "矩阵 tab/对比页分组依据",
+    "role": "pm"
+  },
+  "market.price_cny": {
+    "label": "售价（元）",
+    "why_care": "上市价/当前价 — 锚定竞品定位与目标人群",
+    "role": "pm"
+  },
+  "market.launch_date": {
+    "label": "上市日期",
+    "why_care": "判断产品代际与新旧",
+    "role": "pm"
+  },
+  "market.selling_points": {
+    "label": "核心卖点",
+    "why_care": "原文/提炼卖点，保留证据避免过度解读；可聚合统计卖点归类",
+    "role": "pm"
+  },
+  "market.selling_point_tags": {
+    "label": "卖点标签",
+    "why_care": "9 大类统一 tag（音质/佩戴/运动/通话/外观/交互/续航/智能/价格），用于横向比较",
+    "role": "pm"
+  },
+  "market.scenarios": {
+    "label": "使用场景",
+    "why_care": "通勤/办公/会议/运动/穿搭 — 映射目标人群",
+    "role": "pm"
+  },
+  "market.positioning_summary": {
+    "label": "定位概述",
+    "why_care": "PM/市场透镜首屏文案",
+    "role": "pm"
+  },
+
+  "cost.bom_table": {
+    "label": "物料清单（BOM）",
+    "why_care": "成本/BOM 核心依据；优先来自「我爱音频网总结」段 prose，PNG OCR 作为 Phase 1b 补全",
+    "role": "cost"
+  },
+  "cost.bom_table.component": {
+    "label": "部件类型",
+    "why_care": "主控/蓝牙、PMIC、电池、喇叭单元、麦克风… — BOM 行归类",
+    "role": "cost"
+  },
+  "cost.bom_table.brand": {
+    "label": "厂商/品牌",
+    "why_care": "供应商归因，成本对标关键",
+    "role": "cost"
+  },
+  "cost.bom_table.model": {
+    "label": "型号",
+    "why_care": "具体料号，用于内部对标与方案商识别",
+    "role": "cost"
+  },
+  "cost.bom_table.qty_hint": {
+    "label": "数量",
+    "why_care": "左/右耳+仓合计用量，影响成本",
+    "role": "cost"
+  },
+  "cost.bom_table.side": {
+    "label": "侧别",
+    "why_care": "L/R/Case/全机 — 区分耳机与充电仓物料",
+    "role": "cost"
+  },
+  "cost.bom_table.role": {
+    "label": "BOM 角色",
+    "why_care": "主控/蓝牙、PMIC/充电仓管理、保护IC、MCU、传感器、major/minor — 成本结构透视",
+    "role": "cost"
+  },
+  "cost.bom_table.evidence": {
+    "label": "证据",
+    "why_care": "value/confidence/source_type/source_text — 可追溯，避免过度解读",
+    "role": "cost"
+  },
+  "cost.chip_modules": {
+    "label": "芯片/模组",
+    "why_care": "主控芯片、PMIC、保护IC 等核心器件清单 — 矩阵 cost 列「主控芯片」「充电仓 PMIC」来源",
+    "role": "cost"
+  },
+  "cost.summary_image_urls": {
+    "label": "总结段物料表图",
+    "why_care": "「我爱音频网总结」段 PNG 物料表 URL，OCR 补全入口（Phase 1b）",
+    "role": "cost"
+  },
+  "cost.summary_text": {
+    "label": "总结段文本",
+    "why_care": "「我爱音频网总结」段纯文本，BOM 行的原始 evidence 来源",
+    "role": "cost"
+  },
+  "cost.major_parts": {
+    "label": "主要部件",
+    "why_care": "拆解识别的核心部件名（喇叭/电池/主板/麦克风 等）",
+    "role": "cost"
+  },
+  "cost.process_hints": {
+    "label": "工艺提示",
+    "why_care": "焊接/点胶/注塑/CNC/超声 — 制造成本结构信号",
+    "role": "cost"
+  },
+  "cost.supply_hints": {
+    "label": "供应链提示",
+    "why_care": "供应商/代工/方案商 提及，成本对标辅助",
+    "role": "cost"
+  },
+
+  "structure.earbud_type": {
+    "label": "佩戴类型",
+    "why_care": "开放/耳夹/入耳/头戴/颈挂 — 品类与竞品分组",
+    "role": "structure"
+  },
+  "structure.materials": {
+    "label": "材料",
+    "why_care": "硅胶/钛合金/PC/ABS… — 结构与成本信号",
+    "role": "structure"
+  },
+  "structure.ip_rating": {
+    "label": "IP 防护等级",
+    "why_care": "防水防尘硬指标；注意与 IP5528 等芯片型号区分（已修复正则）",
+    "role": "structure"
+  },
+  "structure.weight_g": {
+    "label": "重量（g）",
+    "why_care": "佩戴舒适度量化指标",
+    "role": "structure"
+  },
+  "structure.dimensions": {
+    "label": "尺寸",
+    "why_care": "mm 维度，结构与佩戴透镜",
+    "role": "structure"
+  },
+  "structure.internal_structure": {
+    "label": "内部结构",
+    "why_care": "腔体/固定/组装/焊接 描述 — 结构工程师视角",
+    "role": "structure"
+  },
+  "structure.fastener_type": {
+    "label": "紧固方式",
+    "why_care": "螺丝/卡扣/胶粘/超声焊接 — 装配工艺与可拆解性",
+    "role": "structure"
+  },
+  "structure.sealing_method": {
+    "label": "密封方式",
+    "why_care": "密封圈/防水胶/点胶/超声熔接 — IP 实现路径",
+    "role": "structure"
+  },
+  "structure.wear_design": {
+    "label": "佩戴设计",
+    "why_care": "耳挂/耳夹/耳塞/气囊 — 佩戴稳定性与舒适度",
+    "role": "structure"
+  },
+  "structure.key_image_urls": {
+    "label": "关键拆解图",
+    "why_care": "主板/电池/爆炸图/外观 缩略图链接，详情页与对比页物料表图来源（含总结段 PNG）",
+    "role": "structure"
+  },
+  "structure.assembly_notes": {
+    "label": "装配说明",
+    "why_care": "装配流程关键句摘要",
+    "role": "structure"
+  },
+
+  "hardware.specs": {
+    "label": "硬件规格",
+    "why_care": "电池容量/充电接口/认证标记 — 硬件工程师透镜",
+    "role": "hardware"
+  },
+  "hardware.specs.param": {
+    "label": "参数名",
+    "why_care": "充电方式/充电接口/标记认证/电池容量",
+    "role": "hardware"
+  },
+  "hardware.specs.value": {
+    "label": "参数值",
+    "why_care": "具体值，矩阵列硬指标",
+    "role": "hardware"
+  },
+  "hardware.specs.unit": {
+    "label": "单位",
+    "why_care": "mAh / V / W — 量化对比基准",
+    "role": "hardware"
+  },
+
+  "software.bluetooth_version": {
+    "label": "蓝牙版本",
+    "why_care": "BT5.0/5.3/6.0 — 连接性能基线",
+    "role": "software"
+  },
+  "software.codecs": {
+    "label": "编解码",
+    "why_care": "LDAC/aptX/LHDC/AAC/SBC/LC3 — 音质与兼容性",
+    "role": "software"
+  },
+  "software.multipoint": {
+    "label": "多点连接",
+    "why_care": "双设备/一拖二 — 办公场景关键",
+    "role": "software"
+  },
+  "software.app_features": {
+    "label": "App 功能",
+    "why_care": "EQ/OTA/翻译/查找 — 软件生态",
+    "role": "software"
+  },
+  "software.ota_support": {
+    "label": "OTA 升级",
+    "why_care": "固件可升级性 — 长期价值",
+    "role": "software"
+  },
+  "software.latency_notes": {
+    "label": "延迟说明",
+    "why_care": "低延迟/游戏模式 — 游戏场景卖点",
+    "role": "software"
+  },
+
+  "data_completeness": {
+    "label": "数据完整度",
+    "why_care": "五区块加权评分（0–1），矩阵行灰显阈值依据",
+    "role": "all"
+  },
+
+  "selling_point_tags": {
+    "label": "卖点标签库",
+    "why_care": "9 类：音质体验 · 佩戴体验 · 运动稳固 · 通话办公 · 外观美学 · 交互连接 · 续航充电 · 智能生态 · 价格与价值 — 横向统计基础",
+    "role": "pm"
+  },
+  "quantitative_params": {
+    "label": "量化参数",
+    "why_care": "dB/小时/克重/mm/Hz/IP/延迟/拉伸次数 — 矩阵列与对比页硬指标来源",
+    "role": "all"
+  },
+
+  "main_chip": {
+    "label": "主控芯片",
+    "why_care": "蓝牙音频 SoC 选型 — 成本结构核心",
+    "role": "cost"
+  },
+  "pmic": {
+    "label": "PMIC",
+    "why_care": "充电仓电源管理 IC — 仓 BOM 成本关键",
+    "role": "cost"
+  },
+  "battery_ear": {
+    "label": "耳机电池",
+    "why_care": "耳机侧电芯容量与供应商",
+    "role": "cost"
+  },
+  "battery_case": {
+    "label": "仓电池",
+    "why_care": "充电仓电芯容量 — 续航与成本",
+    "role": "cost"
+  },
+  "speaker": {
+    "label": "喇叭规格",
+    "why_care": "驱动单元尺寸与类型 — 声学 BOM",
+    "role": "cost"
+  },
+  "layer_badges": {
+    "label": "信源层",
+    "why_care": "technical/channel/official/review 数据来源标识",
+    "role": "cost"
+  },
+
+  "matrix_columns": {
+    "cost": [
+      "brand", "model", "price_cny", "main_chip", "pmic",
+      "battery_ear", "battery_case", "speaker", "materials",
+      "weight_g", "ip_rating", "bluetooth", "bom_rows",
+      "layer_badges", "data_completeness"
+    ]
+  }
+}

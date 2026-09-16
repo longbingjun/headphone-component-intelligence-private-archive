@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrandSupplyChain from "../components/BrandSupplyChain";
+import { withBase } from "../lib/paths";
+
+const manifestUrl = withBase("/data/brand-supply-chain/manifest.json");
+const productsIndexUrl = withBase("/data/products/index.json");
+const dataBase = withBase("/data/brand-supply-chain/");
+const productBase = withBase("/product/");
+const teardownBase = withBase("/teardown-details");
+---
+
+<BaseLayout title="品牌供应链透视" activeNav="brand-supply-chain">
+  <div class="brand-supply-page">
+    <BrandSupplyChain client:load manifestUrl={manifestUrl} productsIndexUrl={productsIndexUrl} dataBase={dataBase} productBase={productBase} teardownBase={teardownBase} />
+  </div>
+</BaseLayout>

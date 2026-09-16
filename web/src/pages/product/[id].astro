@@ -1,0 +1,1027 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase, baseUrl } from "../../lib/paths";
+import { resolveImageSrc } from "../../lib/images";
+import { computeUnboxModuleMetrics, unboxModuleStyle } from "../../lib/unboxingMetrics";
+import { sellingPointTagStyle } from "../../lib/sellingPointTags";
+import fs from "node:fs";
+import path from "node:path";
+
+export function getStaticPaths() {
+  const productsDir = path.join(process.cwd(), "public", "data", "products");
+  const files = fs.readdirSync(productsDir).filter((f) => f.endsWith(".json") && f !== "index.json");
+  return files.map((file) => {
+    const product = JSON.parse(fs.readFileSync(path.join(productsDir, file), "utf-8"));
+    return {
+      params: { id: product.canonical_id },
+      props: { product },
+    };
+  });
+}
+
+const { product } = Astro.props;
+const snap = product.cost_snapshot || {};
+const market = product.market || {};
+type SellingPoint = {
+  text?: string;
+  category?: string;
+  tag?: string;
+  tags?: string[];
+  consumer_benefit?: string;
+  scenario?: string;
+  supporting_bom_keys?: string[];
+  evidence_quote?: string;
+  evidence?: { confidence?: number };
+};
+const consumerCategories = new Set(["佩戴体验", "音质体验", "通话体验", "续航充电", "连接与智能", "耐用防护", "外观设计"]);
+const nonConsumerContext = /公司|生产商|制造商|供应商|包装盒|包装清单|拆解报告|主板|器件型号|料号|物料清单|丝印|镭雕|微控制器|电源管理芯片|保护IC|MOS管|晶振/i;
+const strictNonConsumer = /包装盒|包装清单|公司信息|据我爱音频网拆解了解到/i;
+const experienceLanguage = /舒适|稳固|轻巧|无感|音质|听感|低频|高频|空间音频|通话|降噪|风噪|续航|快充|小时|连接|多点|防水|防尘|外观|质感|佩戴|低延迟|提升|减少|更/;
+const sellingPoints = ((market.consumer_claims || market.selling_points || []) as SellingPoint[])
+  .filter((sp) => {
+    const text = (sp.text || "").trim();
+    const category = (sp.category || sp.tag || "").trim();
+    if (!text || !consumerCategories.has(category)) return false;
+    if (strictNonConsumer.test(text)) return false;
+    return !nonConsumerContext.test(text) || experienceLanguage.test(text);
+  });
+const sellingPointGroups = Array.from(
+  sellingPoints.reduce((groups, claim) => {
+    const category = (claim.category || claim.tag || "其他").trim() || "其他";
+    const existing = groups.get(category) || [];
+    existing.push(claim);
+    groups.set(category, existing);
+    return groups;
+  }, new Map<string, SellingPoint[]>())
+).map(([category, claims]) => ({ category, claims, style: sellingPointTagStyle(category) }));
+const scenarios = (market.scenarios || []) as string[];
+const positioningSummary = (market.positioning_summary || "").trim();
+const hasMarket = sellingPoints.length > 0 || scenarios.length > 0 || !!positioningSummary;
+const bom = (product.technical_facts || product.teardown_inventory || product.bom_table || []).filter(
+  (r: { model?: string; component?: string }) => (r.model || "").trim() || (r.component || "").trim()
+);
+const unboxing = product.unboxing || null;
+
+type BomEvidenceImage = { url: string; alt?: string; caption?: string; index?: number };
+type RelatedSource = {
+  kind?: "report" | "video";
+  id?: string;
+  title?: string;
+  published_at?: string;
+  publisher?: string;
+  source_url?: string;
+  video_url?: string;
+};
+type BomParameter = { label?: string; value?: string; display?: string; evidence_quote?: string };
+type BomRow = {
+  component?: string;
+  brand?: string;
+  model?: string;
+  specification?: string;
+  qty_hint?: string;
+  side?: string;
+  role?: string;
+  classification_reason?: string;
+  fact_text?: string;
+  side_reason?: string;
+  side_status?: string;
+  evidence_images?: BomEvidenceImage[];
+  evidence?: { confidence?: number; source_type?: string; text?: string };
+  parameters?: BomParameter[];
+};
+
+const coreBomRows = (bom as BomRow[]).filter((row) => row.role === "core" || row.role === "key");
+const structureRows = (bom as BomRow[]).filter((row) => row.role === "structure");
+const auxiliaryRows = (bom as BomRow[]).filter((row) => row.role === "auxiliary");
+const unidentifiedRows = ((product.data_quality_review_queue || product.bom_table || []) as BomRow[])
+  .filter((row) => row.role === "unidentified_marking" || (row as { classification?: string }).classification === "unidentified_marking");
+const recognizedBomRows = [...coreBomRows, ...structureRows, ...auxiliaryRows];
+const bomGroups = [
+  { key: "core", listId: "bom-core", evidenceId: "bom-evidence-core", title: "核心 / 关键 BOM", note: "决定主要功能、性能、安全或射频链路的器件", rows: coreBomRows, icon: "🧠", bg: "#e0f2fe", color: "#0369a1" },
+  { key: "structure", listId: "bom-structure", evidenceId: "bom-evidence-structure", title: "结构件", note: "承担固定、屏蔽、缓冲或佩戴连接的机械结构", rows: structureRows, icon: "🧩", bg: "#f3e8ff", color: "#7e22ce" },
+  { key: "auxiliary", listId: "bom-auxiliary", evidenceId: "bom-evidence-auxiliary", title: "辅助器件与连接件", note: "接口、连接、按键和状态指示等配套器件", rows: auxiliaryRows, icon: "🔌", bg: "#dcfce7", color: "#15803d" },
+];
+
+function formatBomRole(role: string): string {
+  if (!role?.trim()) return "—";
+  return ({
+    major: "核心部件",
+    minor: "外围部件",
+    core: "核心BOM",
+    key: "关键BOM",
+    auxiliary: "辅助器件",
+    structure: "结构件",
+    unidentified_marking: "待识别丝印",
+  } as Record<string, string>)[role] || role;
+}
+
+function formatBomModel(row: { model?: string; specification?: string }): string {
+  return [row.model, row.specification].map((value) => (value || "").trim()).filter(Boolean).join(" · ") || "—";
+}
+
+function formatCell(val: string | undefined): string {
+  const v = (val || "").trim();
+  return v || "—";
+}
+
+function bomEvidenceSource(row: BomRow, imageCount: number): string {
+  const sourceType = (row.evidence?.source_type || "").toLowerCase();
+  const fromVideo = sourceType.includes("video");
+  const textSource = fromVideo ? "拆解视频字幕" : "拆解报告原文";
+  if (imageCount <= 0) return textSource;
+  return `${textSource} + ${imageCount} 张${fromVideo ? "相邻关键帧" : "相邻原图"}`;
+}
+
+function splitBulletText(text: string | undefined): string[] {
+  return (text || "")
+    .split(/[。！？；;]+/)
+    .map((item) => item.trim().replace(/^其他方面[，,]?/, ""))
+    .filter((item) => item.length >= 4 && !/^下面就来看看/.test(item));
+}
+
+function bomFactBullets(row: BomRow, limit = 3, includeSpecification = true): string[] {
+  const structured = (row.parameters || [])
+    .map((item) => (item.display || ((item.label && item.value) ? `${item.label}：${item.value}` : "")).trim())
+    .filter(Boolean);
+  if (structured.length > 0) return structured.slice(0, limit);
+  const specification = (row.specification || "")
+    .split(/\s*\/\s*/)
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .map((item) => `参数：${item}`);
+  const clauses = splitBulletText(row.fact_text)
+    .flatMap((sentence) => sentence.length > 96
+      ? sentence.split(/[，,](?=支持|采用|集成|用于|提供|最高|额定|标称|充电|应用处理器|DSP)/).map((item) => item.trim())
+      : [sentence])
+    .filter((item) => item.length >= 5 && !/详细资料图|外观一览/.test(item));
+  const informative = /用于|支持|采用|集成|提供|电压|容量|主频|频率|功率|尺寸|直径|重量|内存|闪存|蓝牙|充电|保护|时钟|固定|连接|防护|缓冲|密封|材质|弹性|处理器|接口/;
+  const ranked = clauses
+    .map((text, index) => ({
+      text,
+      index,
+      score: (informative.test(text) ? 4 : 0) + (/\d/.test(text) ? 2 : 0) + (text.length <= 90 ? 1 : 0),
+    }))
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .map((item) => item.text);
+  const seen = new Set<string>();
+  return [...(includeSpecification ? specification : []), ...ranked]
+    .filter((item) => {
+      const key = item.replace(/[\s，,。；;:/]/g, "").toLowerCase();
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, limit);
+}
+
+function unboxBullets(key: string, mod: UnboxModule): string[] {
+  const structured = (mod.display_bullets || [])
+    .map((item) => typeof item === "string" ? item : item.text || "")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  if (structured.length > 0) return structured;
+  const captionText = (mod.appearance_images || [])
+    .map((image) => image.caption || "")
+    .filter((caption) => caption && !/^拆解报告[：:]/.test(caption));
+  // 旧提取器把报告导语误放进“包装”说明；包装优先采用与包装图片相邻、语义更准确的图注。
+  const source = key === "packaging" && captionText.length > 0
+    ? captionText
+    : [mod.description || "", ...captionText];
+  const seen = new Set<string>();
+  return source
+    .flatMap((text) => splitBulletText(text))
+    .filter((item) => {
+      const normalized = item.replace(/[，,s]/g, "").toLowerCase();
+      if (seen.has(normalized)) return false;
+      seen.add(normalized);
+      return true;
+    });
+}
+
+function bomAnchorForKey(key: string): string | null {
+  const normalized = (key || "").replace(/\s+/g, "").toLowerCase();
+  const index = recognizedBomRows.findIndex((row) =>
+    [row.model, row.component].some((value) => (value || "").replace(/\s+/g, "").toLowerCase() === normalized)
+  );
+  return index >= 0 ? `bom-component-${index + 1}` : null;
+}
+
+function bomAnchorForRow(row: BomRow): string {
+  return `bom-component-${recognizedBomRows.indexOf(row) + 1}`;
+}
+
+// TWS / 开放式耳机（含耳夹式）需要拆分整机/充电盒/单只耳机重量；
+// 头戴式/骨传导/有线/颈挂式等单一整机形态只展示一个总重。
+const MULTI_PART_WEIGHT_CATEGORIES = new Set([
+  "真无线耳机TWS",
+  "开放式耳机",
+  "耳夹式耳机",
+  "耳挂式耳机",
+  "全入耳式耳机",
+  "半入耳式耳机",
+  "待细分耳机",
+]);
+const isMultiPartWeight = MULTI_PART_WEIGHT_CATEGORIES.has(product.category);
+const weightCards = isMultiPartWeight
+  ? [
+      ["整机重量", snap.weight_g],
+      ["充电盒重量", snap.weight_case_g],
+      ["单只耳机重量", snap.weight_earbud_g],
+    ]
+  : [["重量", snap.weight_g]];
+
+const priceLabel =
+  snap.price_source_label ||
+  ({ official: "官方价", channel: "渠道价", technical: "技术文章价" }[snap.price_layer] ?? "");
+const priceCurrency = String(snap.price_currency || "CNY").toUpperCase();
+const pricePrefix = ({ CNY: "¥", USD: "US$", EUR: "€", GBP: "£", JPY: "JP¥", KRW: "₩" } as Record<string, string>)[priceCurrency] || `${priceCurrency} `;
+const priceTxt =
+  snap.price_cny != null
+    ? `${pricePrefix}${snap.price_cny}${priceLabel ? `（${priceLabel}）` : ""}`
+    : "未检索到官方渠道价";
+const priceSourceUrl = typeof snap.price_source_url === "string" ? snap.price_source_url.trim() : "";
+const priceDisclaimer = typeof snap.price_disclaimer === "string" ? snap.price_disclaimer.trim() : "";
+const launch = product.launch || {};
+const launchDisplay = String(launch.display || "上市时间待核验");
+const launchSourceUrl = typeof launch.source_url === "string" ? launch.source_url.trim() : "";
+
+type UnboxModule = {
+  description?: string;
+  accessories?: string[];
+  appearance_images?: { url: string; caption?: string; alt?: string }[];
+  image_count?: number;
+  display_bullets?: ({ text?: string; topic?: string; evidence_quote?: string; priority?: number } | string)[];
+  summary_meta?: { method?: string; model?: string; validator?: string };
+};
+
+const unboxSections: { key: "packaging" | "charging_case" | "earbuds"; title: string; mod: UnboxModule | null }[] = [
+  { key: "packaging", title: "包装", mod: unboxing?.packaging ?? null },
+  { key: "charging_case", title: "充电盒", mod: unboxing?.charging_case ?? null },
+  { key: "earbuds", title: "耳机", mod: unboxing?.earbuds ?? null },
+];
+
+// 原始图片来自 52audio OSS，开启了 Referer 防盗链，浏览器无法直接热链展示，
+// 需要用构建阶段缓存的本地文件；未成功缓存的图跳过渲染，避免出现裂图图标。
+type ResolvedImage = { src: string; alt?: string; caption?: string };
+function resolveImages(images?: { url: string; alt?: string; caption?: string }[]): ResolvedImage[] {
+  return (images || [])
+    .map((img) => {
+      const src = resolveImageSrc(img.url);
+      return src ? { src, alt: img.alt, caption: img.caption } : null;
+    })
+    .filter((img): img is ResolvedImage => img !== null);
+}
+
+const resolvedSummaryImages: ResolvedImage[] = resolveImages(
+  (product.summary_image_urls || []) as { url: string; alt?: string; caption?: string }[]
+);
+const resolvedBomEvidenceImages: ResolvedImage[] = resolveImages(
+  (bom as BomRow[]).flatMap((row) => row.evidence_images || [])
+);
+// 详情页首屏只使用原文「开箱 / 外观」模块里的实拍图：耳机本体优先，其次充电盒、包装。
+// 不将 summary_image_urls 用作封面，避免把 BOM、芯片或内部结构图误呈现为产品外观。
+function coverImageScore(image: ResolvedImage, sectionScore: number): number {
+  const description = `${image.alt || ""} ${image.caption || ""}`;
+  const overallBonus = /整体|全貌|全景|外观|一览|展示|真机|佩戴|正面|侧面|背面/.test(description) ? 20 : 0;
+  const detailPenalty = /特写|内部|拆解|芯片|主板|电池|接口|触点|铭牌|参数|包装盒/.test(description) ? 12 : 0;
+  return sectionScore + overallBonus - detailPenalty;
+}
+
+const productCover = [
+  ...resolveImages(unboxing?.earbuds?.appearance_images).map((image) => ({ image, score: coverImageScore(image, 6) })),
+  ...resolveImages(unboxing?.charging_case?.appearance_images).map((image) => ({ image, score: coverImageScore(image, 4) })),
+  ...resolveImages(unboxing?.packaging?.appearance_images).map((image) => ({ image, score: coverImageScore(image, 2) })),
+].sort((a, b) => b.score - a.score)[0]?.image || null;
+const productName = [product.brand, product.model].filter(Boolean).join(" ") || product.canonical_id;
+const completeness = Math.round((snap.data_completeness || 0) * 100);
+const unboxingSectionCoverage = unboxing?.completeness != null ? Math.round((unboxing.completeness || 0) * 100) : null;
+const reportCount = (product.report_ids || []).length;
+const relatedIntelligence = ((product.related_intelligence || []) as RelatedSource[])
+  .filter((source) => source.id || source.source_url || source.video_url);
+
+// 静态兜底统一回到工作台。客户端会读取 BaseLayout 在用户点击产品链接时保存的
+// 来源上下文，并替换为“返回工作台 / 同类对比 / 跨品类对比 / 情报分析页”。
+const staticBackHref = withBase("/");
+
+const allLightboxImages: ResolvedImage[] = [
+  ...resolvedSummaryImages,
+  ...unboxSections.flatMap(({ mod }) => (mod ? resolveImages(mod.appearance_images) : [])),
+  ...resolvedBomEvidenceImages,
+];
+const lightboxJson = JSON.stringify(allLightboxImages);
+---
+
+<BaseLayout title={`${product.brand} ${product.model}`} activeNav="compare">
+  <div class="mb-4 text-sm">
+    <a id="compare-back-link" href={staticBackHref} class="text-[var(--muted)]">
+      ← 返回工作台
+    </a>
+  </div>
+
+  <script define:vars={{ baseUrl }}>
+    (function () {
+      var STORAGE_KEY = "cost-product-return-context-v1";
+      var link = document.getElementById("compare-back-link");
+      if (!link) return;
+      try {
+        var stored = sessionStorage.getItem(STORAGE_KEY);
+        var context = stored ? JSON.parse(stored) : null;
+        var currentPath = window.location.pathname.replace(/\/+$/, "");
+        var returnUrl = context && typeof context.returnHref === "string"
+          ? new URL(context.returnHref, window.location.origin)
+          : null;
+        var looksInternal =
+          context &&
+          context.productPath === currentPath &&
+          returnUrl &&
+          returnUrl.origin === window.location.origin &&
+          returnUrl.pathname.startsWith(baseUrl) &&
+          typeof context.returnLabel === "string" &&
+          context.returnLabel.startsWith("返回");
+        if (looksInternal) {
+          link.setAttribute("href", returnUrl.pathname + returnUrl.search + returnUrl.hash);
+          link.textContent = "← " + context.returnLabel;
+        }
+      } catch (err) {
+        /* 来源上下文不可用时保留“返回工作台”兜底 */
+      }
+    })();
+  </script>
+
+  <div class="detail-page-shell">
+    <aside class="detail-sidebar">
+    <nav class="detail-section-nav" aria-label="产品详情页目录">
+      <div class="detail-section-nav__title">
+        <small>产品详情</small>
+        <strong>{product.model || product.brand}</strong>
+        <em id="detail-current-section">当前：产品概览</em>
+      </div>
+      <span class="detail-section-nav__kicker">页面定位</span>
+      <a href="#overview">产品概览</a>
+      {hasMarket && <a href="#positioning">定位与卖点</a>}
+      {unboxing && <a href="#unboxing">开箱与外观</a>}
+      <a href="#specifications">核心参数</a>
+      <a class="detail-section-nav__parent" href="#bom">物料清单（BOM）</a>
+      <div class="detail-section-nav__subnav" aria-label="物料清单子目录">
+        {bomGroups.map((group) => group.rows.length > 0 && <a href={`#${group.listId}`}>{group.title}</a>)}
+        <a class="detail-section-nav__subparent" href="#bom-evidence">组件详情与证据</a>
+        <div class="detail-section-nav__third-level">
+          {bomGroups.map((group) => group.rows.length > 0 && <a href={`#${group.evidenceId}`}>{group.title}证据</a>)}
+        </div>
+      </div>
+      {resolvedSummaryImages.length > 0 && <a href="#summary-images">物料总结图</a>}
+    </nav>
+    </aside>
+
+    <div class="detail-page-content">
+  <section id="overview" class="detail-hero">
+    <div class="detail-hero-cover" aria-label={`${productName} 产品外观图`}>
+      {productCover ? (
+        <button
+          type="button"
+          class="detail-cover-button"
+          data-lightbox-index={allLightboxImages.findIndex((img) => img.src === productCover.src)}
+        >
+          <img src={productCover.src} alt={productCover.alt || productCover.caption || productName} />
+          <span>查看外观图</span>
+        </button>
+      ) : (
+        <div class="detail-cover-fallback" aria-label="暂无产品外观图">
+          <strong>{(product.brand || product.model || "P").slice(0, 1)}</strong>
+          <span>暂无开箱外观图</span>
+        </div>
+      )}
+    </div>
+
+    <div class="detail-hero-main">
+      <div class="detail-breadcrumb"><span>产品档案</span><i>/</i><span>{product.category}</span></div>
+      <div class="detail-title-line">
+        <span class="detail-category-badge">{product.category}</span>
+      </div>
+      <h1>{productName}</h1>
+      <p class="detail-product-id">产品档案 ID：{product.canonical_id}</p>
+      {hasMarket ? (
+        <div class="detail-summary">
+          <span>产品摘要</span>
+          <p>{positioningSummary || (sellingPoints[0]?.text || "已收录拆解与市场信息，可继续查看外观、物料与关联报告。")}</p>
+          {scenarios.length > 0 && (
+            <div class="detail-scenario-list">
+              {scenarios.slice(0, 4).map((scenario) => <em>{scenario}</em>)}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div class="detail-summary detail-summary--empty">
+          <span>产品摘要</span><p>已收录拆解档案；市场定位信息将在后续数据更新中补充。</p>
+        </div>
+      )}
+      {relatedIntelligence.length > 0 && (
+        <details id="related-intelligence" class="detail-related-intelligence" open>
+          <summary>
+            <span>关联情报</span>
+            <small>{relatedIntelligence.length} 条可追溯来源</small>
+          </summary>
+          <ul>
+            {relatedIntelligence.map((source) => (
+              <li>
+                <span class:list={["detail-source-kind", source.kind === "video" && "detail-source-kind--video"]}>
+                  {source.kind === "video" ? "视频" : "报告"}
+                </span>
+                <div>
+                  <strong>{source.title || `${source.kind === "video" ? "拆解视频" : "拆解报告"} ${source.id}`}</strong>
+                  <small>{[source.published_at, source.publisher].filter(Boolean).join(" · ") || `来源编号 ${source.id}`}</small>
+                </div>
+                <nav aria-label={`${source.title || source.id} 来源链接`}>
+                  {source.source_url && (
+                    <a href={source.source_url} target="_blank" rel="noopener noreferrer">来源原文 ↗</a>
+                  )}
+                  {source.kind === "video" && source.video_url && (
+                    <a href={source.video_url} target="_blank" rel="noopener noreferrer">播放视频 ↗</a>
+                  )}
+                </nav>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </div>
+
+    <aside class="detail-hero-metrics" aria-label="产品核心信息">
+      <div class="detail-metric detail-metric--price">
+        <span>可溯源价格</span>
+        {priceSourceUrl && snap.price_cny != null ? (
+          <a href={priceSourceUrl} target="_blank" rel="noopener noreferrer" title="打开价格来源">
+            {priceTxt}<small>查看来源 ↗</small>
+          </a>
+        ) : <strong>{priceTxt}</strong>}
+        {priceDisclaimer && <p class="detail-price-disclaimer">{priceDisclaimer}</p>}
+        <div class="detail-launch-inline">
+          <span>上市时间</span>
+          {launchSourceUrl ? <a href={launchSourceUrl} target="_blank" rel="noopener noreferrer" title="打开上市时间来源">{launchDisplay}<small>查看来源 ↗</small></a> : <strong>{launchDisplay}</strong>}
+        </div>
+      </div>
+      <div class="detail-metric-grid">
+        <div><span title="价格、核心物料与规格等档案字段的已填写比例">档案字段完整度 ⓘ</span><strong>{completeness}%</strong></div>
+        <div><span>已识别物料</span><strong>{recognizedBomRows.length}</strong></div>
+        <div><span>关联报告</span><strong>{reportCount}</strong></div>
+        <div><span title="包装、充电盒、耳机三个分区中已识别到内容的比例；不代表文字和图片都完整">开箱分区识别率 ⓘ</span><strong>{unboxingSectionCoverage == null ? "待补充" : `${unboxingSectionCoverage}%`}</strong></div>
+      </div>
+    </aside>
+  </section>
+
+  {
+    hasMarket && (
+      <section id="positioning" class="detail-content-section mt-8 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6">
+        <h2 class="m-0 text-lg font-bold">消费者定位与卖点</h2>
+        <p class="mt-1 text-xs text-[var(--muted)]">
+          只展示消费者可感知的体验与收益；芯片、器件和结构参数在下方 BOM 区独立呈现。
+        </p>
+        {positioningSummary && (
+          <p class="mt-3 text-sm leading-relaxed text-[var(--text)]">{positioningSummary}</p>
+        )}
+        {scenarios.length > 0 && (
+          <div class="mt-3 flex flex-wrap gap-2">
+            {scenarios.map((s) => (
+              <span class="rounded-full bg-[var(--chip-bg)] px-2.5 py-1 text-xs text-[var(--muted)]">{s}</span>
+            ))}
+          </div>
+        )}
+        {sellingPointGroups.length > 0 && (
+          <ul class="consumer-claim-groups mt-4 m-0 list-none p-0">
+            {sellingPointGroups.map((group) => (
+              <li
+                class="consumer-claim-group"
+                style={`--claim-color:${group.style.text};--claim-bg:${group.style.bg}`}
+              >
+                <span class="consumer-claim-group__label">{group.category}</span>
+                <ul class="consumer-claim-group__items">
+                  {group.claims.map((sp) => (
+                    <li>
+                      <p>{sp.text}</p>
+                      {sp.consumer_benefit && sp.consumer_benefit !== sp.text && (
+                        <small>用户收益：{sp.consumer_benefit}</small>
+                      )}
+                      {(sp.supporting_bom_keys || []).length > 0 && (
+                        <div class="consumer-claim-group__bom">
+                          <span>技术支撑：</span>
+                          {(sp.supporting_bom_keys || []).map((key) => {
+                            const anchor = bomAnchorForKey(key);
+                            return anchor
+                              ? <a href={`#${anchor}`} data-bom-jump={anchor}>{key}</a>
+                              : <span>{key}</span>;
+                          })}
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    )
+  }
+
+  {
+    unboxing && (
+      <section id="unboxing" class="detail-content-section mt-8">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="m-0 text-lg font-bold">开箱 · 外观</h2>
+          {unboxing.completeness != null && (
+            <span class="text-sm text-[var(--muted)]">
+              三分区识别率 {Math.round((unboxing.completeness || 0) * 100)}%
+            </span>
+          )}
+        </div>
+        <div class="mt-4 flex flex-col gap-6">
+          {unboxSections.map(({ key, title, mod }) => {
+            if (!mod) return null;
+            const images = resolveImages(mod.appearance_images);
+            const bullets = unboxBullets(key, mod);
+            const metrics = computeUnboxModuleMetrics(mod, images.length, key);
+            const palette = unboxModuleStyle(title);
+            const totalImages = Math.max(
+              mod.image_count || 0,
+              (mod.appearance_images || []).length,
+              images.length
+            );
+            return (
+              <section
+                class="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-glass)]"
+                style={`border-color:${palette.border}`}
+              >
+                <div class="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 class="m-0 flex flex-wrap items-center gap-2 text-lg font-bold">
+                    <span
+                      class="rounded-full px-2.5 py-0.5 text-xs font-semibold"
+                      style={`background:${palette.bg};color:${palette.text}`}
+                    >
+                      {title}
+                    </span>
+                    <span class="text-sm font-normal text-[var(--muted)]">
+                      共 {totalImages} 张 · 已缓存 {images.length} 张 · 资料覆盖分 {metrics.overall}%
+                    </span>
+                  </h3>
+                </div>
+
+                <div class="mt-3 grid gap-2 sm:grid-cols-3">
+                  {metrics.bars.map((bar) => (
+                    <div class="rounded-xl bg-[var(--surface-2)] px-3 py-2">
+                      <div class="flex items-center justify-between gap-2 text-xs">
+                        <span class="text-[var(--muted)]">{bar.label}</span>
+                        <span class="font-semibold" style={`color:${palette.text}`}>{bar.value}%</span>
+                      </div>
+                      <div class="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[var(--line)]">
+                        <div
+                          class="h-full rounded-full"
+                          style={`width:${bar.value}%;background:${palette.bar}`}
+                        />
+                      </div>
+                      <div class="mt-1 text-[10px] text-[var(--muted)]">{bar.detail}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {bullets.length > 0 && (
+                  <ul class="m-0 mt-4 grid gap-2 pl-5 text-sm leading-relaxed text-[var(--text)] md:grid-cols-2">
+                    {bullets.map((bullet) => <li class="pr-3 marker:text-[var(--primary)]">{bullet}</li>)}
+                  </ul>
+                )}
+
+                {title === "包装" && (mod.accessories || []).length > 0 && (
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    {(mod.accessories || []).map((acc) => (
+                      <span
+                        class="rounded-full px-2 py-0.5 text-xs font-medium"
+                        style={`background:${palette.bg};color:${palette.text}`}
+                      >
+                        {acc}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {images.length > 0 ? (
+                  <div class="mt-4 flex gap-3 overflow-x-auto pb-1">
+                    {images.map((img) => {
+                      const lbIdx = allLightboxImages.findIndex((x) => x.src === img.src);
+                      return (
+                        <figure class="m-0 w-56 flex-shrink-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3 shadow-[var(--shadow-glass)]">
+                          <button
+                            type="button"
+                            class="block w-full cursor-zoom-in border-0 bg-transparent p-0"
+                            data-lightbox-index={lbIdx >= 0 ? lbIdx : 0}
+                          >
+                            <img
+                              src={img.src}
+                              alt={img.alt || img.caption || title}
+                              class="h-36 w-full rounded-lg border border-[var(--line)] object-cover"
+                              loading="lazy"
+                            />
+                          </button>
+                          {img.caption && (
+                            <figcaption class="mt-2 line-clamp-3 text-xs leading-snug text-[var(--muted)]">
+                              {img.caption}
+                            </figcaption>
+                          )}
+                        </figure>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p class="mt-4 text-sm text-[var(--muted)]">暂无已缓存的外观图</p>
+                )}
+              </section>
+            );
+          })}
+        </div>
+      </section>
+    )
+  }
+
+  <section id="specifications" class="detail-content-section mt-8">
+    <h2 class="m-0 text-lg font-bold">核心参数</h2>
+    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        [
+          ["主控芯片", snap.main_chip],
+          ["PMIC", snap.pmic_case],
+          ["耳机电池", snap.battery_ear],
+          ["仓电池", snap.battery_case],
+          ["喇叭", snap.speaker],
+          ["材料", snap.materials],
+          ...weightCards,
+          ["上市时间", launchDisplay],
+          ["售价", priceTxt],
+        ].map(([label, val]) => (
+          <div class="detail-spec-card rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4">
+            <div class="text-xs text-[var(--muted)]">{label}</div>
+            {
+              label === "上市时间" && launchSourceUrl ? (
+                <a href={launchSourceUrl} target="_blank" rel="noopener noreferrer" title="打开上市时间来源（新标签页）" class="group mt-1 inline-flex flex-wrap items-center gap-x-1 font-semibold text-[var(--primary)] no-underline hover:underline"><span>{val}</span><span class="text-xs font-normal text-[var(--muted)] group-hover:text-[var(--primary)]">查看来源 ↗</span></a>
+              ) : label === "售价" && priceSourceUrl && snap.price_cny != null ? (
+                <a
+                  href={priceSourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="打开价格信息来源（新标签页）"
+                  class="group mt-1 inline-flex flex-wrap items-center gap-x-1 font-semibold text-[var(--primary)] no-underline hover:underline"
+                >
+                  <span>{val}</span>
+                  <span class="text-xs font-normal text-[var(--muted)] group-hover:text-[var(--primary)]">查看来源 ↗</span>
+                </a>
+              ) : (
+                <div class="mt-1 font-semibold">{val || "—"}</div>
+              )
+            }
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <h2 id="bom" class="detail-section-anchor mt-8 text-lg font-bold">物料清单（BOM）</h2>
+  <p class="mb-3 text-xs text-[var(--muted)]">
+      分类只依据拆解报告或拆解视频中的原始证据和器件功能：核心 / 关键 BOM、结构件、辅助器件；点击器件可跳转到原文与图片证据。当前不混入成本、版本、左右耳料号或批次权重。
+  </p>
+  <div class="mb-5 grid gap-3 sm:grid-cols-3">
+    {bomGroups.map((group) => (
+      <div class="rounded-2xl border border-[var(--line)] p-4" style={`background:${group.bg}`}>
+        <div class="text-xl" aria-hidden="true">{group.icon}</div>
+        <strong class="mt-2 block text-2xl" style={`color:${group.color}`}>{group.rows.length}</strong>
+        <span class="text-sm" style={`color:${group.color}`}>{group.title}</span>
+      </div>
+    ))}
+  </div>
+
+  {bomGroups.map((group) => group.rows.length > 0 && (
+    <section id={group.listId} class="detail-section-anchor mb-5">
+      <div class="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+        <h3 class="m-0 text-base font-bold">{group.title}</h3>
+        <span class="text-xs text-[var(--muted)]">{group.note}</span>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-[var(--line)] bg-[var(--surface)]">
+        <table class="w-full min-w-[860px] text-sm">
+          <thead>
+            <tr class="bg-[var(--surface-2)] text-left">
+              <th class="px-3 py-2">分类</th>
+              <th class="px-3 py-2">器件 / 结构</th>
+              <th class="px-3 py-2">厂商</th>
+              <th class="px-3 py-2">型号 / 丝印</th>
+              <th class="px-3 py-2">位置</th>
+              <th class="px-3 py-2">参数与报告提炼</th>
+              <th class="px-3 py-2">证据</th>
+            </tr>
+          </thead>
+          <tbody>
+            {group.rows.map((row) => {
+              const anchor = bomAnchorForRow(row);
+              const evidenceCount = (row.evidence_images || []).length;
+              const parameterBullets = bomFactBullets(row, 4, true);
+              return (
+              <tr class="border-t border-[var(--line)] align-top">
+                <td class="whitespace-nowrap px-3 py-3 font-medium">{formatBomRole(row.role || "")}</td>
+                <td class="px-3 py-3 font-semibold">
+                  <a class="bom-table-component-link" href={`#${anchor}`} data-bom-jump={anchor}>{formatCell(row.component)}</a>
+                </td>
+                <td class="px-3 py-3">{formatCell(row.brand)}</td>
+                <td class="px-3 py-3 font-mono text-xs">{formatCell(row.model)}</td>
+                <td class="whitespace-nowrap px-3 py-3">{formatCell(row.side)}</td>
+                <td class="max-w-lg px-3 py-3 text-xs leading-relaxed text-[var(--muted)]">
+                  {parameterBullets.length > 0 ? (
+                    <ul class="bom-parameter-list">
+                      {parameterBullets.map((fact) => <li>{fact}</li>)}
+                    </ul>
+                  ) : "—"}
+                </td>
+                <td class="whitespace-nowrap px-3 py-3 text-xs">
+                  <a class="bom-table-evidence-link" href={`#${anchor}`} data-bom-jump={anchor}>
+                    {evidenceCount > 0 ? `查看证据 · ${evidenceCount} 张` : "查看原文"}
+                  </a>
+                </td>
+              </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+
+  <section id="bom-evidence" class="detail-section-anchor mt-6" aria-labelledby="bom-detail-heading">
+    <div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+      <h3 id="bom-detail-heading" class="m-0 text-base font-bold">组件详情与证据</h3>
+      <span class="text-xs text-[var(--muted)]">点击组件展开；图片只在对应组件内展示，不再单列报告原图库</span>
+    </div>
+    <div class="space-y-6">
+      {bomGroups.map((group) => group.rows.length > 0 && (
+        <section id={group.evidenceId} class="bom-evidence-group detail-section-anchor" style={`--bom-group-color:${group.color};--bom-group-bg:${group.bg}`}>
+          <div class="bom-evidence-group__heading">
+            <span aria-hidden="true">{group.icon}</span>
+            <div>
+              <h4>{group.title}<small>{group.rows.length} 项</small></h4>
+              <p>{group.note}</p>
+            </div>
+          </div>
+          <div class="grid items-start gap-3 lg:grid-cols-2">
+          {group.rows.map((row) => {
+            const evidenceImages = resolveImages(row.evidence_images);
+            const factBullets = bomFactBullets(row, 5, false);
+            return (
+          <details id={bomAnchorForRow(row)} class="bom-evidence-card scroll-mt-24 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+            <summary class="cursor-pointer list-none p-4 hover:bg-[var(--surface-2)]">
+              <div class="flex items-center justify-between gap-3">
+                <div>
+                  <span class="text-xs font-semibold text-[var(--primary)]">{formatBomRole(row.role || "")} · {formatCell(row.side)}</span>
+                  <h5 class="m-0 mt-1 text-sm font-bold">{formatCell(row.component)}{row.model ? ` · ${row.model}` : ""}</h5>
+                </div>
+                <span class="rounded-full bg-[var(--surface-2)] px-2 py-1 text-xs text-[var(--muted)]">点击查看详情与图片证据</span>
+              </div>
+            </summary>
+            <div class="grid gap-4 border-t border-[var(--line)] p-4 sm:grid-cols-[minmax(0,1fr)_180px]">
+              <div>
+                <dl class="m-0 grid grid-cols-[76px_minmax(0,1fr)] gap-x-3 gap-y-2 text-xs">
+                  <dt class="text-[var(--muted)]">厂商</dt><dd class="m-0">{formatCell(row.brand)}</dd>
+                  <dt class="text-[var(--muted)]">型号/丝印</dt><dd class="m-0 font-mono">{formatCell(row.model)}</dd>
+                  <dt class="text-[var(--muted)]">分类依据</dt><dd class="m-0">{formatCell(row.classification_reason)}</dd>
+                  <dt class="text-[var(--muted)]">位置依据</dt><dd class="m-0">{formatCell(row.side_reason)}</dd>
+                  <dt class="text-[var(--muted)]">证据来源</dt><dd class="m-0">{bomEvidenceSource(row, evidenceImages.length)}</dd>
+                </dl>
+                {factBullets.length > 0 && (
+                  <div class="mt-3 border-t border-[var(--line)] pt-3">
+                    <strong class="text-xs text-[var(--text)]">结构化参数与功能</strong>
+                    <ul class="m-0 mt-2 space-y-1.5 pl-5 text-xs leading-relaxed text-[var(--text)]">
+                      {factBullets.map((fact) => <li>{fact}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+              {evidenceImages.length > 0 && (
+                <div class="flex gap-2 overflow-x-auto sm:block">
+                  {evidenceImages.map((image) => {
+                    const index = allLightboxImages.findIndex((item) => item.src === image.src);
+                    return (
+                      <button type="button" class="block w-40 shrink-0 cursor-zoom-in border-0 bg-transparent p-0 sm:w-full" data-lightbox-index={index}>
+                        <img src={image.src} alt={image.alt || `${row.component || "组件"}图片证据`} class="aspect-square w-full rounded-xl border border-[var(--line)] object-cover" loading="lazy" />
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </details>
+            );
+          })}
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  {unidentifiedRows.length > 0 && (
+    <details class="mt-4 rounded-2xl border border-amber-200 bg-amber-50/70 p-4 text-amber-950">
+      <summary class="cursor-pointer text-sm font-semibold">
+        数据质量提示：报告中另有 {unidentifiedRows.length} 条只有丝印、暂不能归入正式 BOM 的记录
+      </summary>
+      <p class="mb-3 mt-2 text-xs leading-relaxed opacity-80">
+        这些记录保留用于后续人工核验，但不计入核心 / 关键 BOM、结构件或辅助器件，也不把丝印直接当作正式型号。
+      </p>
+      <div class="overflow-x-auto rounded-xl border border-amber-200 bg-white/70">
+        <table class="w-full text-sm">
+          <thead><tr class="text-left"><th class="px-3 py-2">丝印</th><th class="px-3 py-2">报告原文</th><th class="px-3 py-2">处理状态</th></tr></thead>
+          <tbody>
+            {unidentifiedRows.map((row) => (
+              <tr class="border-t border-amber-200">
+                <td class="px-3 py-2 font-mono">{formatCell(row.model)}</td>
+                <td class="px-3 py-2 text-xs">{formatCell(row.fact_text)}</td>
+                <td class="whitespace-nowrap px-3 py-2 text-xs">证据不足，等待人工识别</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  )}
+
+  {
+    resolvedSummaryImages.length > 0 && (
+      <>
+        <h2 id="summary-images" class="detail-section-anchor mt-8 text-lg font-bold">物料总结图</h2>
+        <div class="mt-3 flex flex-wrap gap-3">
+          {resolvedSummaryImages.map((img, idx) => (
+            <button
+              type="button"
+              class="cursor-zoom-in border-0 bg-transparent p-0"
+              data-lightbox-index={idx}
+            >
+              <img
+                src={img.src}
+                alt={img.alt || "物料图"}
+                class="max-h-40 rounded-lg border border-[var(--line)]"
+                loading="lazy"
+              />
+            </button>
+          ))}
+        </div>
+      </>
+    )
+  }
+
+    </div>
+  </div>
+
+  <script>
+    (function enhanceDetailNavigation() {
+      const navLinks = Array.from(document.querySelectorAll(".detail-section-nav a[href^='#']"));
+      const currentSection = document.getElementById("detail-current-section");
+      const setCurrentSection = (targetId) => {
+        const activeLink = navLinks.find((link) => link.getAttribute("href") === `#${targetId}`);
+        if (!activeLink) return;
+        navLinks.forEach((link) => {
+          if (link === activeLink) link.setAttribute("aria-current", "true");
+          else link.removeAttribute("aria-current");
+        });
+        if (currentSection) currentSection.textContent = `当前：${activeLink.textContent?.trim() || "产品概览"}`;
+      };
+      const openBomEvidence = (id) => {
+        const target = document.getElementById(id);
+        if (!(target instanceof HTMLDetailsElement)) return;
+        target.open = true;
+        target.classList.add("bom-evidence-target");
+        window.setTimeout(() => target.classList.remove("bom-evidence-target"), 1800);
+      };
+      const syncHashNavigation = () => {
+        if (window.location.hash.startsWith("#bom-component-")) {
+          const targetId = window.location.hash.slice(1);
+          openBomEvidence(targetId);
+          const groupId = document.getElementById(targetId)?.closest(".bom-evidence-group")?.id;
+          setCurrentSection(groupId || "bom-evidence");
+        } else if (window.location.hash) {
+          setCurrentSection(window.location.hash.slice(1));
+        }
+      };
+      document.querySelectorAll("[data-bom-jump]").forEach((link) => {
+        link.addEventListener("click", () => {
+          const targetId = link.getAttribute("data-bom-jump") || "";
+          openBomEvidence(targetId);
+          const groupId = document.getElementById(targetId)?.closest(".bom-evidence-group")?.id;
+          setCurrentSection(groupId || "bom-evidence");
+        });
+      });
+      window.addEventListener("hashchange", syncHashNavigation);
+      syncHashNavigation();
+      if (!("IntersectionObserver" in window)) return;
+      const sections = navLinks
+        .map((link) => document.querySelector(link.getAttribute("href") || ""))
+        // “组件详情与证据”包裹三个证据分组；若同时观察父级和子级，
+        // 父级会在组件跳转后覆盖更精确的分组定位。
+        .filter((section) => section && section.id !== "bom-evidence");
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (!visible) return;
+        setCurrentSection(visible.target.id);
+      }, { rootMargin: "-18% 0px -70% 0px", threshold: 0 });
+      sections.forEach((section) => observer.observe(section));
+    })();
+  </script>
+
+  <div
+    id="lightbox-overlay"
+    class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/85 p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="图片预览"
+  >
+    <button
+      type="button"
+      id="lightbox-close"
+      class="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-1 text-2xl text-white hover:bg-white/20"
+      aria-label="关闭"
+    >
+      ×
+    </button>
+    <button type="button" id="lightbox-prev" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/10 px-3 py-2 text-white hover:bg-white/20" aria-label="上一张">‹</button>
+    <button type="button" id="lightbox-next" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/10 px-3 py-2 text-white hover:bg-white/20" aria-label="下一张">›</button>
+    <figure class="max-h-[90vh] max-w-[min(1200px,95vw)]">
+      <img id="lightbox-img" src="" alt="" class="max-h-[82vh] w-auto max-w-full rounded-lg object-contain shadow-2xl" />
+      <figcaption id="lightbox-caption" class="mt-3 text-center text-sm text-white/85"></figcaption>
+    </figure>
+  </div>
+
+  <script define:vars={{ lightboxJson }}>
+    const images = JSON.parse(lightboxJson);
+    const overlay = document.getElementById("lightbox-overlay");
+    const imgEl = document.getElementById("lightbox-img");
+    const capEl = document.getElementById("lightbox-caption");
+    let current = 0;
+
+    function show(idx) {
+      if (!images.length || !overlay || !imgEl) return;
+      current = (idx + images.length) % images.length;
+      const item = images[current];
+      imgEl.src = item.src;
+      imgEl.alt = item.alt || item.caption || "";
+      if (capEl) {
+        capEl.textContent = item.caption
+          ? `${item.caption} (${current + 1}/${images.length})`
+          : images.length > 1
+            ? `${current + 1} / ${images.length}`
+            : "";
+      }
+      overlay.classList.remove("hidden");
+      overlay.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    function hide() {
+      if (!overlay) return;
+      overlay.classList.add("hidden");
+      overlay.classList.remove("flex");
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("click", (event) => {
+      const target = event.target instanceof Element
+        ? event.target.closest("[data-lightbox-index], [data-lightbox-src]")
+        : null;
+      if (!target) return;
+      const dynamicSrc = target.getAttribute("data-lightbox-src");
+      if (dynamicSrc) {
+        let idx = images.findIndex((item) => item.src === dynamicSrc);
+        if (idx < 0) {
+          images.push({
+            src: dynamicSrc,
+            alt: target.getAttribute("data-lightbox-alt") || "",
+            caption: target.getAttribute("data-lightbox-caption") || "",
+          });
+          idx = images.length - 1;
+        }
+        show(idx);
+        return;
+      }
+      show(parseInt(target.getAttribute("data-lightbox-index") || "0", 10));
+    });
+
+    document.getElementById("lightbox-close")?.addEventListener("click", hide);
+    document.getElementById("lightbox-prev")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      show(current - 1);
+    });
+    document.getElementById("lightbox-next")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      show(current + 1);
+    });
+    overlay?.addEventListener("click", (e) => {
+      if (e.target === overlay) hide();
+    });
+    window.addEventListener("keydown", (e) => {
+      if (overlay?.classList.contains("hidden")) return;
+      if (e.key === "Escape") hide();
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
+    });
+  </script>
+</BaseLayout>

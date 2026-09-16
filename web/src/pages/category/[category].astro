@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CompareWorkbench from "../../components/CompareWorkbench";
+import { withBase } from "../../lib/paths";
+import fs from "node:fs";
+import path from "node:path";
+
+export function getStaticPaths() {
+  // 品类页只内嵌该品类对比数据的一个小切片用于首屏渲染，避免把整品类（例如 TWS
+  // 品类 700+ 款产品）的完整对比数据序列化进页面 HTML；完整数据由 CompareWorkbench
+  // 挂载后通过 fetch 从 /data/compare/{file} 静态 JSON 拉取。
+  // 注意：getStaticPaths() 在独立作用域运行，无法访问 frontmatter 中其他顶层变量，
+  // 所以这个常量必须定义在函数内部。
+  const CATEGORY_COMPARE_PREVIEW_SIZE = 24;
+  const dataDir = path.join(process.cwd(), "public", "data");
+  const manifest = JSON.parse(
+    fs.readFileSync(path.join(dataDir, "categories.json"), "utf-8")
+  );
+  const categories = manifest.categories as {
+    name: string;
+    file: string;
+    product_count: number;
+  }[];
+
+  return categories.map((c) => {
+    const comparePath = path.join(dataDir, "compare", c.file);
+    const compareData = JSON.parse(fs.readFileSync(comparePath, "utf-8"));
+    // 显式只挑选 CompareWorkbench 需要的字段，跳过 compare JSON 里未使用的
+    // `rows`（按参数转置的全量数据，供另一套 legacy build_site.py 静态页兜底用），
+    // 否则 `...compareData` 会把这份未裁剪的全量数据也带进页面 HTML。
+    const compareDataPreview = {
+      category: compareData.category,
+      param_rows: compareData.param_rows,
+      products: compareData.products.slice(0, CATEGORY_COMPARE_PREVIEW_SIZE),
+    };
+    return {
+      params: { category: c.name },
+      props: {
+        compareDataPreview,
+        compareFile: c.file,
+        totalCount: c.product_count,
+        categoryName: c.name,
+        allCategories: manifest.categories,
+      },
+    };
+  });
+}
+
+const { compareDataPreview, compareFile, totalCount, categoryName, allCategories } = Astro.props;
+const profiles = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), "public", "data", "compare_profiles.json"), "utf-8")
+);
+---
+
+<BaseLayout title={`${categoryName} 对比`} activeNav="compare">
+  <CompareWorkbench
+    client:load
+    category={categoryName}
+    compareData={compareDataPreview}
+    compareDataUrl={withBase(`/data/compare/${compareFile}`)}
+    totalCount={totalCount}
+    profiles={profiles}
+    allCategories={allCategories.map((c: { name: string; slug: string }) => ({
+      name: c.name,
+      slug: c.slug,
+    }))}
+  />
+</BaseLayout>

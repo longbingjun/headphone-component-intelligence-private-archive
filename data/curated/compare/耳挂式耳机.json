@@ -1,0 +1,748 @@
+{
+  "category": "耳挂式耳机",
+  "generated_at": "2026-09-16T14:42:31+08:00",
+  "param_rows": [
+    "launch_date",
+    "price_cny",
+    "main_chip",
+    "pmic",
+    "battery_ear",
+    "battery_case",
+    "speaker",
+    "materials",
+    "weight_g",
+    "weight_case_g",
+    "weight_earbud_g",
+    "ip_rating",
+    "bluetooth",
+    "bom_rows",
+    "selling_point_tags",
+    "scenarios",
+    "positioning_summary"
+  ],
+  "products": [
+    {
+      "canonical_id": "baseus--airgo-ag20",
+      "brand": "Baseus倍思",
+      "model": "AirGo AG20",
+      "best_report_id": "188554",
+      "cells": {
+        "launch_date": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "price_cny": {
+          "value": "¥329（渠道价）",
+          "evidence": "IT之家报道的电商标价 329 元；叠券到手价 259 元未写入。",
+          "source_layer": "channel",
+          "source_url": "https://www.ithome.com/0/739/268.htm"
+        },
+        "main_chip": {
+          "value": "INJOINIC英集芯IP5333",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "pmic": {
+          "value": "INJOINIC英集芯 INJOINIC英集芯IP5333",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_ear": {
+          "value": "90mAh锂电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_case": {
+          "value": "1000mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "speaker": {
+          "value": "动圈单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "materials": {
+          "value": "硅胶、钛合金",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_g": {
+          "value": "89.1g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_earbud_g": {
+          "value": "11.8g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bluetooth": {
+          "value": "5.3",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bom_rows": {
+          "value": "23",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "selling_point_tags": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "scenarios": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "positioning_summary": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "canonical_id": "huawei--freearc",
+      "brand": "HUAWEI华为",
+      "model": "FreeArc开放式耳挂",
+      "best_report_id": "247965",
+      "cells": {
+        "launch_date": {
+          "value": "上市时间待核验",
+          "evidence": "已核对来源原文，待补充公开发布时间来源。",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "price_cny": {
+          "value": "¥799（官方价）",
+          "evidence": "华为中国官网产品页标示“¥799 起”。",
+          "source_layer": "official",
+          "source_url": "https://consumer.huawei.com/cn/headphones/freearc/"
+        },
+        "main_chip": {
+          "value": "恒玄BES2500ZP",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "pmic": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_ear": {
+          "value": "55mAh钢壳扣式",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_case": {
+          "value": "510mAh锂电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "speaker": {
+          "value": "动圈单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "materials": {
+          "value": "硅胶、钛合金、液态硅胶",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_g": {
+          "value": "86.6g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_earbud_g": {
+          "value": "9.2g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bluetooth": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bom_rows": {
+          "value": "17",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "selling_point_tags": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "scenarios": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "positioning_summary": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "canonical_id": "qcy--crossky-r70",
+      "brand": "QCY意象",
+      "model": "Crossky R70",
+      "best_report_id": "272567",
+      "cells": {
+        "launch_date": {
+          "value": "上市时间待核验",
+          "evidence": "已核对来源原文，待补充公开发布时间来源。",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "price_cny": {
+          "value": "¥299（官方价）",
+          "evidence": "QCY中国官网商品页标价：¥299。",
+          "source_layer": "official",
+          "source_url": "https://www.qcy.com.cn/lang-cn/productview/1937.html"
+        },
+        "main_chip": {
+          "value": "INJOINIC英集芯IP5516",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "pmic": {
+          "value": "INJOINIC英集芯 INJOINIC英集芯IP5516",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_ear": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "battery_case": {
+          "value": "弘捷 3.7V/580mAh锂电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "speaker": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "materials": {
+          "value": "硅胶、液态硅胶",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_g": {
+          "value": "102.8g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_case_g": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "weight_earbud_g": {
+          "value": "10.2g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "ip_rating": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bluetooth": {
+          "value": "6.0",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "bom_rows": {
+          "value": "20",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "selling_point_tags": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "scenarios": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "positioning_summary": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "param": "launch_date",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "2024及以前产品，暂未找到相应信息",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "上市时间待核验",
+          "evidence": "已核对来源原文，待补充公开发布时间来源。",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "上市时间待核验",
+          "evidence": "已核对来源原文，待补充公开发布时间来源。",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "price_cny",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "¥329（渠道价）",
+          "evidence": "IT之家报道的电商标价 329 元；叠券到手价 259 元未写入。",
+          "source_layer": "channel",
+          "source_url": "https://www.ithome.com/0/739/268.htm"
+        },
+        "huawei--freearc": {
+          "value": "¥799（官方价）",
+          "evidence": "华为中国官网产品页标示“¥799 起”。",
+          "source_layer": "official",
+          "source_url": "https://consumer.huawei.com/cn/headphones/freearc/"
+        },
+        "qcy--crossky-r70": {
+          "value": "¥299（官方价）",
+          "evidence": "QCY中国官网商品页标价：¥299。",
+          "source_layer": "official",
+          "source_url": "https://www.qcy.com.cn/lang-cn/productview/1937.html"
+        }
+      }
+    },
+    {
+      "param": "main_chip",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "INJOINIC英集芯IP5333",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "恒玄BES2500ZP",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "INJOINIC英集芯IP5516",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "pmic",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "INJOINIC英集芯 INJOINIC英集芯IP5333",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "INJOINIC英集芯 INJOINIC英集芯IP5516",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "battery_ear",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "90mAh锂电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "55mAh钢壳扣式",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "battery_case",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "1000mAh",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "510mAh锂电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "弘捷 3.7V/580mAh锂电池",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "speaker",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "动圈单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "动圈单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "喇叭单元",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "materials",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "硅胶、钛合金",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "硅胶、钛合金、液态硅胶",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "硅胶、液态硅胶",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_g",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "89.1g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "86.6g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "102.8g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_case_g",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "weight_earbud_g",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "11.8g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "9.2g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "10.2g",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "ip_rating",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "bluetooth",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "5.3",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "6.0",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "bom_rows",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "23",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "17",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "20",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "selling_point_tags",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "scenarios",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    },
+    {
+      "param": "positioning_summary",
+      "cells": {
+        "baseus--airgo-ag20": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "huawei--freearc": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        },
+        "qcy--crossky-r70": {
+          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
+          "evidence": "",
+          "source_layer": "technical",
+          "source_url": ""
+        }
+      }
+    }
+  ]
+}

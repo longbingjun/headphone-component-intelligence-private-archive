@@ -1,0 +1,198 @@
+---
+import "../styles/global.css";
+import { withBase, baseUrl } from "../lib/paths";
+import { getSampleCoverage } from "../lib/sampleCoverage";
+import { webRelease } from "../lib/releaseNotes";
+
+interface Props {
+  title?: string;
+  activeNav?: string;
+}
+
+const { title = "竞品物料分析工作台", activeNav = "" } = Astro.props;
+const fullTitle = title.includes("工作台") ? title : `${title} · 竞品物料分析工作台`;
+const home = withBase("/");
+const compare = withBase("/compare");
+const teardown = withBase("/teardown-details");
+const bomAnalysis = withBase("/bom-analysis");
+const brandSupplyChain = withBase("/brand-supply-chain");
+const guide = withBase("/#guide");
+const coverage = getSampleCoverage();
+const coverageDate = coverage.generated_at ? coverage.generated_at.slice(0, 10) : "当前构建";
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+  </head>
+  <body data-version={coverage.data_version} data-schema-version={coverage.schema_version}>
+    <header class="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--bg-elevated)]/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-3 px-5 py-3">
+        <a href={home} class="gradient-text text-lg font-bold no-underline hover:no-underline">
+          竞品物料分析工作台
+        </a>
+        <nav class="flex flex-wrap gap-1 text-sm">
+          <a
+            href={home}
+            class:list={[
+              "nav-link rounded-full px-3 py-1.5 no-underline",
+              activeNav === "home"
+                ? "nav-link--active bg-[var(--primary)] text-white"
+                : "text-[var(--muted)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary-dark)]",
+            ]}
+          >工作台</a>
+          <a
+            href={compare}
+            class:list={[
+              "nav-link rounded-full px-3 py-1.5 no-underline",
+              activeNav === "compare"
+                ? "nav-link--active bg-[var(--primary)] text-white"
+                : "text-[var(--muted)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary-dark)]",
+            ]}
+          >产品对比</a>
+          <a
+            href={bomAnalysis}
+            class:list={[
+              "nav-link rounded-full px-3 py-1.5 no-underline",
+              activeNav === "bom-analysis"
+                ? "nav-link--active bg-[var(--primary)] text-white"
+                : "text-[var(--muted)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary-dark)]",
+            ]}
+          >器件-供应商溯源</a>
+          <a
+            href={brandSupplyChain}
+            class:list={[
+              "nav-link rounded-full px-3 py-1.5 no-underline",
+              activeNav === "brand-supply-chain"
+                ? "nav-link--active bg-[var(--primary)] text-white"
+                : "text-[var(--muted)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary-dark)]",
+            ]}
+          >品牌供应链</a>
+          <a
+            href={teardown}
+            class:list={[
+              "nav-link rounded-full px-3 py-1.5 no-underline",
+              activeNav === "teardown"
+                ? "nav-link--active bg-[var(--primary)] text-white"
+                : "text-[var(--muted)] hover:bg-[var(--primary-soft)] hover:text-[var(--primary-dark)]",
+            ]}
+          >情报明细</a>
+          <a
+            href={guide}
+            class="nav-link rounded-full px-3 py-1.5 text-[var(--muted)] no-underline hover:bg-[var(--primary-soft)] hover:text-[var(--primary-dark)]"
+          >使用指南</a>
+        </nav>
+      </div>
+    </header>
+    <aside class="global-release-status" aria-label="网站功能版本状态">
+      <details>
+        <summary>
+          <span class="global-release-status__stage"><i aria-hidden="true"></i>{webRelease.stageLabel}</span>
+          <span class="global-release-status__summary"><strong>{webRelease.stageSummary}</strong><em>·</em>最新 Web 维护时间：{webRelease.maintainedAt}</span>
+          <span class="global-release-status__toggle"><b data-collapsed>查看本次更新</b><b data-expanded>收起本次更新</b><i aria-hidden="true">⌄</i></span>
+        </summary>
+        <div class="global-release-status__details">
+          <section>
+            <h2>维护信息</h2>
+            <p>维护人：{webRelease.maintainer}</p>
+            <p>当前阶段：{webRelease.stageDetail}</p>
+          </section>
+          <section>
+            <h2>本次主要变更</h2>
+            <ul>{webRelease.changes.map((item) => <li>{item}</li>)}</ul>
+          </section>
+          <section>
+            <h2>本次问题修复</h2>
+            <ul>{webRelease.fixes.map((item) => <li>{item}</li>)}</ul>
+          </section>
+        </div>
+      </details>
+    </aside>
+    <main class="mx-auto max-w-[1400px] px-5 py-6">
+      <aside class="global-sample-coverage" aria-label="当前网站样本覆盖">
+        <div class="global-sample-coverage__title">
+          <span>当前样本覆盖</span>
+          <small>更新至 {coverageDate} · 数据版本 {coverage.data_version} · 名称按当前规范化字段去重</small>
+        </div>
+        <dl>
+          <div><dt>产品档案</dt><dd>{coverage.product_count.toLocaleString("zh-CN")}</dd></div>
+          <div><dt>供应商名称</dt><dd>{coverage.supplier_name_count.toLocaleString("zh-CN")}</dd></div>
+          <div><dt>耳机品牌名称</dt><dd>{coverage.brand_name_count.toLocaleString("zh-CN")}</dd></div>
+          <div><dt>拆解报告</dt><dd>{coverage.report_count.toLocaleString("zh-CN")}</dd></div>
+          <div><dt>拆解视频</dt><dd>{coverage.video_count.toLocaleString("zh-CN")}</dd></div>
+        </dl>
+        <p>供应商或品牌仍可能存在别名；报告/视频是来源数量，不等同于产品数量。</p>
+      </aside>
+      <slot />
+    </main>
+    <footer class="border-t border-[var(--line)] py-6 text-center text-sm text-[var(--muted)]">
+      <p>
+        数据来源：
+        <a href="https://www.52audio.com/archives/category/teardowns" target="_blank" rel="noopener">我爱音频网拆解</a>
+        · 个人技术作品集演示 · 样本不代表市场份额或实际采购量
+      </p>
+      <p class="mt-2">
+        <a
+          href="https://github.com/longbingjun/headphone-component-intelligence/issues/new/choose"
+          target="_blank"
+          rel="noopener"
+          class="text-[var(--primary)] no-underline hover:underline"
+        >反馈建议</a>
+        <span class="mx-1.5">·</span>
+        数据纠错、功能建议与页面问题
+      </p>
+    </footer>
+    <script define:vars={{ baseUrl }}>
+      (function () {
+        var RETURN_CONTEXT_KEY = "cost-product-return-context-v1";
+        var basePath = new URL(baseUrl, window.location.origin).pathname;
+        var normalizedBase = basePath.endsWith("/") ? basePath : basePath + "/";
+
+        function relativePath(pathname) {
+          return pathname.startsWith(normalizedBase)
+            ? pathname.slice(normalizedBase.length)
+            : pathname.replace(/^\/+/, "");
+        }
+
+        function returnLabel(pathname) {
+          var relative = relativePath(pathname);
+          if (!relative) return "返回工作台";
+          if (relative.startsWith("compare")) return "返回跨品类对比";
+          if (relative.startsWith("category/")) {
+            var category = relative.split("/")[1] || "同类型产品";
+            try { category = decodeURIComponent(category); } catch (err) { /* 保留原值 */ }
+            return "返回" + category + "对比";
+          }
+          if (relative.startsWith("bom-analysis")) return "返回器件-供应商溯源";
+          if (relative.startsWith("brand-supply-chain")) return "返回品牌供应链";
+          if (relative.startsWith("teardown-details")) return "返回情报明细";
+          if (relative.startsWith("product/")) return "返回上一产品档案";
+          return "返回上级页面";
+        }
+
+        document.addEventListener("click", function (event) {
+          var target = event.target;
+          if (!(target instanceof Element)) return;
+          var anchor = target.closest("a[href]");
+          if (!(anchor instanceof HTMLAnchorElement)) return;
+          try {
+            var destination = new URL(anchor.href, window.location.href);
+            var productPrefix = normalizedBase + "product/";
+            if (destination.origin !== window.location.origin || !destination.pathname.startsWith(productPrefix)) return;
+            sessionStorage.setItem(RETURN_CONTEXT_KEY, JSON.stringify({
+              productPath: destination.pathname.replace(/\/+$/, ""),
+              returnHref: window.location.pathname + window.location.search + window.location.hash,
+              returnLabel: returnLabel(window.location.pathname),
+              savedAt: Date.now(),
+            }));
+          } catch (err) {
+            /* sessionStorage 不可用时，产品页使用工作台兜底链接 */
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

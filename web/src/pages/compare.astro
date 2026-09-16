@@ -1,0 +1,25 @@
+﻿---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CrossCategoryCompare from "../components/CrossCategoryCompare";
+import { withBase } from "../lib/paths";
+import fs from "node:fs";
+import path from "node:path";
+
+const dataDir = path.join(process.cwd(), "public", "data");
+const manifest = JSON.parse(
+  fs.readFileSync(path.join(dataDir, "categories.json"), "utf-8")
+);
+const profiles = JSON.parse(
+  fs.readFileSync(path.join(dataDir, "compare_profiles.json"), "utf-8")
+);
+---
+
+<BaseLayout title="跨品类对比" activeNav="compare">
+  <CrossCategoryCompare
+    client:load
+    categories={manifest.categories}
+    profiles={profiles}
+    productIndexUrl={withBase("/data/products/index.json")}
+    compareDataBaseUrl={withBase("/data/compare")}
+  />
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ComponentSourcingExplorer from "../components/ComponentSourcingExplorer";
+import { withBase } from "../lib/paths";
+
+const manifestUrl = withBase("/data/bom-analysis/manifest.json");
+const componentDataBase = withBase("/data/bom-analysis/");
+const supplierManifestUrl = withBase("/data/supplier-sourcing/manifest.json");
+const supplierDataBase = withBase("/data/supplier-sourcing/");
+const productBase = withBase("/product/");
+---
+
+<BaseLayout title="器件寻源与供应商能力" activeNav="bom-analysis">
+  <ComponentSourcingExplorer
+    client:load
+    manifestUrl={manifestUrl}
+    componentDataBase={componentDataBase}
+    supplierManifestUrl={supplierManifestUrl}
+    supplierDataBase={supplierDataBase}
+    productBase={productBase}
+  />
+</BaseLayout>

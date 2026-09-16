@@ -1,0 +1,83 @@
+{
+  "default_profile": "tws",
+  "profiles": {
+    "tws": {
+      "label": "入耳 / 耳夹 / 耳挂",
+      "categories": ["全入耳式耳机", "半入耳式耳机", "耳夹式耳机", "耳挂式耳机", "待细分耳机"],
+      "p0": [
+        "launch_date",
+        "price_cny",
+        "main_chip",
+        "pmic",
+        "battery_ear",
+        "battery_case",
+        "speaker",
+        "materials",
+        "weight_g",
+        "weight_case_g",
+        "weight_earbud_g",
+        "bluetooth",
+        "bom_rows"
+      ],
+      "p1": [
+        "ip_rating",
+        "selling_point_tags",
+        "scenarios",
+        "positioning_summary"
+      ]
+    },
+    "bone": {
+      "label": "骨传导",
+      "categories": ["骨传导耳机"],
+      "p0": [
+        "launch_date",
+        "price_cny",
+        "main_chip",
+        "battery_ear",
+        "speaker",
+        "materials",
+        "weight_g",
+        "bluetooth",
+        "bom_rows"
+      ],
+      "p1": ["pmic", "battery_case", "ip_rating", "selling_point_tags", "scenarios", "positioning_summary"]
+    },
+    "default": {
+      "label": "通用",
+      "categories": ["*"],
+      "p0": [
+        "launch_date",
+        "price_cny",
+        "main_chip",
+        "pmic",
+        "battery_ear",
+        "battery_case",
+        "speaker",
+        "materials",
+        "weight_g",
+        "bluetooth",
+        "bom_rows"
+      ],
+      "p1": ["ip_rating", "selling_point_tags", "scenarios", "positioning_summary"]
+    }
+  },
+  "param_labels": {
+    "launch_date": { "label": "上市时间", "why": "产品代际判断；有来源时可点击查看发布时间证据" },
+    "price_cny": { "label": "渠道售价", "why": "竞品定位与成本锚点" },
+    "main_chip": { "label": "耳机主控 SoC", "why": "平台选型 — 成本结构核心" },
+    "pmic": { "label": "充电仓 PMIC", "why": "仓电源管理 IC" },
+    "battery_ear": { "label": "耳机电池", "why": "耳机侧电芯规格与供应商" },
+    "battery_case": { "label": "仓电池", "why": "充电仓电芯容量" },
+    "speaker": { "label": "喇叭/振动单元", "why": "声学 BOM 关键差异" },
+    "materials": { "label": "关键材料", "why": "结构件与外壳成本信号" },
+    "weight_g": { "label": "整机重量", "why": "材料与佩戴形态" },
+    "weight_case_g": { "label": "充电盒重量", "why": "仓体结构与电池容量的成本信号" },
+    "weight_earbud_g": { "label": "单只耳机重量", "why": "佩戴舒适度与耳机侧材料/电池取舍" },
+    "ip_rating": { "label": "防护等级", "why": "密封工艺成本" },
+    "bluetooth": { "label": "蓝牙版本", "why": "主控世代参考" },
+    "bom_rows": { "label": "物料项数", "why": "BOM 拆解完整度参考" },
+    "selling_point_tags": { "label": "卖点标签", "why": "从拆解文本归类的营销卖点方向" },
+    "scenarios": { "label": "适用场景", "why": "正文提及的使用场景关键词" },
+    "positioning_summary": { "label": "产品定位", "why": "基于卖点与场景生成的简短定位说明，用于快速判断产品面向的人群和用途" }
+  }
+}

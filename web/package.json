@@ -1,0 +1,31 @@
+{
+  "name": "headphone-component-intelligence",
+  "type": "module",
+  "version": "5.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "cache:images": "node scripts/cache-images.mjs",
+    "build": "node scripts/cache-images.mjs && astro build",
+    "build:minio": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/react": "^6.0.5",
+    "@tanstack/react-table": "^8.21.2",
+    "astro": "^7.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.35.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "tailwindcss": "^4.0.9",
+    "typescript": "^5.7.3"
+  },
+  "allowScripts": {
+    "sharp@0.35.4": true,
+    "esbuild@0.28.2": true
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "version": "2026-09-11",
+  "policy": "Only exact, source-verified aliases are merged. Raw names remain on evidence rows. Subsidiaries, parent groups and merely similar names stay separate unless the registry explicitly says otherwise.",
+  "invalid_values": [
+    "用于语音通话功能拾音",
+    "安克创新科技股份有限公司等"
+  ],
+  "groups": [
+    {
+      "canonical": "JYZ金宇宙",
+      "aliases": [
+        "金宇宙",
+        "金宇宙能源有限公司",
+        "深圳市金宇宙能源有限公司",
+        "JYZ 金宇宙",
+        "JYZ金宇宙能源",
+        "JYZ 金宇宙能源有限公司",
+        "金宇宙的30mAh软包电池"
+      ]
+    },
+    {
+      "canonical": "HJ弘捷新能源",
+      "aliases": [
+        "HJ弘捷",
+        "弘捷",
+        "弘捷新能源",
+        "广东弘捷新能源有限公司"
+      ]
+    },
+    {
+      "canonical": "PATL小锂新能源",
+      "aliases": [
+        "PATL东莞小锂新能源",
+        "小锂新能源",
+        "东莞小锂新能源科技有限公司",
+        "东莞市小锂新能源科技有限公司"
+      ]
+    },
+    {
+      "canonical": "YD亿等新能源",
+      "aliases": [
+        "亿等新能源",
+        "湖南亿等新能源有限公司"
+      ]
+    },
+    {
+      "canonical": "ATL新能源",
+      "aliases": [
+        "ATL东莞新能源",
+        "ATL新能源科技",
+        "ATL新能源科技有限公司",
+        "东莞新能源科技有限公司"
+      ]
+    },
+    {
+      "canonical": "VARTA瓦尔塔",
+      "aliases": [
+        "VARTA",
+        "Varta瓦尔塔",
+        "德国的VARTA瓦尔塔",
+        "Varta瓦尔塔的49.7mAh钢壳扣式电池"
+      ]
+    },
+    {
+      "canonical": "言九电子",
+      "aliases": [
+        "YJ言九电子",
+        "YANJOO言九电子",
+        "广东言九电子股份有限公司"
+      ]
+    },
+    {
+      "canonical": "LIDEA电的电子",
+      "aliases": [
+        "LIDEA",
+        "LIDEA电的电子"
+      ]
+    },
+    {
+      "canonical": "超聚电池",
+      "aliases": [
+        "惠州超聚",
+        "惠州市超聚电池有限公司",
+        "“惠州市超聚电池有限公司”的聚合物锂电池",
+        "“惠州市超聚电池有限公司”聚合物锂电池"
+      ]
+    },
+    {
+      "canonical": "锂威能源",
+      "aliases": [
+        "LWN锂威能",
+        "锂威能",
+        "锂威能源科技",
+        "东莞锂威能源科技有限公司",
+        "东莞锂威新能源科技有限公司"
+      ]
+    },
+    {
+      "canonical": "诺威新能源",
+      "aliases": [
+        "NV诺威新能源",
+        "诺威新能源"
+      ]
+    },
+    {
+      "canonical": "恒泰科技",
+      "aliases": [
+        "HT恒泰科技",
+        "惠州市恒泰科技股份有限公司"
+      ]
+    },
+    {
+      "canonical": "鑫电能源",
+      "aliases": [
+        "XD鑫电",
+        "东莞鑫电能源有限公司",
+        "鑫电"
+      ]
+    },
+    {
+      "canonical": "微宙电子",
+      "aliases": [
+        "MBT微宙",
+        "MBT微宙电子",
+        "MET微宙电子",
+        "常州微宙电子科技有限公司"
+      ]
+    },
+    {
+      "canonical": "国光电子",
+      "aliases": [
+        "AEC国光电子",
+        "广东国光电子有限公司"
+      ]
+    },
+    {
+      "canonical": "KRCONN深圳精睿兴业科技有限公司",
+      "aliases": [
+        "深圳精睿兴业科技有限公司",
+        "深圳市精睿兴业科技有限公司",
+        "“KRCONN”深圳精睿兴业科技有限公司",
+        "KRCONN深圳市精睿兴业科技有限公司"
+      ]
+    },
+    {
+      "canonical": "敏芯微电子",
+      "aliases": [
+        "敏芯微",
+        "敏芯微电子的镭雕ME49 X922 MEMS麦克风"
+      ]
+    },
+    {
+      "canonical": "新港电子",
+      "aliases": [
+        "新港电子的镭雕2311 MX04的MEMS麦克风"
+      ]
+    },
+    {
+      "canonical": "TI德州仪器",
+      "aliases": [
+        "TI",
+        "德州仪器",
+        "TI德州仪器的TPD1S5141输入过压保护IC"
+      ]
+    },
+    {
+      "canonical": "Goldconn高端精密",
+      "aliases": [
+        "东莞高端精密电子股份有限公司"
+      ]
+    },
+    {
+      "canonical": "ZWD众旺德",
+      "aliases": [
+        "中山市众旺德新能源科技有限公司"
+      ]
+    },
+    {
+      "canonical": "曙鹏科技（深圳）有限公司",
+      "aliases": [
+        "曙鹏科技",
+        "豪鹏科技旗下子公司——曙鹏科技（深圳）有限公司"
+      ]
+    },
+    {
+      "canonical": "钰泰半导体",
+      "aliases": [
+        "钰泰ETA6093支持同口充放",
+        "钰泰"
+      ]
+    },
+    {
+      "canonical": "深圳市金晟欣电子科技有限公司",
+      "aliases": [
+        "金晟欣电子科技有限公司"
+      ]
+    },
+    {
+      "canonical": "苏州赛芯电子科技",
+      "aliases": [
+        "赛芯电子"
+      ]
+    },
+    {
+      "canonical": "鹏辉能源",
+      "aliases": [
+        "鹏辉",
+        "广州鹏辉能源科技有限公司"
+      ]
+    },
+    {
+      "canonical": "新余赣锋",
+      "aliases": [
+        "赣锋",
+        "GF赣锋锂业",
+        "GF新余赣锋",
+        "新余赣锋电子"
+      ]
+    },
+    {
+      "canonical": "SDI三星",
+      "aliases": [
+        "三星SDI株式会社"
+      ]
+    },
+    {
+      "canonical": "豪鹏科技",
+      "aliases": [
+        "惠州市豪鹏科技有限公司",
+        "广东省豪鹏新能源科技有限公司"
+      ]
+    },
+    {
+      "canonical": "长虹聚和源",
+      "aliases": [
+        "JHY聚和源"
+      ]
+    },
+    {
+      "canonical": "SONY索尼",
+      "aliases": [
+        "索尼",
+        "索尼公司"
+      ]
+    },
+    {
+      "canonical": "Grain谷雨半导体",
+      "aliases": [
+        "于Grain谷雨半导体"
+      ]
+    },
+    {
+      "canonical": "元泰",
+      "aliases": [
+        "元泰233DQ"
+      ]
+    }
+  ]
+}
