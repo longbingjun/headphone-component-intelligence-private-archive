@@ -21,7 +21,7 @@ class UiCopyContractTests(unittest.TestCase):
         self.assertIn("供应商名称", source)
         self.assertIn("随其他条件联动更新", source)
         self.assertIn("不代表市场份额、实际采购量或供应商出货排名", source)
-        self.assertIn("报告与文字证据", source)
+        self.assertIn("提取依据与公开来源", source)
         self.assertIn("型号均未披露", source)
         self.assertIn("耳机品牌尚未识别", source)
         self.assertIn("参数均未披露", source)
@@ -86,7 +86,7 @@ class UiCopyContractTests(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn("产品 BOM 对比", source)
         self.assertIn("共同器件类型", source)
-        self.assertIn("查看文字与图片证据", source)
+        self.assertIn("查看提取依据与公开来源", source)
 
 
 if __name__ == "__main__":

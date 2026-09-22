@@ -191,9 +191,9 @@ def acquire_video(snapshot: dict[str, Any], work_dir: Path, settings: Settings) 
     except ImportError as exc:
         raise RuntimeError("yt-dlp is not installed in the Video Worker image") from exc
 
-    cookie_file = settings.video_cookies_file.strip()
+    cookie_file = settings.video_session_file.strip()
     if cookie_file and not Path(cookie_file).is_file():
-        raise FileNotFoundError(f"VIDEO_COOKIES_FILE does not exist: {cookie_file}")
+        raise FileNotFoundError(f"APP_VIDEO_SESSION_FILE does not exist: {cookie_file}")
     options: dict[str, Any] = {
         "outtmpl": str(work_dir / "source.%(ext)s"),
         "format": "bestvideo[height<=1080]+bestaudio/best[height<=1080]/best",

@@ -112,10 +112,10 @@ const coverageDate = coverage.generated_at ? coverage.generated_at.slice(0, 10) 
       </details>
     </aside>
     <main class="mx-auto max-w-[1400px] px-5 py-6">
-      <aside class="global-sample-coverage" aria-label="当前网站样本覆盖">
+      <aside class="global-sample-coverage" aria-label="公开演示快照覆盖">
         <div class="global-sample-coverage__title">
-          <span>当前样本覆盖</span>
-          <small>更新至 {coverageDate} · 数据版本 {coverage.data_version} · 名称按当前规范化字段去重</small>
+          <span>公开演示快照</span>
+          <small>固定小规模数据 · 更新至 {coverageDate} · 数据版本 {coverage.data_version} · 不执行定时采集</small>
         </div>
         <dl>
           <div><dt>产品档案</dt><dd>{coverage.product_count.toLocaleString("zh-CN")}</dd></div>
@@ -124,7 +124,7 @@ const coverageDate = coverage.generated_at ? coverage.generated_at.slice(0, 10) 
           <div><dt>拆解报告</dt><dd>{coverage.report_count.toLocaleString("zh-CN")}</dd></div>
           <div><dt>拆解视频</dt><dd>{coverage.video_count.toLocaleString("zh-CN")}</dd></div>
         </dl>
-        <p>供应商或品牌仍可能存在别名；报告/视频是来源数量，不等同于产品数量。</p>
+        <p>仅用于展示信息加工和交互设计；不代表完整行业覆盖、市场份额、采购量或供应商出货排名。</p>
       </aside>
       <slot />
     </main>
@@ -132,9 +132,11 @@ const coverageDate = coverage.generated_at ? coverage.generated_at.slice(0, 10) 
       <p>
         数据来源：
         <a href="https://www.52audio.com/archives/category/teardowns" target="_blank" rel="noopener">我爱音频网拆解</a>
-        · 个人技术作品集演示 · 样本不代表市场份额或实际采购量
+        · 固定脱敏的个人技术作品集演示 · 来源内容权利归原权利人所有
       </p>
       <p class="mt-2">
+        <a href={withBase("/about")} class="text-[var(--primary)] no-underline hover:underline">数据来源与公开边界</a>
+        <span class="mx-1.5">·</span>
         <a
           href="https://github.com/longbingjun/headphone-component-intelligence/issues/new/choose"
           target="_blank"

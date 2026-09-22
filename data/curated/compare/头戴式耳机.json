@@ -1,6 +1,6 @@
 {
   "category": "头戴式耳机",
-  "generated_at": "2026-09-16T14:42:31+08:00",
+  "generated_at": "2026-09-22T14:47:09+08:00",
   "param_rows": [
     "launch_date",
     "price_cny",
@@ -130,116 +130,6 @@
           "source_url": ""
         }
       }
-    },
-    {
-      "canonical_id": "baseus--bowie-h1i",
-      "brand": "Baseus倍思",
-      "model": "Bowie H1i",
-      "best_report_id": "225571",
-      "cells": {
-        "launch_date": {
-          "value": "上市时间待核验",
-          "evidence": "已核对来源原文，待补充公开发布时间来源。",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "price_cny": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "main_chip": {
-          "value": "Bluetrum中科蓝讯BT8951H",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "pmic": {
-          "value": "思远半导体 思远半导体SY6101",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "battery_ear": {
-          "value": "600mAh锂电池",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "battery_case": {
-          "value": "600 mAh",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "speaker": {
-          "value": "喇叭单元",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "materials": {
-          "value": "PC、ABS",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_g": {
-          "value": "225.1g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_case_g": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_earbud_g": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "ip_rating": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "bluetooth": {
-          "value": "6.0",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "bom_rows": {
-          "value": "17",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "selling_point_tags": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "scenarios": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "positioning_summary": {
-          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        }
-      }
     }
   ],
   "rows": [
@@ -251,12 +141,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "上市时间待核验",
-          "evidence": "已核对来源原文，待补充公开发布时间来源。",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -264,12 +148,6 @@
       "param": "price_cny",
       "cells": {
         "bose--quietcomfort-ultra-headphones": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--bowie-h1i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -285,12 +163,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "Bluetrum中科蓝讯BT8951H",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -299,12 +171,6 @@
       "cells": {
         "bose--quietcomfort-ultra-headphones": {
           "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "思远半导体 思远半导体SY6101",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -319,12 +185,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "600mAh锂电池",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -336,12 +196,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "600 mAh",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -349,12 +203,6 @@
       "param": "speaker",
       "cells": {
         "bose--quietcomfort-ultra-headphones": {
-          "value": "喇叭单元",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--bowie-h1i": {
           "value": "喇叭单元",
           "evidence": "",
           "source_layer": "technical",
@@ -370,12 +218,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "PC、ABS",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -387,12 +229,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "225.1g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -400,12 +236,6 @@
       "param": "weight_case_g",
       "cells": {
         "bose--quietcomfort-ultra-headphones": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--bowie-h1i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -421,12 +251,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -434,12 +258,6 @@
       "param": "ip_rating",
       "cells": {
         "bose--quietcomfort-ultra-headphones": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--bowie-h1i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -455,12 +273,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "6.0",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -472,12 +284,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "17",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -485,12 +291,6 @@
       "param": "selling_point_tags",
       "cells": {
         "bose--quietcomfort-ultra-headphones": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--bowie-h1i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -506,12 +306,6 @@
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
-        },
-        "baseus--bowie-h1i": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
@@ -519,12 +313,6 @@
       "param": "positioning_summary",
       "cells": {
         "bose--quietcomfort-ultra-headphones": {
-          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--bowie-h1i": {
           "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
           "evidence": "",
           "source_layer": "technical",

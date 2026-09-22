@@ -126,13 +126,13 @@ const yearCoverage = Array.from(yearPriceCounts.entries())
     <div class="home-hero__copy">
       <p class="home-eyebrow">Market signals · 耳机竞品情报</p>
       <h1 id="home-title">拆一款，<br /><span>读懂一类</span></h1>
-      <p>把拆解报告变成可追溯、可比较的 BOM 情报。</p>
+      <p>把公开的非结构化拆解资料，加工成可追溯、可比较的 BOM 情报演示。</p>
       <div class="home-hero__actions">
         <a href="#guide" class="home-primary-action">开始探索 <span aria-hidden="true">↘</span></a>
         <a href="#latest-products" class="home-secondary-action">查看最新信号</a>
       </div>
     </div>
-    <aside class="home-signal-radar" aria-label="当前情报覆盖概览">
+    <aside class="home-signal-radar" aria-label="公开演示快照概览">
       <span class="home-signal-radar__ring" aria-hidden="true"></span>
       <span class="home-signal-radar__center" aria-hidden="true">⌖</span>
       <span class="home-signal-chip home-signal-chip--products">产品档案<strong>{allProducts.length}</strong></span>
@@ -155,19 +155,19 @@ const yearCoverage = Array.from(yearPriceCounts.entries())
     <div id="home-guide-body">
     <aside class="home-guide__daily-note" aria-label="情报更新说明">
       <span aria-hidden="true">↻</span>
-      <p><strong>情报每日持续追踪</strong>系统会每日定时采集我爱音频网的新拆解信息；“最新 Web 维护时间”只表示页面功能更新时间，不代表数据停止更新。</p>
+      <p><strong>固定脱敏演示快照</strong>公开站不执行定时采集，仅用小规模案例展示非结构化信息抽取、实体规范化、证据追溯与知识产品设计能力。</p>
     </aside>
 
     <section class="home-guide-group home-guide-group--product" aria-labelledby="home-guide-product-title">
       <header><span aria-hidden="true">⌕</span><h3 id="home-guide-product-title">产品研究</h3><small>查档案、做横向比较</small></header>
       <nav class="home-guide__tasks home-guide__tasks--two" aria-label="产品研究任务">
         <a href="#product-browser" class="home-guide-task">
-          <span class="home-guide-task__icon" aria-hidden="true">⌕</span>
+          <img class="home-guide-task__visual" src={withBase("/demo-raster/feature-product.png")} alt="" />
           <span><strong>查一款产品用了什么</strong><small>搜索品牌或型号，进入完整产品档案</small></span>
           <b aria-hidden="true">→</b>
         </a>
         <a href={withBase("/compare")} class="home-guide-task">
-          <span class="home-guide-task__icon" aria-hidden="true">⇄</span>
+          <img class="home-guide-task__visual" src={withBase("/demo-raster/feature-compare.png")} alt="" />
           <span><strong>比较几款产品</strong><small>选择同类型对比或跨品类对比</small></span>
           <b aria-hidden="true">→</b>
         </a>
@@ -178,17 +178,17 @@ const yearCoverage = Array.from(yearPriceCounts.entries())
       <header><span aria-hidden="true">⌘</span><h3 id="home-guide-sourcing-title">采购与供应链研究</h3><small>三条路径按任务直达</small></header>
       <nav class="home-guide__tasks" aria-label="采购与供应链研究任务">
         <a href={withBase("/bom-analysis?mode=component")} class="home-guide-task">
-          <span class="home-guide-task__icon" aria-hidden="true">◫</span>
+          <img class="home-guide-task__visual" src={withBase("/demo-raster/feature-sourcing.png")} alt="" />
           <span><strong>按器件找供应商</strong><small>从器件类型查看厂商、型号和应用产品</small></span>
           <b aria-hidden="true">→</b>
         </a>
         <a href={withBase("/bom-analysis?mode=supplier")} class="home-guide-task">
-          <span class="home-guide-task__icon" aria-hidden="true">⌂</span>
+          <img class="home-guide-task__visual" src={withBase("/demo-raster/feature-sourcing.png")} alt="" />
           <span><strong>按供应商看能力</strong><small>查看供应商涉及的器件、品牌与产品</small></span>
           <b aria-hidden="true">→</b>
         </a>
         <a href={withBase("/brand-supply-chain")} class="home-guide-task">
-          <span class="home-guide-task__icon" aria-hidden="true">◎</span>
+          <img class="home-guide-task__visual" src={withBase("/demo-raster/feature-brand.png")} alt="" />
           <span><strong>从品牌看供应链</strong><small>观察品牌全部器件及历史供应链变化</small></span>
           <b aria-hidden="true">→</b>
         </a>
@@ -216,7 +216,7 @@ const yearCoverage = Array.from(yearPriceCounts.entries())
       </nav>
     </section>
     <div class="home-guide__foot">
-      <span>✓ 所有结论均可回溯原始拆解报告</span>
+      <span>✓ 真实案例仅保留结构化事实与来源链接</span>
       <span>选任务　→　缩小范围　→　核对证据</span>
     </div>
     </div>

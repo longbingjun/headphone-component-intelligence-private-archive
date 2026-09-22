@@ -131,21 +131,21 @@ def load_env_file(path: Path) -> None:
 def model_config(env_file: Path) -> tuple[str, str, str]:
     load_env_file(env_file)
     api_key = (
-        os.environ.get("DEFAULT_MODEL_API_KEY", "").strip()
-        or os.environ.get("DEEPSEEK_API_KEY", "").strip()
+        os.environ.get("APP_TEXT_MODEL_TOKEN", "").strip()
+        or os.environ.get("APP_TEXT_MODEL_TOKEN", "").strip()
     )
     api_url = (
-        os.environ.get("DEFAULT_MODEL_API_URL", "").strip()
-        or os.environ.get("DEEPSEEK_API_URL", "").strip()
+        os.environ.get("APP_TEXT_MODEL_BASE_URL", "").strip()
+        or os.environ.get("APP_TEXT_MODEL_BASE_URL", "").strip()
         or "https://api.deepseek.com/v1"
     )
     model = (
-        os.environ.get("DEFAULT_MODEL_NAME", "").strip()
+        os.environ.get("APP_TEXT_MODEL_NAME", "").strip()
         or os.environ.get("DEEPSEEK_MODEL", "").strip()
         or "deepseek-v4-flash"
     )
     if not api_key:
-        raise RuntimeError("DEFAULT_MODEL_API_KEY / DEEPSEEK_API_KEY is not configured")
+        raise RuntimeError("APP_TEXT_MODEL_TOKEN / APP_TEXT_MODEL_TOKEN is not configured")
     return api_key, api_url.rstrip("/"), model
 
 

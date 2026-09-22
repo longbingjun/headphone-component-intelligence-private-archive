@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="关于公开演示与数据边界">
+  <article class="mx-auto max-w-4xl space-y-8 rounded-3xl border border-[var(--line)] bg-white p-7 shadow-sm md:p-10">
+    <header class="space-y-3">
+      <p class="home-eyebrow">Public demo · data provenance</p>
+      <h1 class="m-0 text-3xl text-[var(--ink)]">这是一份方法与产品设计演示，不是来源网站的镜像</h1>
+      <p class="m-0 text-lg leading-8 text-[var(--muted)]">公开站使用固定、脱敏的小规模数据快照，展示如何把分散的拆解文章与视频线索加工成可追溯的产品、BOM、供应商和品牌供应链视图。</p>
+    </header>
+
+    <section class="space-y-3">
+      <h2 class="text-xl">信息如何加工</h2>
+      <ol class="space-y-2 leading-7 text-[var(--muted)]">
+        <li>识别公开来源中的产品、器件、厂商、型号、参数和使用位置。</li>
+        <li>规范品牌与供应商别名，同时保留事实与来源之间的追溯关系。</li>
+        <li>经过规则校验和人工抽样复核后，导出小规模结构化演示快照。</li>
+        <li>由同一份结构化数据派生产品档案、器件寻源、品牌供应链与对比视图。</li>
+      </ol>
+    </section>
+
+    <section class="grid gap-4 md:grid-cols-2">
+      <div class="rounded-2xl bg-[var(--primary-soft)] p-5">
+        <h2 class="mt-0 text-lg">公开站包含</h2>
+        <ul class="space-y-2 text-[var(--muted)]"><li>8 个经过筛选的结构化真实案例</li><li>事实字段、规范化实体与来源 URL</li><li>用于说明提取依据的必要短摘录</li></ul>
+      </div>
+      <div class="rounded-2xl bg-[var(--surface-2)] p-5">
+        <h2 class="mt-0 text-lg">公开站不包含</h2>
+        <ul class="space-y-2 text-[var(--muted)]"><li>原始图片、全文或完整字幕</li><li>Cookie、API Key 或公司内部数据</li><li>定时采集、市场份额或采购量推断</li></ul>
+      </div>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-xl">来源与权利说明</h2>
+      <p class="leading-7 text-[var(--muted)]">来源文章、图片、视频、产品名称和商标的权利归原权利人所有。演示记录保留原始链接用于归因和核验；统计结果只描述当前固定快照，不代表完整行业覆盖。</p>
+      <p><a href="https://www.52audio.com/archives/category/teardowns" target="_blank" rel="noopener noreferrer" class="font-semibold text-[var(--primary)]">前往我爱音频网拆解栏目 ↗</a></p>
+    </section>
+  </article>
+</BaseLayout>

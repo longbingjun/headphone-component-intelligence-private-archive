@@ -666,9 +666,9 @@ def validate_events(
 
 
 def extract_facts(segments: list[SubtitleSegment], output_dir: Path) -> tuple[list[dict[str, Any]], str]:
-    api_key = os.getenv("VIDEO_LLM_API_KEY") or os.getenv("DEFAULT_MODEL_API_KEY")
-    base_url = os.getenv("VIDEO_LLM_BASE_URL") or os.getenv("DEFAULT_MODEL_API_URL")
-    model = os.getenv("VIDEO_LLM_MODEL") or os.getenv("DEFAULT_MODEL_NAME")
+    api_key = os.getenv("APP_VIDEO_MODEL_TOKEN") or os.getenv("APP_TEXT_MODEL_TOKEN")
+    base_url = os.getenv("APP_VIDEO_MODEL_BASE_URL") or os.getenv("APP_TEXT_MODEL_BASE_URL")
+    model = os.getenv("APP_VIDEO_MODEL_NAME") or os.getenv("APP_TEXT_MODEL_NAME")
     candidates = [segment for segment in segments if is_fact_candidate(segment)]
     if not (api_key and base_url and model):
         return validate_events(heuristic_events(segments), segments), "local_heuristic_no_api"

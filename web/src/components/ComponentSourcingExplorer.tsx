@@ -508,13 +508,11 @@ function EvidenceTable({
   productBase,
   title,
   scope,
-  onImage,
 }: {
   rows: AnalysisRow[];
   productBase: string;
   title: string;
   scope: string[][];
-  onImage: (image: AnalysisImage, row: AnalysisRow) => void;
 }) {
   const [sort, setSort] = useState("date_desc");
   const [page, setPage] = useState(1);
@@ -575,11 +573,9 @@ function EvidenceTable({
       <p className="sourcing-caption">共 {sorted.length} 条记录 · {uniqueProducts(sorted)} 款产品；当前显示第 {page}/{pageCount} 页。导出 CSV 会保留全部结果。</p>
       <div className="sourcing-table-wrap">
         <table>
-          <thead><tr><th>耳机品牌 / 产品</th><th>器件</th><th>生产商 / 型号</th><th>位置与参数</th><th>图片证据</th><th>报告与文字证据</th></tr></thead>
+          <thead><tr><th>耳机品牌 / 产品</th><th>器件</th><th>生产商 / 型号</th><th>位置与参数</th><th>提取依据与公开来源</th></tr></thead>
           <tbody>
             {visibleRows.map((row, index) => {
-              const image = row.evidence_image || undefined;
-              const imageSrc = text(image?.public_path || image?.url);
               const sourceName = row.source_type === "video" ? "拆解视频" : "拆解报告";
               return (
                 <tr key={`${row.row_id}-${index}`}>
@@ -587,7 +583,6 @@ function EvidenceTable({
                   <td><strong>{row.component_label || row.component_name || "器件"}</strong><small>{row.component_name || ""}</small></td>
                   <td><strong>{supplierOf(row) || UNKNOWN}</strong><small>{modelDisplay(row)}</small>{hasInvalidModelField(row) && text(row.component_model) && <small>原字段：{row.component_model}</small>}</td>
                   <td><strong>{text(row.usage_location_label) || "位置未识别"}</strong>{featureItems(row).length ? <ul>{featureItems(row).slice(0, 6).map((item, itemIndex) => <li key={`${item.label}-${itemIndex}`}>{item.label}：{item.value}</li>)}</ul> : <small>参数未披露</small>}</td>
-                  <td>{imageSrc ? <button className="sourcing-evidence-image" type="button" onClick={() => onImage(image!, row)}><img src={imageSrc} alt={image?.caption || image?.alt || `${row.component_label}图片证据`} loading="lazy" /><span>点击放大</span></button> : <small>暂无对应图片</small>}</td>
                   <td><details><summary>查看证据 · {sourceName}</summary><blockquote>{text(row.evidence_quote) || "证据句未提供"}</blockquote>{row.source_report_url && <a href={row.source_report_url} target="_blank" rel="noreferrer">{row.source_type === "video" ? "查看原视频" : "查看原报告"} ↗</a>}</details><small>{text(row.source_published_at) || "日期未披露"}</small></td>
                 </tr>
               );
@@ -614,7 +609,7 @@ function BatterySpecCell({ rows }: { rows: AnalysisRow[] }) {
   })}{specs.length > 4 && <li><span>另有 {specs.length - 4} 组报告记录，请在本行“图片与报告证据”中核对</span></li>}</ul>;
 }
 
-function BatteryProductMatrix({ rows, productBase, onImage }: { rows: AnalysisRow[]; productBase: string; onImage: (image: AnalysisImage, row: AnalysisRow) => void }) {
+function BatteryProductMatrix({ rows, productBase }: { rows: AnalysisRow[]; productBase: string }) {
   const [page, setPage] = useState(1);
   const pageSize = 25;
   const products = useMemo(() => {
@@ -634,27 +629,24 @@ function BatteryProductMatrix({ rows, productBase, onImage }: { rows: AnalysisRo
     <section className="sourcing-product-matrix">
       <div className="sourcing-section-title">
         <div><span>Product specification & evidence</span><h3>产品规格与证据</h3></div>
-        <small>同一产品的耳机与充电盒并排呈现；需要核验时再展开图片和报告原文</small>
+        <small>同一产品的耳机与充电盒并排呈现；需要核验时再展开提取依据并前往公开来源</small>
       </div>
       <p className="sourcing-caption">共 {products.length} 款产品；每个单元格保留该位置的生产商、型号和成组参数。</p>
       <div className="sourcing-battery-table-wrap">
         <table>
-          <thead><tr><th>耳机品牌 / 产品</th><th>耳机电池</th><th>充电盒电池</th><th>位置未识别</th><th>图片与报告证据</th></tr></thead>
+          <thead><tr><th>耳机品牌 / 产品</th><th>耳机电池</th><th>充电盒电池</th><th>位置未识别</th><th>提取依据与公开来源</th></tr></thead>
           <tbody>{visibleProducts.map(([productId, productRows]) => {
             const sample = productRows[0];
             const counts = sourceCounts(productRows);
-            const imageCount = unique(productRows.map((row) => text(row.evidence_image?.public_path || row.evidence_image?.url))).length;
             return <tr key={productId}>
               <td><strong>{text(sample.product_brand) || "未知品牌"}</strong><a href={`${productBase}${productId}/`}>{text(sample.product_model) || "未知产品"}</a><small>{text(sample.product_category) || "类型未识别"} · {text(sample.source_published_at) || "日期未披露"}</small></td>
               <td><BatterySpecCell rows={productRows.filter((row) => text(row.usage_location_label) === "耳机")} /></td>
               <td><BatterySpecCell rows={productRows.filter((row) => text(row.usage_location_label) === "充电盒")} /></td>
               <td><BatterySpecCell rows={productRows.filter((row) => !["耳机", "充电盒"].includes(text(row.usage_location_label)))} /></td>
-              <td><details className="sourcing-product-evidence"><summary>查看图片与原文（{productRows.length} 条）</summary><p>{counts.reports} 篇报告 · {counts.videos} 条视频 · {imageCount} 张关联图片</p><div>{productRows.map((row, index) => {
-                const image = row.evidence_image;
+              <td><details className="sourcing-product-evidence"><summary>查看提取依据与来源（{productRows.length} 条）</summary><p>{counts.reports} 篇报告 · {counts.videos} 条视频 · 公开版不分发来源图片</p><div>{productRows.map((row, index) => {
                 return <article key={`${row.row_id}-${index}`}>
                   <div><strong>{text(row.usage_location_label) || "位置未识别"} · {supplierOf(row) || "生产商未披露"}</strong><small>{modelDisplay(row)} · {featureItems(row).map((item) => `${item.label}：${item.value}`).join("；") || "参数未披露"}</small></div>
-                  {image?.public_path ? <button type="button" className="sourcing-evidence-image" onClick={() => onImage(image, row)}><img src={image.public_path} alt={text(image.alt) || `${productName(row)} ${row.component_label}证据`} loading="lazy" /><span>点击放大</span></button> : <small>暂无对应图片</small>}
-                  <details><summary>查看文字证据</summary><blockquote>{text(row.evidence_quote) || "证据句未提供"}</blockquote>{row.source_report_url && <a href={row.source_report_url} target="_blank" rel="noreferrer">查看{row.source_type === "video" ? "原视频" : "原报告"} ↗</a>}</details>
+                  <details><summary>查看必要的短证据摘录</summary><blockquote>{text(row.evidence_quote) || "证据句未提供"}</blockquote>{row.source_report_url && <a href={row.source_report_url} target="_blank" rel="noreferrer">前往{row.source_type === "video" ? "原视频" : "原报告"} ↗</a>}</details>
                 </article>;
               })}</div></details></td>
             </tr>;
@@ -852,7 +844,7 @@ function SupplierRankingExplorer({
         <div><span>Supplier observation</span><h2>{componentLabel}供应商样本观察</h2></div>
         <small>供应商选择只用于高亮，不会把比较榜单收缩到一家</small>
       </div>
-      <div className="sourcing-ranking-warning" role="note"><strong>请按样本范围解读</strong><span>仅为我爱音频网拆解样本观察，不代表市场份额、采购量或供应商出货排名。</span></div>
+          <div className="sourcing-ranking-warning" role="note"><strong>请按演示快照解读</strong><span>仅为固定小规模公开案例中的关系观察，不代表市场份额、采购量或供应商出货排名。</span></div>
       <ScopeChips items={scope} />
       <div className="sourcing-ranking-grid">
         <article>
@@ -921,7 +913,6 @@ export default function ComponentSourcingExplorer({
   const [selectedSupplierComponent, setSelectedSupplierComponent] = useState("");
   const [supplierTreeCategory, setSupplierTreeCategory] = useState("");
   const [supplierTreeBrandQuery, setSupplierTreeBrandQuery] = useState("");
-  const [imagePreview, setImagePreview] = useState<{ image: AnalysisImage; row: AnalysisRow } | null>(null);
   const componentResultsRef = useRef<HTMLElement | null>(null);
   const componentDetailRef = useRef<HTMLElement | null>(null);
   const componentDetailHeadingRef = useRef<HTMLHeadingElement | null>(null);
@@ -1280,12 +1271,12 @@ export default function ComponentSourcingExplorer({
           <p className="home-eyebrow">Procurement intelligence</p>
           <h1>从器件线索，追到供应商与产品证据</h1>
           <p>选择一个器件类型，沿着“供应商—品牌—产品—拆解证据”逐层定位可联系、可核验的竞品应用。</p>
-          <div className="sourcing-hero__tags"><span>产品样本去重</span><span>原文与图片可追溯</span><span>不等同市场份额</span></div>
+          <div className="sourcing-hero__tags"><span>固定演示快照</span><span>结构化事实可追溯</span><span>不等同市场份额</span></div>
         </div>
         <div className="sourcing-hero__radar" aria-label="器件连接供应商、品牌、产品、参数、图片与拆解报告的情报关系图">
           <svg viewBox="0 0 520 300" role="img" aria-labelledby="sourcing-radar-title sourcing-radar-desc">
             <title id="sourcing-radar-title">器件供应链情报关系</title>
-            <desc id="sourcing-radar-desc">从器件出发，连接供应商、耳机品牌、产品、参数、图片和拆解报告。</desc>
+            <desc id="sourcing-radar-desc">从器件出发，连接供应商、耳机品牌、产品、参数和公开来源。</desc>
             <circle className="sourcing-radar__ring" cx="260" cy="150" r="54" />
             <circle className="sourcing-radar__ring" cx="260" cy="150" r="104" />
             <circle className="sourcing-radar__ring" cx="260" cy="150" r="142" />
@@ -1296,7 +1287,7 @@ export default function ComponentSourcingExplorer({
             <g className="sourcing-radar__node-group"><circle className="sourcing-radar__node" cx="388" cy="78" r="34" /><text x="388" y="78">品牌</text></g>
             <g className="sourcing-radar__node-group"><circle className="sourcing-radar__node" cx="420" cy="173" r="36" /><text x="420" y="173">产品</text></g>
             <g className="sourcing-radar__node-group"><circle className="sourcing-radar__node" cx="343" cy="260" r="34" /><text x="343" y="260">参数</text></g>
-            <g className="sourcing-radar__node-group"><circle className="sourcing-radar__node" cx="153" cy="252" r="34" /><text x="153" y="252">图片</text></g>
+            <g className="sourcing-radar__node-group"><circle className="sourcing-radar__node" cx="153" cy="252" r="34" /><text x="153" y="252">证据</text></g>
             <g className="sourcing-radar__node-group"><circle className="sourcing-radar__node" cx="92" cy="166" r="36" /><text x="92" y="166">报告</text></g>
           </svg>
         </div>
@@ -1374,7 +1365,7 @@ export default function ComponentSourcingExplorer({
 
         {componentPayload && componentScopeReady && <>
           <details className="sourcing-ranking-disclosure sourcing-ranking-disclosure--prominent">
-            <summary><span>Supplier observation</span><strong>{selectedComponentLabel}供应商样本观察</strong><small>满足当前筛选条件的历史累计 TOP 10 与 2018–2026 年度 TOP 5 供应商排名（根据我爱音频网历史样本观察）</small><i aria-hidden="true" /></summary>
+            <summary><span>Demo observation</span><strong>{selectedComponentLabel}供应商演示样本观察</strong><small>仅按当前固定公开快照计算；用于展示分析方法，不构成行业排名</small><i aria-hidden="true" /></summary>
             <SupplierRankingExplorer
               rows={componentRankingRows}
               componentLabel={selectedComponentLabel}
@@ -1477,7 +1468,7 @@ export default function ComponentSourcingExplorer({
             </div>}
           </section>
           {showComponentDetail && <section id="component-evidence" className="sourcing-detail" ref={componentDetailRef}>
-            <div className="sourcing-detail-head"><div><span>Product specs & evidence</span><h2 ref={componentDetailHeadingRef} tabIndex={-1}>产品规格与报告证据</h2><p>{componentDetailTitle}。按产品组织参数、器件位置、图片和报告原文。</p></div><button className="sourcing-detail-head__collapse" type="button" onClick={() => { setComponentEvidenceOpen(false); returnToComponentResults(); }}>收起整个证据区</button></div>
+            <div className="sourcing-detail-head"><div><span>Product specs & evidence</span><h2 ref={componentDetailHeadingRef} tabIndex={-1}>产品规格与来源依据</h2><p>{componentDetailTitle}。按产品组织参数、器件位置、提取依据与公开来源链接。</p></div><button className="sourcing-detail-head__collapse" type="button" onClick={() => { setComponentEvidenceOpen(false); returnToComponentResults(); }}>收起整个证据区</button></div>
             <div className="sourcing-detail-toolbar">
               <div className="sourcing-detail-toolbar__summary"><strong>当前 {uniqueProducts(detailRows)} 款产品</strong><span>{detailRows.length} 条位置记录 · {parameterizedProducts(detailRows)} 款披露结构化参数</span>{!detailFiltersOpen && activeDetailFilterCount === 0 && <small>结果较多？可按耳机类型、位置、品牌、年份和参数继续收窄。</small>}</div>
               <button className="sourcing-detail-toolbar__filter" type="button" aria-expanded={detailFiltersOpen} onClick={() => setDetailFiltersOpen((value) => !value)}>{detailFiltersOpen ? "收起筛选条件" : activeDetailFilterCount ? `已筛选 ${activeDetailFilterCount} 项 · 调整条件` : "继续筛选产品与规格"}</button>
@@ -1498,8 +1489,8 @@ export default function ComponentSourcingExplorer({
               <ScopeChips items={componentDetailScope} />
             </section>}
             {detailRows.length > 0 && (componentKey === "battery"
-              ? <BatteryProductMatrix rows={detailRows} productBase={productBase} onImage={(image, row) => setImagePreview({ image, row })} />
-              : <EvidenceTable rows={detailRows} productBase={productBase} title={componentDetailTitle} scope={componentDetailScope} onImage={(image, row) => setImagePreview({ image, row })} />)}
+              ? <BatteryProductMatrix rows={detailRows} productBase={productBase} />
+              : <EvidenceTable rows={detailRows} productBase={productBase} title={componentDetailTitle} scope={componentDetailScope} />)}
             {!detailRows.length && <p className="sourcing-empty">当前二级条件没有匹配记录，请减少一个筛选条件后重试。</p>}
           </section>}
           <details className="sourcing-quality"><summary>数据覆盖与待核验边界</summary><ul>{componentPayload.scope_notes.map((note) => <li key={note}>{note}</li>)}<li>跨类型复用统计已排除 {quarantinedReuseRows.length} 条型号、耳机类型或位置异常记录；这些记录仍可在全部证据中追溯。</li><li>年度变化按我爱音频网报告日期计算，不等同于器件上市、采购或供应商切换日期。</li></ul><p>当前粒度：{componentPayload.grain}。</p></details>
@@ -1562,14 +1553,13 @@ export default function ComponentSourcingExplorer({
                 })}
                 {!supplierTree.length && <p className="sourcing-empty">没有匹配的品牌分支，请清除一个树内条件后重试。</p>}
               </section>
-              <EvidenceTable rows={supplierComponentRows} productBase={productBase} title={`${supplierPayload.supplier} · ${selectedSupplierComponentLabel}证据`} scope={[["供应商", supplierPayload.supplier], ["器件", selectedSupplierComponentLabel], ["耳机类型", supplierCategory || "全部"], ["使用位置", supplierLocation || "全部"], ["时间口径", "历史样本累计"]]} onImage={(image, row) => setImagePreview({ image, row })} />
+              <EvidenceTable rows={supplierComponentRows} productBase={productBase} title={`${supplierPayload.supplier} · ${selectedSupplierComponentLabel}证据`} scope={[["供应商", supplierPayload.supplier], ["器件", selectedSupplierComponentLabel], ["耳机类型", supplierCategory || "全部"], ["使用位置", supplierLocation || "全部"], ["时间口径", "历史样本累计"]]} />
             </>}
             <section className="sourcing-quality"><strong>统计边界</strong><ul>{supplierPayload.scope_notes.map((note) => <li key={note}>{note}</li>)}</ul><p>当前粒度：{supplierPayload.grain}。</p></section>
           </>}
         </div>
       </div>}
 
-      {imagePreview && <div className="sourcing-lightbox" role="dialog" aria-modal="true" aria-label="器件图片证据预览" onMouseDown={(event) => { if (event.target === event.currentTarget) setImagePreview(null); }}><div><button type="button" onClick={() => setImagePreview(null)} aria-label="关闭图片预览">×</button><img src={text(imagePreview.image.public_path || imagePreview.image.url)} alt={imagePreview.image.caption || imagePreview.image.alt || "器件图片证据"} /><section><strong>{productName(imagePreview.row)} · {imagePreview.row.component_label}</strong><span>{imagePreview.image.caption || imagePreview.image.alt || "报告关联原图"}</span><small>用于证据追溯，不代表已经通过视觉模型确认图片只包含该器件。</small></section></div></div>}
     </div>
   );
 }

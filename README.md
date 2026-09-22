@@ -2,7 +2,7 @@
 
 一个面向竞品研究与成本工程场景的耳机器件情报作品集项目。它将公开拆解资料加工为可追溯的产品、BOM、供应商与品牌供应链视图。
 
-> 这是脱敏后的个人作品集版。仓库仅包含 16 个结构化演示产品，不包含公司私有配置、原始图片、Cookie、API Key 或内部部署数据。原始信息请通过每条记录中的公开来源链接核对。
+> 这是固定、脱敏的小规模个人作品集演示。仓库仅包含 8 个结构化真实案例，不执行定时采集，也不包含公司私有配置、原始图片、全文、字幕、Cookie、API Key 或内部部署数据。原始信息请通过每条记录中的公开来源链接核对。
 
 ## 核心能力
 
@@ -57,7 +57,7 @@ cd web
 npm run build:minio
 ```
 
-本地演示数据可直接生成页面，不需要 API Key、Cookie、PostgreSQL 或 MinIO。
+本地演示数据可直接生成页面，不需要 API Key、Cookie、PostgreSQL 或 MinIO。发布前可执行 `python scripts/validate_public_demo.py` 检查公开数据边界。
 
 ## 生产能力验证
 
@@ -74,8 +74,11 @@ python -m server.cli rebuild-site
 
 - 公开信息来源之一为[我爱音频网拆解](https://www.52audio.com/archives/category/teardowns)；来源内容权利归原权利人所有。
 - 仓库不再分发原始报告图片和全文，只保留少量脱敏结构化演示记录与来源 URL。
+- 产品卡片和详情页使用本项目原创的类型化 SVG 示意封面，不冒充产品实拍或品牌官方素材。
 - 统计结果只反映收录样本，不代表市场份额、实际采购量或供应商出货排名。
 - 本仓库当前未授予开源许可；如需使用或合作，请先联系作者。
+
+详细说明见 [数据来源与加工链路](docs/DATA_PROVENANCE.md)、[公开演示数据政策](docs/PUBLIC_DEMO_DATA_POLICY.md)、[第三方权利说明](docs/THIRD_PARTY_NOTICES.md)与[纠错/下架流程](docs/TAKEDOWN.md)。
 
 ## English summary
 

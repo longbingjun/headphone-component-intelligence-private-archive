@@ -60,7 +60,7 @@ function BomEntry({ row }: { row: TeardownInventoryItem }) {
       </header>
       {row.qty_hint && <small>数量线索：{row.qty_hint}</small>}
       {(quote || images.length > 0) && <details>
-        <summary>查看文字与图片证据</summary>
+        <summary>查看提取依据与公开来源</summary>
         {quote && <blockquote>{quote}</blockquote>}
         {images.length > 0 && <div className="bom-compare-images">{images.slice(0, 4).map((image, index) => {
           const local = text(image.public_path);

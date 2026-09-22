@@ -73,17 +73,17 @@ def _parse_json_text(content: str) -> dict:
 
 
 def _model_name() -> str:
-    return os.environ.get("DEFAULT_MODEL_NAME", "deepseek-v4-flash").strip() or "deepseek-v4-flash"
+    return os.environ.get("APP_TEXT_MODEL_NAME", "deepseek-v4-flash").strip() or "deepseek-v4-flash"
 
 
 def _llm_candidates(payload: dict) -> tuple[dict, str]:
     from openai import OpenAI
 
-    api_key = os.environ.get("DEFAULT_MODEL_API_KEY", "").strip()
-    api_url = os.environ.get("DEFAULT_MODEL_API_URL", "").strip()
+    api_key = os.environ.get("APP_TEXT_MODEL_TOKEN", "").strip()
+    api_url = os.environ.get("APP_TEXT_MODEL_BASE_URL", "").strip()
     model = _model_name()
     if not api_key or not api_url:
-        raise RuntimeError("DEFAULT_MODEL_API_KEY / DEFAULT_MODEL_API_URL not configured")
+        raise RuntimeError("APP_TEXT_MODEL_TOKEN / APP_TEXT_MODEL_BASE_URL not configured")
     client = OpenAI(api_key=api_key, base_url=api_url, timeout=180.0, max_retries=0)
     response = client.chat.completions.create(
         model=model,

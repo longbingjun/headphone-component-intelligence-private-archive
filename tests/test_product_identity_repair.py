@@ -49,9 +49,9 @@ class ProductIdentityRepairTests(unittest.TestCase):
         with patch.dict(
             "os.environ",
             {
-                "DEFAULT_MODEL_API_KEY": "secret",
-                "DEFAULT_MODEL_API_URL": "https://gateway.example/v1/",
-                "DEFAULT_MODEL_NAME": "deepseek-v4-flash",
+                "APP_TEXT_MODEL_TOKEN": "secret",
+                "APP_TEXT_MODEL_BASE_URL": "https://gateway.example/v1/",
+                "APP_TEXT_MODEL_NAME": "deepseek-v4-flash",
             },
             clear=True,
         ):

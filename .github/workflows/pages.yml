@@ -28,6 +28,7 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
       - run: pip install -r requirements.txt
+      - run: python scripts/validate_public_demo.py
       - run: python scripts/build_matrix.py
       - run: python scripts/prepare_web_data.py
       - run: npm ci

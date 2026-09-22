@@ -153,7 +153,7 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--write", action="store_true", help="persist source-backed and negative cache entries")
     args = parser.parse_args()
-    api_key = os.environ["DEEPSEEK_API_KEY"]
+    api_key = os.environ["APP_TEXT_MODEL_TOKEN"]
     reports = {str(item.get("id")): item for item in load_all_records("report")}
     candidates = candidate_products(recent_only=args.recent_only, limit=args.limit)
     results: list[dict] = []

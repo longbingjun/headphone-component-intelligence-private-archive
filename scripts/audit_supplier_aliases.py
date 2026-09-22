@@ -83,11 +83,11 @@ def main() -> None:
     supplier_names = {item["supplier"] for item in suppliers}
 
     load_env(Path(args.env_file).resolve())
-    api_key = os.environ.get("DEFAULT_MODEL_API_KEY", "").strip()
-    api_url = os.environ.get("DEFAULT_MODEL_API_URL", "").strip()
-    model = os.environ.get("DEFAULT_MODEL_NAME", "deepseek-v4-flash").strip() or "deepseek-v4-flash"
+    api_key = os.environ.get("APP_TEXT_MODEL_TOKEN", "").strip()
+    api_url = os.environ.get("APP_TEXT_MODEL_BASE_URL", "").strip()
+    model = os.environ.get("APP_TEXT_MODEL_NAME", "deepseek-v4-flash").strip() or "deepseek-v4-flash"
     if not api_key or not api_url:
-        raise RuntimeError("DEFAULT_MODEL_API_KEY / DEFAULT_MODEL_API_URL not configured")
+        raise RuntimeError("APP_TEXT_MODEL_TOKEN / APP_TEXT_MODEL_BASE_URL not configured")
 
     client = OpenAI(api_key=api_key, base_url=api_url, timeout=90.0, max_retries=1)
     raw_issues: list[dict[str, Any]] = []

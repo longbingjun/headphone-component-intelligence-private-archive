@@ -53,17 +53,17 @@ class ConfigTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / ".env.local"
             path.write_text(
-                "VIDEO_COOKIES_FILE=D:\\local\\cookies.txt\nDEFAULT_MODEL_API_KEY=file-key\n",
+                "APP_VIDEO_SESSION_FILE=D:\\local\\cookies.txt\nAPP_TEXT_MODEL_TOKEN=file-key\n",
                 encoding="utf-8",
             )
-            with patch.dict("os.environ", {"DEFAULT_MODEL_API_KEY": "injected-key"}, clear=True):
+            with patch.dict("os.environ", {"APP_TEXT_MODEL_TOKEN": "injected-key"}, clear=True):
                 load_local_env(path)
                 self.assertEqual(
-                    __import__("os").environ["VIDEO_COOKIES_FILE"],
+                    __import__("os").environ["APP_VIDEO_SESSION_FILE"],
                     "D:\\local\\cookies.txt",
                 )
                 self.assertEqual(
-                    __import__("os").environ["DEFAULT_MODEL_API_KEY"], "injected-key"
+                    __import__("os").environ["APP_TEXT_MODEL_TOKEN"], "injected-key"
                 )
 
 

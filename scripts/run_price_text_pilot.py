@@ -517,7 +517,7 @@ def main() -> None:
     parser.add_argument("--write-accepted", action="store_true", help="write only strict accepted results into official enrich")
     parser.add_argument("--checkpoint-every", type=int, default=10, help="persist the review artifact every N completed products")
     args = parser.parse_args()
-    api_key = os.environ["DEEPSEEK_API_KEY"]
+    api_key = os.environ["APP_TEXT_MODEL_TOKEN"]
     limit = 0 if args.full else args.limit
     products, skipped_identity = missing_price_products(limit)
     output_path = ROOT / "scratch_price_research" / ("price_text_full.json" if args.full else OUT.name)

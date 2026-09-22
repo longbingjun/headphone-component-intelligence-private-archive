@@ -118,7 +118,7 @@ class Settings:
     image_full_sync_batch_size: int = 50
     image_full_sync_pause_seconds: float = 1.0
     image_full_sync_max_stagnant_batches: int = 2
-    video_cookies_file: str = ""
+    video_session_file: str = ""
     # Keep the same scheduling code in every environment. A positive test
     # interval replaces the daily cron trigger and must never be set in prod.
     scheduler_test_interval_seconds: int = 0
@@ -230,5 +230,5 @@ def get_settings() -> Settings:
         image_full_sync_max_stagnant_batches=_int(
             "IMAGE_FULL_SYNC_MAX_STAGNANT_BATCHES", 2
         ),
-        video_cookies_file=os.getenv("VIDEO_COOKIES_FILE", "").strip(),
+        video_session_file=os.getenv("APP_VIDEO_SESSION_FILE", "").strip(),
     )

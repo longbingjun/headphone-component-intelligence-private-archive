@@ -190,9 +190,9 @@ def summarize(api_key: str, record: dict, text: str, images: list[dict]) -> dict
 
 
 def main() -> None:
-    api_key = os.environ.get("DEEPSEEK_API_KEY")
+    api_key = os.environ.get("APP_TEXT_MODEL_TOKEN")
     if not api_key:
-        print(json.dumps({"skipped": True, "reason": "DEEPSEEK_API_KEY is not set"}, ensure_ascii=False))
+        print(json.dumps({"skipped": True, "reason": "APP_TEXT_MODEL_TOKEN is not set"}, ensure_ascii=False))
         return
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     api_calls = cache_hits = failed = 0

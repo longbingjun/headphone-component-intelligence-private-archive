@@ -44,6 +44,17 @@ DROP_ALERT_THRESHOLD = 0.3
 # 它们保留在原始报告中，并由产品构建步骤排除出 SKU 聚合；这里单独导出为首页洞察。
 ROUNDUP_MARKERS = ("汇总", "盘点", "年度报告", "给你答案")
 HEADPHONE_MARKERS = ("耳机", "TWS", "OWS", "蓝牙")
+DEMO_COVER_BY_CATEGORY = {
+    "耳夹式耳机": "/demo-raster/clip.png",
+    "耳挂式耳机": "/demo-raster/ear-hook.png",
+    "全入耳式耳机": "/demo-raster/in-ear.png",
+    "半入耳式耳机": "/demo-raster/semi-in-ear.png",
+    "有线耳机": "/demo-raster/wired.png",
+    "头戴式耳机": "/demo-raster/over-ear.png",
+    "颈挂式蓝牙耳机": "/demo-raster/neckband.png",
+    "骨传导耳机": "/demo-raster/bone-conduction.png",
+}
+PUBLIC_EVIDENCE_MAX_CHARS = 180
 ROUNDUP_SUMMARIES_DIR = ROOT / "data" / "staging" / "roundup_summaries"
 LEGACY_ROUNDUP_SUMMARIES_DIR = ROOT / "data" / "enrich" / "roundup_summaries"
 
@@ -230,6 +241,9 @@ def _trim_teardown_inventory(rows: object) -> list[dict]:
         if not isinstance(row, dict):
             continue
         copy = dict(row)
+        quote = str(copy.get("evidence_quote") or "").strip()
+        if quote:
+            copy["evidence_quote"] = quote[:PUBLIC_EVIDENCE_MAX_CHARS] + ("…" if len(quote) > PUBLIC_EVIDENCE_MAX_CHARS else "")
         copy["evidence_images"] = _trim_images(row.get("evidence_images"))
         output.append(copy)
     return output
@@ -286,6 +300,17 @@ def _public_product_payload(
 ) -> dict:
     """Keep only fields used by the Astro detail and compare experiences."""
     payload = {key: product.get(key) for key in PUBLIC_PRODUCT_KEYS if key in product}
+    bom_rows = []
+    for row in product.get("bom_table") or []:
+        if not isinstance(row, dict):
+            continue
+        public_row = dict(row)
+        quote = str(public_row.get("evidence_quote") or "").strip()
+        if quote:
+            public_row["evidence_quote"] = quote[:PUBLIC_EVIDENCE_MAX_CHARS] + ("…" if len(quote) > PUBLIC_EVIDENCE_MAX_CHARS else "")
+        public_row["evidence_images"] = []
+        bom_rows.append(public_row)
+    payload["bom_table"] = bom_rows
     market = product.get("market")
     if isinstance(market, dict):
         public_market = dict(market)
@@ -504,6 +529,8 @@ def prepare() -> dict:
     for product in source_index.get("products") or []:
         item = {key: product.get(key) for key in INDEX_PRODUCT_KEYS if key in product}
         card_path = card_image_by_id.get(str(product.get("canonical_id") or ""))
+        if not card_path:
+            card_path = DEMO_COVER_BY_CATEGORY.get(str(product.get("category") or ""))
         if card_path:
             item["card_image_path"] = card_path
         public_index["products"].append(item)
@@ -533,9 +560,10 @@ def prepare() -> dict:
         videos_by_id,
     )
     for row in component_rows:
-        image = row.get("evidence_image")
-        if isinstance(image, dict) and str(image.get("url") or "").strip():
-            image["public_path"] = _local_image_path(str(image["url"]))
+        quote = str(row.get("evidence_quote") or "").strip()
+        if quote:
+            row["evidence_quote"] = quote[:PUBLIC_EVIDENCE_MAX_CHARS] + ("…" if len(quote) > PUBLIC_EVIDENCE_MAX_CHARS else "")
+        row["evidence_image"] = None
     analysis_dst = WEB_DATA / "bom-analysis"
     analysis_dst.mkdir(parents=True, exist_ok=True)
     analysis_manifest = manifest_payload(component_rows)

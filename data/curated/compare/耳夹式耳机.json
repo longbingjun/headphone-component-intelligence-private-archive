@@ -1,6 +1,6 @@
 {
   "category": "耳夹式耳机",
-  "generated_at": "2026-09-16T14:42:31+08:00",
+  "generated_at": "2026-09-22T14:47:09+08:00",
   "param_rows": [
     "launch_date",
     "price_cny",
@@ -21,226 +21,6 @@
     "positioning_summary"
   ],
   "products": [
-    {
-      "canonical_id": "baseus--bowie-mc2",
-      "brand": "Baseus倍思",
-      "model": "Bowie MC2",
-      "best_report_id": "281175",
-      "cells": {
-        "launch_date": {
-          "value": "上市时间待核验",
-          "evidence": "已核对来源原文，待补充公开发布时间来源。",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "price_cny": {
-          "value": "¥429（官方价）",
-          "evidence": "",
-          "source_layer": "official",
-          "source_url": "https://www.baseus.com/products/bowie-mc2-open-ear-true-wireless-earbuds"
-        },
-        "main_chip": {
-          "value": "INJOINIC英集芯IP5528",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "pmic": {
-          "value": "INJOINIC英集芯 INJOINIC英集芯IP5528",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "battery_ear": {
-          "value": "HJ弘捷新能源 3.85V/55mAh软包扣式",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "battery_case": {
-          "value": "WEL旭航诚 3.7V/600mAh锂电池",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "speaker": {
-          "value": "黄金微晶振膜",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "materials": {
-          "value": "硅胶",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_g": {
-          "value": "52.7g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_case_g": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_earbud_g": {
-          "value": "5.1g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "ip_rating": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "bluetooth": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "bom_rows": {
-          "value": "21",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "selling_point_tags": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "scenarios": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "positioning_summary": {
-          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        }
-      }
-    },
-    {
-      "canonical_id": "baseus--mc1",
-      "brand": "Baseus倍思",
-      "model": "MC1",
-      "best_report_id": "222800",
-      "cells": {
-        "launch_date": {
-          "value": "2024及以前产品，暂未找到相应信息",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "price_cny": {
-          "value": "¥399（官方价）",
-          "evidence": "新品发布报道载明官方发售价 399 元、首发到手价 269 元；此处记录官方发售价。",
-          "source_layer": "official",
-          "source_url": "https://finance.sina.com.cn/tech/roll/2024-12-02/doc-incxzras8892309.shtml"
-        },
-        "main_chip": {
-          "value": "Injoinic英集芯IP5528",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "pmic": {
-          "value": "INJOINIC英集芯 Injoinic英集芯IP5528",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "battery_ear": {
-          "value": "3.85V/48mAh软包扣式",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "battery_case": {
-          "value": "WEL旭航诚 600mAh锂电池",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "speaker": {
-          "value": "11mm 动圈单元",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "materials": {
-          "value": "硅胶、钛合金、PC",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_g": {
-          "value": "54.8g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_case_g": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_earbud_g": {
-          "value": "5.5g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "ip_rating": {
-          "value": "IPX7",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "bluetooth": {
-          "value": "6.0",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "bom_rows": {
-          "value": "25",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "selling_point_tags": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "scenarios": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "positioning_summary": {
-          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        }
-      }
-    },
     {
       "canonical_id": "sony--linkbuds-clip",
       "brand": "SONY索尼",
@@ -350,143 +130,15 @@
           "source_url": ""
         }
       }
-    },
-    {
-      "canonical_id": "soundcore--c40i",
-      "brand": "Soundcore声阔",
-      "model": "C40i",
-      "best_report_id": null,
-      "cells": {
-        "launch_date": {
-          "value": "上市时间待核验",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "price_cny": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "main_chip": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "pmic": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "battery_ear": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "battery_case": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "speaker": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "materials": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_g": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_case_g": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "weight_earbud_g": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "ip_rating": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "bluetooth": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "bom_rows": {
-          "value": "0",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "selling_point_tags": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "scenarios": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "positioning_summary": {
-          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        }
-      }
     }
   ],
   "rows": [
     {
       "param": "launch_date",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "上市时间待核验",
-          "evidence": "已核对来源原文，待补充公开发布时间来源。",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "2024及以前产品，暂未找到相应信息",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "上市时间待核验",
           "evidence": "已核对来源原文，待补充公开发布时间来源。",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "上市时间待核验",
-          "evidence": "",
           "source_layer": "technical",
           "source_url": ""
         }
@@ -495,55 +147,19 @@
     {
       "param": "price_cny",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "¥429（官方价）",
-          "evidence": "",
-          "source_layer": "official",
-          "source_url": "https://www.baseus.com/products/bowie-mc2-open-ear-true-wireless-earbuds"
-        },
-        "baseus--mc1": {
-          "value": "¥399（官方价）",
-          "evidence": "新品发布报道载明官方发售价 399 元、首发到手价 269 元；此处记录官方发售价。",
-          "source_layer": "official",
-          "source_url": "https://finance.sina.com.cn/tech/roll/2024-12-02/doc-incxzras8892309.shtml"
-        },
         "sony--linkbuds-clip": {
           "value": "¥1299（官方价）",
           "evidence": "索尼中国新品新闻稿：建议零售价为1,299元。",
           "source_layer": "official",
           "source_url": "https://www.sony.com.cn/content/sonyportal/zh-cn/cms/newscenter/product/2026/20260121.html"
-        },
-        "soundcore--c40i": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
         }
       }
     },
     {
       "param": "main_chip",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "INJOINIC英集芯IP5528",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "Injoinic英集芯IP5528",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "AB1585",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -553,25 +169,7 @@
     {
       "param": "pmic",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "INJOINIC英集芯 INJOINIC英集芯IP5528",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "INJOINIC英集芯 Injoinic英集芯IP5528",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -582,26 +180,8 @@
     {
       "param": "battery_ear",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "HJ弘捷新能源 3.85V/55mAh软包扣式",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "3.85V/48mAh软包扣式",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "3.85V/54mAh钢壳扣式",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -611,26 +191,8 @@
     {
       "param": "battery_case",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "WEL旭航诚 3.7V/600mAh锂电池",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "WEL旭航诚 600mAh锂电池",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "3.85V/500mAh锂电池",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -640,25 +202,7 @@
     {
       "param": "speaker",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "黄金微晶振膜",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "11mm 动圈单元",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -669,26 +213,8 @@
     {
       "param": "materials",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "硅胶",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "硅胶、钛合金、PC",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "硅胶",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -698,26 +224,8 @@
     {
       "param": "weight_g",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "52.7g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "54.8g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "53.9g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -727,26 +235,8 @@
     {
       "param": "weight_case_g",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "41.6g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -756,26 +246,8 @@
     {
       "param": "weight_earbud_g",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "5.1g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "5.5g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "6.1g",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -785,25 +257,7 @@
     {
       "param": "ip_rating",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "IPX7",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -814,26 +268,8 @@
     {
       "param": "bluetooth",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "6.0",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "5.3",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -843,26 +279,8 @@
     {
       "param": "bom_rows",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "21",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "25",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
           "value": "29",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
-          "value": "0",
           "evidence": "",
           "source_layer": "technical",
           "source_url": ""
@@ -872,25 +290,7 @@
     {
       "param": "selling_point_tags",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -901,25 +301,7 @@
     {
       "param": "scenarios",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
-          "value": "",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
           "value": "",
           "evidence": "",
           "source_layer": "technical",
@@ -930,25 +312,7 @@
     {
       "param": "positioning_summary",
       "cells": {
-        "baseus--bowie-mc2": {
-          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "baseus--mc1": {
-          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
         "sony--linkbuds-clip": {
-          "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
-          "evidence": "",
-          "source_layer": "technical",
-          "source_url": ""
-        },
-        "soundcore--c40i": {
           "value": "公开作品集演示数据，展示信息组织与证据追溯能力。",
           "evidence": "",
           "source_layer": "technical",

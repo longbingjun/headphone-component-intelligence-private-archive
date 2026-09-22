@@ -1,0 +1,33 @@
+{
+  "dataset_kind": "fixed_sanitized_public_demo",
+  "schema_version": "1.0",
+  "generated_at": "2026-09-18",
+  "scheduled_collection": false,
+  "real_case_count": 8,
+  "synthetic_case_count": 0,
+  "allowed_product_ids": [
+    "apple--airpods-4",
+    "apple--airpods-pro-2-usb-c",
+    "apple--earpods-usb-c",
+    "bose--quietcomfort-ultra-headphones",
+    "huawei--free-lace",
+    "huawei--freearc",
+    "shokz--as600",
+    "sony--linkbuds-clip"
+  ],
+  "allowed_report_ids": [
+    "176691",
+    "177859",
+    "192535",
+    "199035",
+    "214334",
+    "23049",
+    "247965",
+    "280462"
+  ],
+  "notes": [
+    "All real cases retain source URLs for attribution and verification.",
+    "The repository does not distribute source images, full articles, transcripts, credentials, or scheduled collectors.",
+    "Aggregations describe this fixed demo snapshot only and are not market-share or shipment estimates."
+  ]
+}
