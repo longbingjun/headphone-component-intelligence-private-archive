@@ -31,5 +31,4 @@
 
 ## Portfolio edition
 
-The public repository ships with 16 sanitized product records. Original article prose and images are deliberately omitted. Production adapters remain in the codebase to demonstrate the architecture, but no private infrastructure configuration or secret is included.
-
+The public repository ships with 8 sanitized product records. Original article prose and images are deliberately omitted. Production adapters remain in the codebase to demonstrate the architecture, but no private infrastructure configuration or secret is included.
