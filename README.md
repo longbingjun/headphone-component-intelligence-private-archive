@@ -1,4 +1,4 @@
-# Headphone Component Intelligence
+# earphone Component Intelligence
 
 一个面向竞品研究与成本工程场景的耳机器件情报作品集项目。它将公开拆解资料加工为可追溯的产品、BOM、供应商与品牌供应链视图。
 
